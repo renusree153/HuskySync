@@ -26,6 +26,14 @@ function NavBar() {
                         Create Quiz
                     </a>
                 </li>
+                <li>
+                    <a href="" className="liclass" id="faq">
+                        FAQ
+                    </a>
+                </li>
+                <li>
+                    <img src="imgs/profile.png" alt="Profile Page"/>
+                </li>
             </ul>
         </nav>
     )
