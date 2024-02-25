@@ -1,35 +1,39 @@
 import React from 'react';
 import { useState } from 'react';
 import './Navbar.css';
+import GroupMain from "../GroupMain.js";
+import Home from '../Home';
+import { Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function NavBar() {
     return (
         <nav className="navbar">
             <ul className="nav-items">
                 <li>
-                    <a href="" className="liclass" id="home">
+                    <Link to="/Home">
                         Home
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="" className="liclass" id="groups">
+                    <Link to="/GroupMain">
                         Groups
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="" className="liclass" id="plan">
+                    <Link to="/GroupMain">
                         Plan
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="" className="liclass" id="quiz">
-                        Create Quiz
-                    </a>
+                    <Link to="/GroupMain">
+                        Quiz
+                    </Link>
                 </li>
                 <li>
-                    <a href="" className="liclass" id="faq">
+                    <Link to="/GroupMain">
                         FAQ
-                    </a>
+                    </Link>
                 </li>
                 <li>
                     <img src="imgs/profile.png" alt="Profile Page"/>
