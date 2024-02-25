@@ -6,10 +6,26 @@ function NavBar() {
     return (
         <nav className="navbar">
             <ul className="nav-items">
-                <li>Home</li>
-                <li>Groups</li>
-                <li>Plan</li>
-                <li>Create Quiz</li>
+                <li>
+                    <a href="" className="liclass" id="home">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="" className="liclass" id="groups">
+                        Groups
+                    </a>
+                </li>
+                <li>
+                    <a href="" className="liclass" id="plan">
+                        Plan
+                    </a>
+                </li>
+                <li>
+                    <a href="" className="liclass" id="quiz">
+                        Create Quiz
+                    </a>
+                </li>
             </ul>
         </nav>
     )

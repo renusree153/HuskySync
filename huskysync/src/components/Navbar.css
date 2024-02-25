@@ -1,9 +1,32 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1rem 2rem;
     background-color: #f0f0f0;
+  }
+
+  #home {
+    color: purple;
+  }
+
+  #plan {
+    color:purple;
+  }
+
+  #quiz {
+    color: purple;
+  }
+
+  #groups {
+    color: purple;
+  }
+
+  .liclass {
+    color: purple;
+    font-weight: bold;
+    font-size: larger;
+    margin: 20px;
   }
   
   .nav-items {
