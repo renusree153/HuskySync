@@ -8,38 +8,41 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function NavBar() {
     return (
-        <nav className="navbar">
-            <ul className="nav-items">
-                <li>
-                    <Link to="/Home">
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/GroupMain">
-                        Groups
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/GroupMain">
-                        Plan
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/GroupMain">
-                        Quiz
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/GroupMain">
-                        FAQ
-                    </Link>
-                </li>
-                <li>
-                    <img src="imgs/profile.png" alt="Profile Page"/>
-                </li>
-            </ul>
-        </nav>
+        <div id="fullnavbar">
+            <nav className="navbar">
+                <ul className="nav-items">
+                    <li className="link">
+                        <Link to="/Home">
+                            <p className="labels">Home</p>
+                        </Link>
+                    </li>
+                    <li className="link">
+                        <Link to="/GroupMain">
+                        <p className="labels">Groups</p>
+                        </Link>
+                    </li>
+                    <li className="link">
+                        <Link to="/GroupMain">
+                            <p className="labels">Plan</p>
+                        </Link>
+                    </li>
+                    <li className="link">
+                        <Link to="/GroupMain">
+                            <p className="labels">Quiz</p>
+                        </Link>
+                    </li>
+                    <li className="link">
+                        <Link to="/GroupMain">
+                            <p className="labels">FAQ</p>
+                        </Link>
+                    </li>
+                    <li>
+                        <img src="imgs/profile.png" alt="Profile Page"/>
+                    </li>
+                </ul>
+            </nav>
+            <div id="horizontal-line"></div>
+        </div>
     )
 }
 

@@ -6,38 +6,22 @@
     background-color: #f0f0f0;
   }
 
-  #home {
+  .labels {
     color: purple;
+    margin-left: 40px;
   }
 
-  #plan {
-    color:purple;
-  }
-
-  #quiz {
-    color: purple;
-  }
-
-  #groups {
-    color: purple;
-  }
-
-  #faq {
-    color: purple;
-  }
-
-  .liclass {
-    color: purple;
-    font-weight: bold;
+  .link {
+    color: blue;
+    font-weight: bolder;
     font-size: larger;
-    margin: 20px;
   }
   
   .nav-items {
     display: flex;
     justify-content: center;
     list-style: none;
-    color: purple;
+    margin: 0%;
   }
   
   .nav-items li {
@@ -47,4 +31,10 @@
   .nav-items a {
     text-decoration: none;
     color: #333;
+  }
+
+  #horizontal-line {
+    height: 5px;
+    background-color: purple;
+    width: 100%;
   }

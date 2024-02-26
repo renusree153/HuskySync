@@ -1,0 +1,33 @@
+.left-panel {
+    width: 30%;
+    float: left;
+}
+
+.left-panel h2 {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.dropdown {
+    width: 60%;
+    height: 30px;
+    margin-left: 0%;
+}
+
+.right-panel {
+    width: 70%;
+    float: right;
+}
+
+.right-panel h2 {
+    text-align: left;
+    margin-left: 15px;
+}
+.line {
+    position: absolute; 
+    top: 95px; 
+    bottom: 0; 
+    left: 30%; 
+    width: 2px;
+    background-color: black;
+}
