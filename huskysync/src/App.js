@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import { useState } from 'react';
 import NavBar from './components/Navbar';
+import Team from './components/Team';
 import {Route, Routes} from "react-router-dom";
 import Home from './Home.js';
 import GroupMain from "./GroupMain.js";

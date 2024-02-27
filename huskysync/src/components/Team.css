@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.horizontal-bar {
+    width: 85%;
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: burlywood;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.bar button {
+    background-color: burlywood;
+    font-size: larger;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.expanded-content {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+.text-right-bottom {
+    margin-left: auto;
+    float: right;
+    margin-top: 20px;
+}
+  
+.small-text {
+    font-size: 12px;
+    color: #333; 
+}

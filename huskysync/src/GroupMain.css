@@ -31,3 +31,63 @@
     width: 2px;
     background-color: black;
 }
+
+#joinlive {
+  background-color: white;
+  border: 2px solid black;
+  border-bottom: none;
+  color: black;
+  border-color: black;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-top-left-radius: 8px; /* Rounded top-left corner */
+  border-top-right-radius: 8px; /* Rounded top-right corner */
+  border-bottom-left-radius: 0; /* Square bottom-left corner */
+  border-bottom-right-radius: 0; /* Square bottom-right corner */
+  transition-duration: 0.4s;
+  float:left;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+#joinlive:focus {
+    background-color: purple;
+    color: white;
+}
+
+#creategroup {
+    background-color: white;
+    border: 2px solid black;
+    border-bottom: none;
+    color: black;
+    border-color: black;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-top-left-radius: 8px; 
+    border-top-right-radius: 8px; 
+    border-bottom-left-radius: 0; 
+    border-bottom-right-radius: 0; 
+    transition-duration: 0.4s;
+    float:left;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+  
+#creategroup:focus {
+  background-color: purple;
+  color: white;
+}
+
+.right-panel hr {
+    border-width: 2px;
+    clear: both;
+    margin-top: 60px;
+}

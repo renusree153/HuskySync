@@ -3,6 +3,7 @@ import './GroupMain.css';
 import { useState } from 'react';
 import NavBar from './components/Navbar';
 import {Multiselect} from 'multiselect-react-dropdown';
+import Team from "./components/Team";
 
 function GroupMain() {
     const data = [
@@ -28,6 +29,11 @@ function GroupMain() {
             <div class="line"></div>
             <div class="right-panel">
                 <h2>Groups</h2>
+                <button id="joinlive">Join Live</button>
+                <button id="creategroup">Create Group</button>
+                <hr id="hrgroups"></hr>
+                <Team />
+                <Team />
             </div>
         </div>
     )
