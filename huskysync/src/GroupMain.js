@@ -2,8 +2,16 @@ import React from "react";
 import './GroupMain.css';
 import { useState } from 'react';
 import NavBar from './components/Navbar';
+import {Multiselect} from 'multiselect-react-dropdown';
 
 function GroupMain() {
+    const data = [
+        {Class: 'BIO 180', id:1},
+        {Class: 'MATH 126', id:2}, 
+        {Class: 'MATH 125', id:3}, 
+        {Class: 'CHEM 142', id:4}, 
+        {Class: 'MATH 126', id:5}, 
+    ]
     return (
         <div className="splitContainer">
             <div class="left-panel">
