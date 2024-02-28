@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './Home.css';
+import './Login.css';
 import React from 'react';
 import { useState } from 'react';
 import NavBar from './components/Navbar';
@@ -7,7 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
 
-function Home() {
+function Login() {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
   return (
@@ -51,4 +51,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Login;
