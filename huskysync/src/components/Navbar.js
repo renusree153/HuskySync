@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './Navbar.css';
 import GroupMain from "../GroupMain.js";
 import Home from '../Home';
+import Settings from '../Settings';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -34,6 +35,11 @@ function NavBar() {
                     <li className="link">
                         <Link to="/GroupMain">
                             <p className="labels">FAQ</p>
+                        </Link>
+                    </li>
+                    <li className="link">
+                        <Link to="/Settings">
+                            <p className="labels">Settings</p>
                         </Link>
                     </li>
                     <li>
