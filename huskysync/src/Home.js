@@ -13,7 +13,7 @@ function Home() {
       <div className="Home">
         <header className="Home-header">
           <h1>
-            Welcome, Anumita {username}!
+            Welcome, Samantha{username}!
           </h1>
           <h2 className='subheader'>
             Start your customized learning experience here.

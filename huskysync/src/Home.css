@@ -23,9 +23,13 @@
   }
   
   button {
-    backgroundColor: #4B2E83;
-    color: 'white';
-    borderRadius: '10px';
-    padding: '10px 20px';
-    border: 'none'
+    background-color: #4B2E83;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 12px
   }

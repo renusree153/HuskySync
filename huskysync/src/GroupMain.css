@@ -12,6 +12,7 @@
     width: 60%;
     height: 30px;
     margin-left: 0%;
+    border-radius: 12px;
 }
 
 .right-panel {
@@ -44,8 +45,8 @@
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  border-top-left-radius: 8px; /* Rounded top-left corner */
-  border-top-right-radius: 8px; /* Rounded top-right corner */
+  border-top-left-radius: 12px; /* Rounded top-left corner */
+  border-top-right-radius: 12px; /* Rounded top-right corner */
   border-bottom-left-radius: 0; /* Square bottom-left corner */
   border-bottom-right-radius: 0; /* Square bottom-right corner */
   transition-duration: 0.4s;
@@ -55,7 +56,7 @@
 }
 
 #joinlive:focus {
-    background-color: purple;
+    background-color: #4B2E83;
     color: white;
 }
 
@@ -71,8 +72,8 @@
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    border-top-left-radius: 8px; 
-    border-top-right-radius: 8px; 
+    border-top-left-radius: 12px; 
+    border-top-right-radius: 12px; 
     border-bottom-left-radius: 0; 
     border-bottom-right-radius: 0; 
     transition-duration: 0.4s;
@@ -82,7 +83,7 @@
   }
   
 #creategroup:focus {
-  background-color: purple;
+  background-color: #4B2E83;
   color: white;
 }
 
