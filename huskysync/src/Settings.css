@@ -1,0 +1,95 @@
+.settings-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.settings {
+    width: 50%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.setting-item {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.setting-item label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.setting-item input[type="text"],
+.setting-item select,
+.setting-item textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.setting-item input[type="file"] {
+    margin-top: 10px;
+}
+
+.small-button {
+    padding: 5px 10px;
+    margin-top: 5px;
+    background-color: #5c42a6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-button {
+    padding: 10px 20px;
+    background-color: #5c42a6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.profile-blob {
+    width: 40%;
+    background-color: #7a57d1;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-blob h2 {
+    margin-bottom: 5px;
+}
+
+.profile-blob p {
+    margin-bottom: 10px;
+}
+
+.profile-blob ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-blob ul li {
+    background-color: #5c42a6;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
