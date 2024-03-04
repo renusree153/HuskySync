@@ -6,6 +6,7 @@ import NavBar from './components/Navbar';
 import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [username, setUsername] = useState('');
@@ -19,7 +20,9 @@ function Home() {
             Start your customized learning experience here.
           </h2>
           <br></br>
-          <button>Get Started</button>
+          <Link to="/GroupMain">
+            <button>Get Started</button>
+          </Link>
           <br></br>
           <h2 className='demo-title'>
             How to use:
