@@ -11,6 +11,7 @@ function Home() {
   const [username, setUsername] = useState('');
   return (
       <div className="Home">
+        <NavBar/>
         <header className="Home-header">
           <h1>
             Welcome, Samantha{username}!
