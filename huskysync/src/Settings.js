@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Settings.css';
+import NavBar from './components/Navbar';
 
 function Settings() {
     const [firstName, setFirstName] = useState('');
@@ -36,7 +37,9 @@ function Settings() {
     };
 
     return (
-        <div className="settings-container">
+        <div className="mainDiv">
+            <NavBar/>
+            <div className="settings-container">
             <div className="settings">
                 <div className="setting-item">
                     <label>First Name</label>
@@ -86,6 +89,7 @@ function Settings() {
                         </ul>
                     </div>
                 )}
+            </div>
             </div>
         </div>
     );

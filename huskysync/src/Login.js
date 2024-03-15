@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './Login.css';
 import React from 'react';
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
+import Home from './Home';
 import NavBar from './components/Navbar';
 import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
@@ -10,6 +12,12 @@ import { BrowserRouter } from 'react-router-dom';
 function Login() {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate('./Home');
+  };
+
   return (
       <div className="App">
         <header className="App-header">
@@ -43,7 +51,7 @@ function Login() {
             Forgot Password?
           </a>
           <br></br>
-          <button>Login</button>
+          <button onClick={handleLogin}>Login</button>
           <br></br>
           <button>Sign in with Google</button>
         </header>

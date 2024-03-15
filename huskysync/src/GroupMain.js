@@ -15,6 +15,7 @@ function GroupMain() {
     ]
     return (
         <div className="splitContainer">
+            <NavBar/>
             <div class="left-panel">
                 <h2>Classes</h2>
                 <select className="dropdown">
