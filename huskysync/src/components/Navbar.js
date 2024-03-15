@@ -28,7 +28,7 @@ function NavBar() {
                         </Link>
                     </li>
                     <li className="link">
-                        <Link to="/GroupMain">
+                        <Link to="/FAQ">
                             <p className="labels">FAQ</p>
                         </Link>
                     </li>

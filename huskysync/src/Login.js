@@ -15,9 +15,17 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate('./Home');
+    navigate("./Home");
+  };
+  
+  const handleEmailChange = (event) => {
+    setInputEmail(event.target.value);
   };
 
+  const handlePassChange = (event) => {
+    setInputPassword(event.target.value);
+  };
+  
   return (
       <div className="App">
         <header className="App-header">
@@ -33,6 +41,7 @@ function Login() {
             type="text"
             id="email"
             value={inputEmail}
+            onChange={handleEmailChange}
           />
 
           <label htmlFor='password'>Password</label>
@@ -40,6 +49,7 @@ function Login() {
             type="text"
             id="password"
             value={inputPassword}
+            onChange={handlePassChange}
           />
           <br></br>
           <a
