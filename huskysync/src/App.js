@@ -9,6 +9,7 @@ import Login from "./Login.js";
 import Home from './Home.js';
 import GroupMain from "./GroupMain.js";
 import Settings from './Settings';
+import FAQ from './FAQ';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Home" element={<Home/>} />
           <Route path="/GroupMain" element={<GroupMain/>}/>
           <Route path="/Settings" element={<Settings/>}/>
+          <Route path="/FAQ" element={<FAQ/>}/>
         </Routes>
       </div>
     </BrowserRouter>

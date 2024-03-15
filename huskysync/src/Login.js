@@ -8,16 +8,11 @@ import NavBar from './components/Navbar';
 import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    navigate('./Home');
-  };
-
   return (
       <div className="App">
         <header className="App-header">
@@ -33,6 +28,7 @@ function Login() {
             type="text"
             id="email"
             value={inputEmail}
+            onChange={handleEmailChange}
           />
 
           <label htmlFor='password'>Password</label>
@@ -40,6 +36,7 @@ function Login() {
             type="text"
             id="password"
             value={inputPassword}
+            onChange={handlePassChange}
           />
           <br></br>
           <a
