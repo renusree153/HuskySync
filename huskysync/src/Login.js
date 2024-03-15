@@ -8,6 +8,7 @@ import NavBar from './components/Navbar';
 import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
   const [inputEmail, setInputEmail] = useState('');
