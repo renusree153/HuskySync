@@ -8,7 +8,6 @@ import NavBar from './components/Navbar';
 import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
 
 function Login() {
   const [inputEmail, setInputEmail] = useState('');
@@ -28,7 +27,11 @@ function Login() {
   };
   
   return (
-      <div className="App">
+      <div id="App1">
+        <div className="left-half">
+          <h1> Digital Platform for efficient learning </h1>
+        </div>
+        <div className="right-half">
         <header className="App-header">
           <p>
             Logo
@@ -66,6 +69,7 @@ function Login() {
           <br></br>
           <button>Sign in with Google</button>
         </header>
+        </div>
       </div>
   );
 }
