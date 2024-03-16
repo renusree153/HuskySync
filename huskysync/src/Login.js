@@ -45,8 +45,10 @@ function Login() {
           <p>
             Logo
           </p>
-          <p>
+          <p id="hello" style={{ textAlign: 'left'}}>
             Hey Huskies!
+          </p>
+          <p>
             Create an account or sign in if you already have one!
           </p>
           <label htmlFor='email'>Email</label>
