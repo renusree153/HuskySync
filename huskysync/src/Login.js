@@ -14,6 +14,7 @@ function Login() {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
   const navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleLogin = () => {
     navigate("./Home");
@@ -25,6 +26,10 @@ function Login() {
 
   const handlePassChange = (event) => {
     setInputPassword(event.target.value);
+  };
+
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
   };
   
   return (
@@ -41,45 +46,63 @@ function Login() {
           </div>
         </div>
         <div className="right-half">
-        <header className="App-header">
+        <div className="App-header">
           <p>
             Logo
           </p>
           <p id="hello" style={{ textAlign: 'left'}}>
             Hey Huskies!
           </p>
-          <p>
-            Create an account or sign in if you already have one!
+          <p id="create">
+            Create an account or sign in if you already have one
           </p>
-          <label htmlFor='email'>Email</label>
+          <p id="email">
+            Email
+          </p>
           <input
             type="text"
             id="email"
             value={inputEmail}
             onChange={handleEmailChange}
-          />
+            style={{ width: '300px', display: 'block', marginLeft: '0', padding: '0', marginTop: '0' }}
 
-          <label htmlFor='password'>Password</label>
+          />
+          <p id="password">
+            Password
+          </p>
           <input
             type="text"
             id="password"
             value={inputPassword}
             onChange={handlePassChange}
+            style={{ width: '300px', display: 'block', marginLeft: '0', padding: '0', marginTop: '0' }}
           />
           <br></br>
-          <a
-            className="forgotpass"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Forgot Password?
-          </a>
+          <div id="remPass">
+            <label style={{ color: 'black' }} id ="remid">
+              <input 
+                type="checkbox"
+                checked = {isChecked}
+                onChange={handleCheckboxChange}
+              />
+              Remember me
+            </label>
+            <label htmlFor="forgotpass" style={{ marginLeft: '10px', marginTop: '0px' }}>
+              <a
+                id="forgotpass"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Forgot Password?
+              </a>
+            </label>
+          </div>
           <br></br>
           <button onClick={handleLogin}>Login</button>
           <br></br>
           <button>Sign in with Google</button>
-        </header>
+        </div>
         </div>
       </div>
   );
