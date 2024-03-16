@@ -1,4 +1,4 @@
-#App1 {
+  #App1 {
     display: flex;
     height: 100vh;
   }
@@ -45,7 +45,7 @@
   .left-half {
     flex: 45;
     background: linear-gradient(to bottom, purple, white);
-    color: white;
+    color: rgb(161, 100, 161);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,4 +59,48 @@
     align-items: center;
     justify-content: center;
   }
-  
+
+  #card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(to bottom, lightgray, white);
+    height: 350px;
+    width: 350px;
+    justify-content: left;
+  }
+
+  h1 {
+    padding-left: 30px;
+  }
+
+  body {
+    font-family: 'Jomolhari', sans-serif;
+  }
+
+  .motto {
+    margin: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #learning {
+    color: rgb(146, 142, 142)
+  }
+
+  .digContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  #pawImg {
+    width: 50px;
+    height: auto;
+    margin-top: 10px;
+    margin-left: 40px;
+  }
+
+  #digital {
+    margin-top: 10px;
+    margin-left: 0px;
+  }

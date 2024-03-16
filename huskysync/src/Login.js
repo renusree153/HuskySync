@@ -8,6 +8,7 @@ import NavBar from './components/Navbar';
 import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
+import paw from './imgs/pawImg.png';
 
 function Login() {
   const [inputEmail, setInputEmail] = useState('');
@@ -29,7 +30,15 @@ function Login() {
   return (
       <div id="App1">
         <div className="left-half">
-          <h1> Digital Platform for efficient learning </h1>
+          <div id="card">
+            <div className="digContainer">
+              <img src={paw} id="pawImg"/>
+              <h1 className="motto" id="digital"> Digital </h1>
+            </div>
+            <h1 className="motto"> platform for </h1>
+            <h1 className="motto"> efficient </h1>
+            <h1 className="motto" id="learning"> learning. </h1>
+          </div>
         </div>
         <div className="right-half">
         <header className="App-header">
