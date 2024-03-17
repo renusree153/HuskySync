@@ -99,9 +99,11 @@ function Login() {
             </label>
           </div>
           <br></br>
-          <button onClick={handleLogin}>Login</button>
+          <button onClick={handleLogin} id="loginbtn">Login</button>
           <br></br>
-          <button>Sign in with Google</button>
+          <button type="button" class="login-with-google-btn" >
+            Sign in with Google
+          </button>
         </div>
         </div>
       </div>
