@@ -9,6 +9,14 @@
   .labels {
     color: #4B2E83;
     margin-left: 40px;
+    margin-right: 30px;
+  }
+
+  .labels:hover {
+    background-color: rgb(91, 1, 91);
+    color: white;
+    width: 75px;
+    border-radius: 10px;
   }
 
   .link {
