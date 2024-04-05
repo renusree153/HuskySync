@@ -1,30 +1,65 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 import './GroupMain.css';
-import { useState } from 'react';
 import NavBar from './components/Navbar';
 import {Multiselect} from 'multiselect-react-dropdown';
 import Team from "./components/Team";
+import {Route, Routes, Navigate} from "react-router-dom";
+import Login from "./Login.js";
+import Home from './Home.js';
+import Settings from './Settings';
+import FAQ from './FAQ';
+import { BrowserRouter } from 'react-router-dom';
+import { Amplify } from "aws-amplify";
+import awsconfig from './aws-exports';
+import { DataStore} from '@aws-amplify/datastore';
+import { listClasses } from './graphql/queries';
+import { createClass } from './graphql/mutations';
+import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+
+Amplify.configure(awsconfig);
 
 function GroupMain() {
-    const data = [
-        {Class: 'BIO 180', id:1},
-        {Class: 'MATH 126', id:2}, 
-        {Class: 'MATH 125', id:3}, 
-        {Class: 'CHEM 142', id:4}, 
-        {Class: 'MATH 126', id:5}, 
-    ]
+    const [data, setData] = useState([])
+    const [listOfClasses, setClasses] = useState([])
+    useEffect(() => {
+        const pullData = async () => {
+          let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+              'X-Api-Key': awsconfig.aws_appsync_apiKey
+            },
+            body: JSON.stringify({
+              query: `query MyQuery {
+                listClasses {
+                  items {
+                    id
+                    name
+                  }
+                }
+              }
+              `
+            })
+          })
+          data = await data.json();
+          setClasses(data.data.listClasses.items);
+        }
+        pullData()
+    }, [])
     return (
         <div className="splitContainer">
             <NavBar/>
             <div class="left-panel">
                 <h2>Classes</h2>
                 <select className="dropdown">
-                    <select id="classselect"></select>
-                    <option value="select">Select</option>
-                    <option value="bio">BIO 180</option>
-                    <option value="math126">MATH 126</option>
-                    <option value="chem142">CHEM 142</option>
-                    <option value="bio200">BIO 200</option>
+                    <option value="">Select a Class</option>
+                    {listOfClasses.map((item) => (
+                        <option key={item.id} value={item.id}>
+                            {item.name}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div class="line"></div>
