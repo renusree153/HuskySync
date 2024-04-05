@@ -21,49 +21,7 @@ import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 Amplify.configure(awsconfig);
 
 function App() {
-
-  // this approach isn't working bc API import isnt working.
-  // using the fetch approach for now 
-
-  /*
-  useEffect(() => {
-    const pullData = async () => {
-      const data = await API.graphql({ query: listClasses})
-    }
-    pullData()
-  }, [])
-  */
-
-
-  /*
-  useEffect(() => {
-    const pullData = async () => {
-      let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          'X-Api-Key': awsconfig.aws_appsync_apiKey
-        },
-        body: JSON.stringify({
-          query: `query MyQuery {
-            listClasses {
-              items {
-                id
-                name
-              }
-            }
-          }
-          `
-        })
-      })
-      data = await data.json()
-      console.log(data)
-    }
-    pullData()
-  }, [])
-  */
-
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');

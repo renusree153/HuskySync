@@ -20,8 +20,20 @@ import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 Amplify.configure(awsconfig);
 
 function GroupMain() {
-    const [data, setData] = useState([])
-    const [listOfClasses, setClasses] = useState([])
+    const [data, setData] = useState([]);
+    const [listOfClasses, setClasses] = useState([]);
+
+    // this approach isn't working bc API import isnt working.
+    // using the fetch approach for now 
+    /*
+    useEffect(() => {
+        const pullData = async () => {
+        const data = await API.graphql({ query: listClasses})
+        }
+        pullData()
+    }, [])
+    */
+
     useEffect(() => {
         const pullData = async () => {
           let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
