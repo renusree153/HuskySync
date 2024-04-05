@@ -29,9 +29,9 @@ function GroupMain() {
             </div>
             <div class="line"></div>
             <div class="right-panel">
-                <h2>Groups</h2>
-                <button id="joinlive">Join Live</button>
-                <button id="creategroup">Create Group</button>
+                <h2>Quizzes</h2>
+                <button id="joinlive">RSVP'd</button>
+                <button id="creategroup">Join</button>
                 <hr id="hrgroups"></hr>
                 <Team />
                 <Team />
