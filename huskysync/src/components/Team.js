@@ -16,9 +16,9 @@ function Team() {
       <div className="container">
         <div className="horizontal-bar">
             <div className="bar">
-                <h4>BIONERDZZ</h4>
+                <h4>BIO 180</h4>
             <div className="text-right-bottom">
-                <p className="small-text">BIO 180           10 Members</p>
+                <p className="small-text">10 Members</p>
             </div>
             <button onClick={toggleExpand}>
                 {expanded ? '-' : '+'}

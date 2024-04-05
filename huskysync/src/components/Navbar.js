@@ -19,12 +19,7 @@ function NavBar() {
                     </li>
                     <li className="link">
                         <Link to="/GroupMain">
-                        <p className="labels">Groups</p>
-                        </Link>
-                    </li>
-                    <li className="link">
-                        <Link to="/GroupMain">
-                            <p className="labels">Quiz</p>
+                        <p className="labels">Quiz</p>
                         </Link>
                     </li>
                     <li className="link">
