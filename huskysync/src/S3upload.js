@@ -4,7 +4,6 @@ import awsconfig from './aws-exports';
 const AWS = require('aws-sdk');
 
 const S3Uploader = () => {
-
     // set access key ID & secret access key id in .env file in the
     // huskysync folder NOT src
     AWS.config.update({
