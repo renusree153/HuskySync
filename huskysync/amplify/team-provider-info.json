@@ -14,6 +14,12 @@
     "categories": {
       "api": {
         "amplifyAPI": {}
+      },
+      "auth": {
+        "amplifyd08d8ec9": {}
+      },
+      "storage": {
+        "huskysyncstorage": {}
       }
     }
   }
