@@ -47,15 +47,7 @@ function GroupMain() {
               'X-Api-Key': awsconfig.aws_appsync_apiKey
             },
             body: JSON.stringify({
-              query: `query MyQuery {
-                listClasses {
-                  items {
-                    id
-                    name
-                  }
-                }
-              }
-              `
+              query: listClasses
             })
           })
           data = await data.json();

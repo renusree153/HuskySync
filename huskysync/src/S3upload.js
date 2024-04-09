@@ -4,6 +4,7 @@ import awsconfig from './aws-exports';
 const AWS = require('aws-sdk');
 
 const S3Uploader = () => {
+    const [success, setSuccess] = useState(false);
     // set access key ID & secret access key id in .env file in the
     // huskysync folder NOT src
     AWS.config.update({
@@ -35,6 +36,7 @@ const S3Uploader = () => {
         try {
             const data = await s3.upload(params).promise();
             console.log('File uploaded successfully');
+            setSuccess(true);
         } catch (error) {
             console.error('Error uploading file please try again');
         }
@@ -44,6 +46,11 @@ const S3Uploader = () => {
         <div>
             <input type="file" onChange={handleFileSelect} />
             <button onClick={uploadFile}>Upload</button>
+            {success && (
+                <div>
+                    <h3> File upload was successful! </h3>
+                </div>
+            )}
         </div>
     );
 };
