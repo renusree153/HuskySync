@@ -1,0 +1,14 @@
+{
+  "resourceName": "huskysyncstorage",
+  "policyUUID": "ef24ad78",
+  "bucketName": "huskysyncbucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

@@ -12,8 +12,11 @@
       "AmplifyAppId": "diir0lzh6kl8u"
     },
     "categories": {
-      "api": {
-        "amplifyAPI": {}
+      "auth": {
+        "amplifyd08d8ec9": {}
+      },
+      "storage": {
+        "huskysyncstorage": {}
       }
     }
   }
