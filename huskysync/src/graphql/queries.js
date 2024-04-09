@@ -1,36 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      name
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
 export const getClass = /* GraphQL */ `
   query GetClass($id: ID!) {
     getClass(id: $id) {
@@ -52,8 +22,6 @@ export const listClasses = /* GraphQL */ `
       items {
         id
         name
-        createdAt
-        updatedAt
         __typename
       }
       nextToken
@@ -91,3 +59,36 @@ export const listQuizzes = /* GraphQL */ `
     }
   }
 `;
+export const getUsers = /* GraphQL */ `
+  query GetUsers($id: ID!) {
+    getUsers(id: $id) {
+      id
+      username
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUsersFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+
+
+

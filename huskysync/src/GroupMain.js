@@ -10,14 +10,17 @@ import Home from './Home.js';
 import Settings from './Settings';
 import FAQ from './FAQ';
 import { BrowserRouter } from 'react-router-dom';
-import { Amplify } from "aws-amplify";
+import { Amplify} from "aws-amplify";
+import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 import awsconfig from './aws-exports';
 import { DataStore} from '@aws-amplify/datastore';
 import { listClasses } from './graphql/queries';
 import { createClass } from './graphql/mutations';
 import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+import S3Uploader from "./S3upload";
 
 Amplify.configure(awsconfig);
+const AWS = require('aws-sdk');
 
 function GroupMain() {
     const [data, setData] = useState([]);
@@ -44,22 +47,15 @@ function GroupMain() {
               'X-Api-Key': awsconfig.aws_appsync_apiKey
             },
             body: JSON.stringify({
-              query: `query MyQuery {
-                listClasses {
-                  items {
-                    id
-                    name
-                  }
-                }
-              }
-              `
+              query: listClasses
             })
           })
           data = await data.json();
           setClasses(data.data.listClasses.items);
         }
         pullData()
-    }, [])
+    }, []);
+
     return (
         <div className="splitContainer">
             <NavBar/>
@@ -83,6 +79,7 @@ function GroupMain() {
                 <Team />
                 <Team />
             </div>
+            <S3Uploader />
         </div>
     )
 }
