@@ -16,6 +16,7 @@ import awsconfig from './aws-exports';
 import { DataStore} from '@aws-amplify/datastore';
 import { listClasses } from './graphql/queries';
 import { createClass } from './graphql/mutations';
+import QuizBlock from "./components/QuizBlock";
 import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 import S3Uploader from "./S3upload";
 import CreateQuiz from './CreateQuiz';
@@ -87,6 +88,7 @@ function GroupMain() {
                 <hr id="hrgroups"></hr>
                 <Team />
                 <Team />
+                <QuizBlock/>
             </div>
             {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}
             <S3Uploader />
