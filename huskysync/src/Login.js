@@ -9,26 +9,12 @@ import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
 import paw from './imgs/pawImg.png';
-import GglLogin from './components/googleBtn';
-import {gapi} from 'gapi-script';
-
-const clientId = "98519260658-us1jcl7tveu7c273l7acrejm1vpb5fcq.apps.googleusercontent.com";
 
 function Login() {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
-
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: clientId, 
-        scope: ""
-      })
-    }
-    gapi.load('client:auth2', start);
-  })
 
   const handleLogin = () => {
     navigate("./Home");
@@ -115,7 +101,6 @@ function Login() {
           <br></br>
           <button onClick={handleLogin} id="loginbtn">Login</button>
           <br></br>
-          <GglLogin />
         </div>
         </div>
       </div>

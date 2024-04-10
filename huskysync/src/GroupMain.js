@@ -10,16 +10,28 @@ import Home from './Home.js';
 import Settings from './Settings';
 import FAQ from './FAQ';
 import { BrowserRouter } from 'react-router-dom';
-import { Amplify } from "aws-amplify";
+import { Amplify} from "aws-amplify";
+import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 import awsconfig from './aws-exports';
 import { DataStore} from '@aws-amplify/datastore';
 import { listClasses } from './graphql/queries';
 import { createClass } from './graphql/mutations';
+import QuizBlock from "./components/QuizBlock";
 import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+import S3Uploader from "./S3upload";
+import CreateQuiz from './CreateQuiz';
 
 Amplify.configure(awsconfig);
+const AWS = require('aws-sdk');
 
 function GroupMain() {
+
+    const [showQuizModal, setShowQuizModal] = useState(false);
+
+    const toggleQuizModal = () => {
+        setShowQuizModal(!showQuizModal);
+    };
+
     const [data, setData] = useState([]);
     const [listOfClasses, setClasses] = useState([]);
 
@@ -44,22 +56,15 @@ function GroupMain() {
               'X-Api-Key': awsconfig.aws_appsync_apiKey
             },
             body: JSON.stringify({
-              query: `query MyQuery {
-                listClasses {
-                  items {
-                    id
-                    name
-                  }
-                }
-              }
-              `
+              query: listClasses
             })
           })
           data = await data.json();
           setClasses(data.data.listClasses.items);
         }
         pullData()
-    }, [])
+    }, []);
+
     return (
         <div className="splitContainer">
             <NavBar/>
@@ -79,10 +84,14 @@ function GroupMain() {
                 <h2>Quizzes</h2>
                 <button id="joinlive">RSVP'd</button>
                 <button id="creategroup">Join</button>
+                <button id="creategroup" onClick={toggleQuizModal}>Create Quiz</button>
                 <hr id="hrgroups"></hr>
                 <Team />
                 <Team />
+                <QuizBlock/>
             </div>
+            {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}
+            <S3Uploader />
         </div>
     )
 }

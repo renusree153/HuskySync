@@ -1,39 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
-    onCreateUser(filter: $filter) {
-      id
-      name
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
-    onUpdateUser(filter: $filter) {
-      id
-      name
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
-    onDeleteUser(filter: $filter) {
-      id
-      name
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
 export const onCreateClass = /* GraphQL */ `
   subscription OnCreateClass($filter: ModelSubscriptionClassFilterInput) {
     onCreateClass(filter: $filter) {
@@ -94,6 +61,39 @@ export const onDeleteQuiz = /* GraphQL */ `
     onDeleteQuiz(filter: $filter) {
       id
       name
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateUsers = /* GraphQL */ `
+  subscription OnCreateUsers($filter: ModelSubscriptionUsersFilterInput) {
+    onCreateUsers(filter: $filter) {
+      id
+      username
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateUsers = /* GraphQL */ `
+  subscription OnUpdateUsers($filter: ModelSubscriptionUsersFilterInput) {
+    onUpdateUsers(filter: $filter) {
+      id
+      username
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteUsers = /* GraphQL */ `
+  subscription OnDeleteUsers($filter: ModelSubscriptionUsersFilterInput) {
+    onDeleteUsers(filter: $filter) {
+      id
+      username
       createdAt
       updatedAt
       __typename
