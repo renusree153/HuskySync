@@ -1,0 +1,17 @@
+.create-quiz-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.create-quiz-form {
+    display: none;
+    background-color: grey;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.create-quiz-form.active {
+    display: block;
+}

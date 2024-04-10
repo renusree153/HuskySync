@@ -18,11 +18,19 @@ import { listClasses } from './graphql/queries';
 import { createClass } from './graphql/mutations';
 import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 import S3Uploader from "./S3upload";
+import CreateQuiz from './CreateQuiz';
 
 Amplify.configure(awsconfig);
 const AWS = require('aws-sdk');
 
 function GroupMain() {
+
+    const [showQuizModal, setShowQuizModal] = useState(false);
+
+    const toggleQuizModal = () => {
+        setShowQuizModal(!showQuizModal);
+    };
+
     const [data, setData] = useState([]);
     const [listOfClasses, setClasses] = useState([]);
 
@@ -76,9 +84,11 @@ function GroupMain() {
                 <button id="joinlive">RSVP'd</button>
                 <button id="creategroup">Join</button>
                 <hr id="hrgroups"></hr>
+                <button id="creategroup" onClick={toggleQuizModal}>Create Quiz</button>
                 <Team />
                 <Team />
             </div>
+            {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}
             <S3Uploader />
         </div>
     )
