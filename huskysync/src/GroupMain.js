@@ -83,8 +83,8 @@ function GroupMain() {
                 <h2>Quizzes</h2>
                 <button id="joinlive">RSVP'd</button>
                 <button id="creategroup">Join</button>
-                <hr id="hrgroups"></hr>
                 <button id="creategroup" onClick={toggleQuizModal}>Create Quiz</button>
+                <hr id="hrgroups"></hr>
                 <Team />
                 <Team />
             </div>

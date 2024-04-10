@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CreateQuiz.css';
+import awsconfig from './aws-exports';
+import { listClasses } from './graphql/queries';
 
 const CreateQuiz = ({ onClose }) => {
     const [quizName, setQuizName] = useState('');
@@ -7,11 +9,29 @@ const CreateQuiz = ({ onClose }) => {
     const [tags, setTags] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const [listOfClasses, setClasses] = useState([]);
+
+    useEffect(() => {
+        const pullData = async () => {
+          let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+              'X-Api-Key': awsconfig.aws_appsync_apiKey
+            },
+            body: JSON.stringify({
+              query: listClasses
+            })
+          })
+          data = await data.json();
+          setClasses(data.data.listClasses.items);
+        }
+        pullData()
+    }, []);
 
     const handleSave = () => {
-        // Add logic to save the quiz data
         console.log('Quiz saved!');
-        // Close the modal after saving
         onClose();
     };
 
@@ -22,7 +42,11 @@ const CreateQuiz = ({ onClose }) => {
                 Class:
                 <select value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)}>
                     <option value="">Select a Class</option>
-                    {/* Add options for classes */}
+                    {listOfClasses.map((item) => (
+                        <option key={item.id} value={item.id}>
+                            {item.name}
+                        </option>
+                    ))}
                 </select>
             </label>
             <label>
