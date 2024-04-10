@@ -20,16 +20,23 @@ import QuizBlock from "./components/QuizBlock";
 import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 import S3Uploader from "./S3upload";
 import CreateQuiz from './CreateQuiz';
+import './CreateQuiz.css';
 
 Amplify.configure(awsconfig);
 const AWS = require('aws-sdk');
 
 function GroupMain() {
 
-    const [showQuizModal, setShowQuizModal] = useState(false);
+   /* const [showQuizModal, setShowQuizModal] = useState(false);
 
     const toggleQuizModal = () => {
         setShowQuizModal(!showQuizModal);
+    };*/
+
+    const [showCreateQuiz, setShowCreateQuiz] = useState(false);
+
+    const handleCreateQuizToggle = () => {
+        setShowCreateQuiz(!showCreateQuiz);
     };
 
     const [data, setData] = useState([]);
@@ -84,12 +91,12 @@ function GroupMain() {
                 <h2>Quizzes</h2>
                 <button id="joinlive">RSVP'd</button>
                 <button id="creategroup">Join</button>
-                <button id="creategroup" onClick={toggleQuizModal}>Create Quiz</button>
                 <hr id="hrgroups"></hr>
                 <Team />
                 <Team />
             </div>
-            {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}
+            {showCreateQuiz && <CreateQuiz onClose={handleCreateQuizToggle} />}
+            <button className="create-quiz-button" onClick={handleCreateQuizToggle}>Create Quiz</button>
             <S3Uploader />
         </div>
     )
