@@ -40,3 +40,21 @@
     font-size: 12px;
     color: #333; 
 }
+
+.h2-container {
+    white-space: nowrap; /* Prevent line breaks */
+  }
+  
+  .h2-container h2 {
+    display: inline-block; /* Display headings inline */
+    /*margin: 25px;*/
+    padding-right: 50px;
+  }
+  
+
+.tags {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 12px;
+}

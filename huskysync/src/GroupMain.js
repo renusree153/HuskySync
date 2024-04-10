@@ -88,7 +88,6 @@ function GroupMain() {
                 <hr id="hrgroups"></hr>
                 <Team />
                 <Team />
-                <QuizBlock/>
             </div>
             {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}
             <S3Uploader />
