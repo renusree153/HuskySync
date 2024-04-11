@@ -18,22 +18,29 @@ function Team() {
         <div className="horizontal-bar">
             <div className="bar">
                 <h4>BIO 180</h4>
-            <div className="text-right-bottom">
-                <p className="small-text">2 Groups</p>
+            <div className="text-right-bottom"> 
+                <p className="small-text">2 Quizzes</p>
             </div>
             <button onClick={toggleExpand}>
-                {expanded ? '-' : '+'}
+                {expanded ? <i class="bi bi-caret-up-fill"></i> : <i class="bi bi-caret-down-fill"></i>}
             </button>
             </div>
             {expanded && (
-            <div className="expanded-content h2-container">
-                <h2>Cardio</h2>
-                <h2>2/21/24 </h2>
-                <h2> 6:30PM </h2>
-                <div className='tags'>
-                <p> Tags: cardiovascular, bloodstream, vessels</p>
+            <div className="expanded-content">
+            <div className="h2-container">
+                <div>
+                    <h4 className="quiz-title">Cardio</h4>
+                    <div className='tags'>
+                        <i className="bi bi-tags"></i>
+                        <p>cardiovascular, bloodstream, vessels</p>
+                    </div>
                 </div>
+                <h4 className="date-time">2/21/24 6:30PM</h4>
+                <button className="plus-icon">
+                    <i class="bi bi-plus-circle"></i>
+                </button>
             </div>
+        </div>
             )}
         </div>
       </div>

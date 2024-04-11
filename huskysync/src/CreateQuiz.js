@@ -3,6 +3,7 @@ import './CreateQuiz.css';
 import awsconfig from './aws-exports';
 import { listClasses } from './graphql/queries';
 import './CreateQuiz.css';
+import S3Uploader from "./S3upload";
 
 const CreateQuiz = ({ onClose }) => {
     const [quizName, setQuizName] = useState('');
@@ -39,6 +40,9 @@ const CreateQuiz = ({ onClose }) => {
     return (
         <div className="create-quiz">
             <h2>Create Quiz</h2>
+            <button className="close-btn" onClick={onClose}>
+                <i class="bi bi-x-circle"></i>
+            </button>
             <label>
                 Class:
                 <select value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)}>
@@ -66,8 +70,8 @@ const CreateQuiz = ({ onClose }) => {
                 Time:
                 <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
             </label>
+            <S3Uploader />
             <button onClick={handleSave}>Save</button>
-            <button onClick={onClose}>Exit</button>
         </div>
     );
 };

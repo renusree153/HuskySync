@@ -33,11 +33,8 @@ function GroupMain() {
         setShowQuizModal(!showQuizModal);
     };*/
 
-    const [showCreateQuiz, setShowCreateQuiz] = useState(false);
-
-    const handleCreateQuizToggle = () => {
-        setShowCreateQuiz(!showCreateQuiz);
-    };
+    const [showQuizModal, setShowQuizModal] = useState(false);
+    const [showCreateQuizButton, setShowCreateQuizButton] = useState(true);
 
     const [data, setData] = useState([]);
     const [listOfClasses, setClasses] = useState([]);
@@ -72,6 +69,11 @@ function GroupMain() {
         pullData()
     }, []);
 
+    const toggleQuizModal = () => {
+        setShowQuizModal(!showQuizModal);
+        setShowCreateQuizButton(!showCreateQuizButton); // Toggle the visibility of the button
+    };
+
     return (
         <div className="splitContainer">
             <NavBar/>
@@ -95,9 +97,8 @@ function GroupMain() {
                 <Team />
                 <Team />
             </div>
-            {showCreateQuiz && <CreateQuiz onClose={handleCreateQuizToggle} />}
-            <button className="create-quiz-button" onClick={handleCreateQuizToggle}>Create Quiz</button>
-            <S3Uploader />
+            {showCreateQuizButton && <button class="create-quiz-button" onClick={toggleQuizModal}>Create Quiz</button>}
+            {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}
         </div>
     )
 }
