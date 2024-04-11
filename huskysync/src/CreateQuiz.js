@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './CreateQuiz.css';
 import awsconfig from './aws-exports';
 import { listClasses } from './graphql/queries';
+import './CreateQuiz.css';
 
 const CreateQuiz = ({ onClose }) => {
     const [quizName, setQuizName] = useState('');

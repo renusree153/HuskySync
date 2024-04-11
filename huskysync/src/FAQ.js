@@ -12,6 +12,7 @@ function FAQ() {
     const [username, setUsername] = useState('');
     return (
         <div className="FAQ">
+          <NavBar/>
           <header className="FAQ-header">
             <h1>
                 FAQ
