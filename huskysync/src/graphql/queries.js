@@ -22,9 +22,6 @@ export const listClasses = /* GraphQL */ `
       items {
         id
         name
-        createdAt
-        updatedAt
-        __typename
       }
       nextToken
       __typename
