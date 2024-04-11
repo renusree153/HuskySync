@@ -8,15 +8,14 @@ type Class @model {
 }
 
 type Quiz @model {
-  quizName: String!
-  curmembers: 
-  tags: String!
-  time: String!
+  id: ID!
+  curnumbers: Int @default(value: "0")
   class: String!
   date: String!
   description: String!
-  tags: List!
-  id: ID!
+  quizname: String!
+  tags: [String!]!
+  time: String!
 }
 
 type Users @model {

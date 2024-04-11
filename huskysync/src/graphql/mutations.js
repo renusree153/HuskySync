@@ -43,7 +43,6 @@ export const deleteClass = /* GraphQL */ `
     }
   }
 `;
-
 export const createQuiz = /* GraphQL */ `
   mutation CreateQuiz(
     $input: CreateQuizInput!
@@ -51,15 +50,19 @@ export const createQuiz = /* GraphQL */ `
   ) {
     createQuiz(input: $input, condition: $condition) {
       id
+      curnumbers
       class
-      name
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-
 export const updateQuiz = /* GraphQL */ `
   mutation UpdateQuiz(
     $input: UpdateQuizInput!
@@ -67,7 +70,13 @@ export const updateQuiz = /* GraphQL */ `
   ) {
     updateQuiz(input: $input, condition: $condition) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename
@@ -81,7 +90,13 @@ export const deleteQuiz = /* GraphQL */ `
   ) {
     deleteQuiz(input: $input, condition: $condition) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename

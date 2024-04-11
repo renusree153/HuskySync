@@ -22,6 +22,8 @@ export const listClasses = /* GraphQL */ `
       items {
         id
         name
+        createdAt
+        updatedAt
         __typename
       }
       nextToken
@@ -33,7 +35,13 @@ export const getQuiz = /* GraphQL */ `
   query GetQuiz($id: ID!) {
     getQuiz(id: $id) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename
@@ -49,7 +57,13 @@ export const listQuizzes = /* GraphQL */ `
     listQuizzes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
+        curnumbers
+        class
+        date
+        description
+        quizname
+        tags
+        time
         createdAt
         updatedAt
         __typename
@@ -89,6 +103,3 @@ export const listUsers = /* GraphQL */ `
     }
   }
 `;
-
-
-
