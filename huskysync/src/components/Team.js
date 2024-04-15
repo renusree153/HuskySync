@@ -7,9 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import {QuizBlock} from './QuizBlock';
 import { listClasses } from '../graphql/queries';
 import { listQuizzes } from '../graphql/queries';
+import {useNavigate} from 'react-router-dom';
+
 
 function Team (props) {
 
+    const navigate = useNavigate();
+
+    const handleMove = () => {
+        navigate('../Upload');
+    }
     const [classStates, setClassStates] = useState({});
 
     const toggleExpand = (classId) => {
@@ -94,15 +101,20 @@ function Team (props) {
                                 .filter((item) => item.class === classObj.name)
                                 .map((item) => (
                                     <div key={item.id}>
-                                        <h4 className="quiz-title">{item.quizname}</h4>
+                                        <div id="nameDate">
+                                            <h4 className="quiz-title">{item.quizname}</h4>
+                                            <h4 id="date">{item.date} {item.time}</h4>
+                                        </div>
                                         <div className='tags'>
                                             <i className="bi bi-tags"></i>
                                             <p>
                                                 {item.tags && item.tags.join(', ')}
                                             </p>
                                         </div>
+                                        <button id="rsvpbtn" onClick={handleMove}> RSVP </button>
+                                        <hr></hr>
                                     </div>
-                                ))}
+                            ))}
                         </div>
                     </div>
                 </div>
