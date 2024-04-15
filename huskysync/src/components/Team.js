@@ -91,13 +91,15 @@ function Team (props) {
                     <div className="h2-container">
                         <div className="scrollable-container">
                             {listOfQuizzes
-                                .filter((item) => item !== null)
+                                .filter((item) => item !== null && item.class === classObj.name)
                                 .map((item) => (
                                     <div key={item.id}>
                                         <h4 className="quiz-title">{item.quizname}</h4>
                                         <div className='tags'>
                                             <i className="bi bi-tags"></i>
-                                            <p>cardiovascular, bloodstream, vessels</p>
+                                            <p>
+                                                {item.tags && item.tags.join(', ')}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
