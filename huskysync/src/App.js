@@ -17,6 +17,7 @@ import { DataStore} from '@aws-amplify/datastore';
 import { listClasses } from './graphql/queries';
 import { createClass } from './graphql/mutations';
 import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+import UploaderPage from './UploadDocsPage.js';
 
 Amplify.configure(awsconfig);
 
@@ -81,7 +82,8 @@ function App() {
           <Route path="/Home" element={<Home/>} />
           <Route path="/GroupMain" element={<GroupMain/>}/>
           <Route path="/Settings" element={<Settings/>}/>
-          <Route path="/FAQ" element={<FAQ/>}/>
+          <Route path="/FAQ" element={<FAQ />} />
+          <Route path="/Upload" element={<UploaderPage />} />
         </Routes>
       </div>
     </BrowserRouter>

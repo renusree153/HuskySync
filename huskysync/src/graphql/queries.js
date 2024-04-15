@@ -96,3 +96,28 @@ export const listUsers = /* GraphQL */ `
     }
   }
 `;
+
+
+// This is a simple query to pull all quizes and stores them in an items. We will probably need to modify this later
+export const getTotalQuizzes = /* GraphQL */ `
+  query GetTotalQuizzes {
+    listQuizzes {
+      items {
+        id
+      }
+      nextToken
+    }
+  }
+`;
+
+// This returns all classes from the class table that begin with bio- maybe helpful if we code this out to each of the hard classes for search 
+export const filterClassNameBIO = /* GraphQL */ `
+query filterClassNameBIO {
+  listClasses(filter: {name: {beginsWith: "BIO"}}) {
+    items {
+      name
+      id
+    }
+  }
+}
+`;
