@@ -38,7 +38,13 @@ export const onCreateQuiz = /* GraphQL */ `
   subscription OnCreateQuiz($filter: ModelSubscriptionQuizFilterInput) {
     onCreateQuiz(filter: $filter) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename
@@ -49,7 +55,13 @@ export const onUpdateQuiz = /* GraphQL */ `
   subscription OnUpdateQuiz($filter: ModelSubscriptionQuizFilterInput) {
     onUpdateQuiz(filter: $filter) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename
@@ -60,7 +72,13 @@ export const onDeleteQuiz = /* GraphQL */ `
   subscription OnDeleteQuiz($filter: ModelSubscriptionQuizFilterInput) {
     onDeleteQuiz(filter: $filter) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename

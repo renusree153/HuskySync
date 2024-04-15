@@ -71,7 +71,7 @@ function GroupMain() {
 
     const toggleQuizModal = () => {
         setShowQuizModal(!showQuizModal);
-        setShowCreateQuizButton(!showCreateQuizButton); // Toggle the visibility of the button
+        setShowCreateQuizButton(!showCreateQuizButton);
     };
 
     return (

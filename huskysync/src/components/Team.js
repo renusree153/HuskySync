@@ -36,9 +36,6 @@ function Team() {
                     </div>
                 </div>
                 <h4 className="date-time">2/21/24 6:30PM</h4>
-                <button className="plus-icon">
-                    <i class="bi bi-plus-circle"></i>
-                </button>
             </div>
         </div>
             )}

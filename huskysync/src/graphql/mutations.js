@@ -50,7 +50,13 @@ export const createQuiz = /* GraphQL */ `
   ) {
     createQuiz(input: $input, condition: $condition) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename
@@ -64,7 +70,13 @@ export const updateQuiz = /* GraphQL */ `
   ) {
     updateQuiz(input: $input, condition: $condition) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename
@@ -78,7 +90,13 @@ export const deleteQuiz = /* GraphQL */ `
   ) {
     deleteQuiz(input: $input, condition: $condition) {
       id
-      name
+      curnumbers
+      class
+      date
+      description
+      quizname
+      tags
+      time
       createdAt
       updatedAt
       __typename
