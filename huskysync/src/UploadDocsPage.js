@@ -1,14 +1,21 @@
 import React from 'react';
 import S3Uploader from './S3upload';
-
-const S3UploaderPage = () => {
+import NavBar from './components/Navbar';
+import './UploadDocsPage.css'; 
+const UploaderPage = () => {
     return (
         <div>
+
+            <NavBar/>
+            <header className="Upload-header">
+
             <h1>Upload Documents</h1>
-            <S3Uploader />
+                <S3Uploader />
+            </header>
+
         </div>
     );
 };
 
-export default S3UploaderPage;
+export default UploaderPage;
 
