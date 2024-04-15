@@ -21,17 +21,13 @@ import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 import S3Uploader from "./S3upload";
 import CreateQuiz from './CreateQuiz';
 import './CreateQuiz.css';
+import { listQuizzes } from "./graphql/queries";
 
 Amplify.configure(awsconfig);
 const AWS = require('aws-sdk');
 
 function GroupMain() {
 
-   /* const [showQuizModal, setShowQuizModal] = useState(false);
-
-    const toggleQuizModal = () => {
-        setShowQuizModal(!showQuizModal);
-    };*/
 
     const [showQuizModal, setShowQuizModal] = useState(false);
     const [showCreateQuizButton, setShowCreateQuizButton] = useState(true);
@@ -74,6 +70,26 @@ function GroupMain() {
         setShowCreateQuizButton(!showCreateQuizButton);
     };
 
+
+    // handleRSVP and handleJoin change colors of the two buttons
+    // RSVP'd and Join based on which one is clicked 
+
+    const handleRSVP = () => {
+        document.getElementById("creategroup").style.backgroundColor = "white";
+        document.getElementById("creategroup").style.color = "black";
+        document.getElementById("joinlive").style.backgroundColor = "purple";
+        document.getElementById("joinlive").style.color = "white";
+        document.getElementById("rightpanel").appendChild("right-panel.dont-show");
+        
+    }
+
+    const handleJoin = () => {
+        document.getElementById("joinlive").style.backgroundColor = "white";
+        document.getElementById("joinlive").style.color = "black";
+        document.getElementById("creategroup").style.backgroundColor = "purple";
+        document.getElementById("creategroup").style.color = "white";
+    }
+
     return (
         <div className="splitContainer">
             <NavBar/>
@@ -91,10 +107,9 @@ function GroupMain() {
             <div class="line"></div>
             <div class="right-panel">
                 <h2>Quizzes</h2>
-                <button id="joinlive">RSVP'd</button>
-                <button id="creategroup">Join</button>
+                <button id="creategroup" onClick={handleJoin}>Join</button>
+                <button id="joinlive" onClick={handleRSVP}> RSVP'd</button>
                 <hr id="hrgroups"></hr>
-                <Team />
                 <Team />
             </div>
             {showCreateQuizButton && <button class="create-quiz-button" onClick={toggleQuizModal}>Create Quiz</button>}

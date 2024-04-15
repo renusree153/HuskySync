@@ -1,24 +1,33 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
 .expanded-content {
-    background-color: #f9f9f9;
     padding: 10px;
+    position: absolute;
 }
 
 .h2-container {
     display: flex;
+    position: fixed;
     justify-content: space-between;
-    align-items: center; /* Align items vertically */
-    white-space: nowrap; /* Prevent line breaks */
-    background-color: burlywood;
-    border-radius: 12px;
-    width: 100%;
+    align-items: center; 
+    white-space: nowrap; 
+    background-color:white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 70%;
+    right: 10%;
+}
+
+.scrollable-container {
+    overflow-y: auto; 
+    max-height: 200px; 
+    margin-right: -10px;
 }
 
 .quiz-title {
     font-size: 20px;
     text-align: left;
-    margin-right: 20px; /* Adjust spacing between quiz-title and tags */
+    margin-right: 20px; 
 }
 
 .date-time {
@@ -29,7 +38,7 @@
 .tags {
     text-align: left;
     display: flex;
-    align-items: center; /* Align items vertically */
+    align-items: center; 
 }
 
 .plus-icon {
@@ -48,16 +57,22 @@
 }
 
 .bar {
+    position: relative;
     display: flex;
     justify-content: space-between;
     background-color: burlywood;
     padding: 5px;
+    margin-bottom: 10px;
     border-radius: 12px;
+}
+
+.bar + .expanded-content {
+    margin-top: 10px;
 }
 
 .bar button {
     background-color: burlywood;
-    font-size: 24px; /* Increase button size */
+    font-size: 24px; 
     border: none;
     padding: 8px 16px;
     cursor: pointer;

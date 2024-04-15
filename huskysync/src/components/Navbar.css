@@ -12,13 +12,6 @@
     margin-right: 30px;
   }
 
-  .labels:hover {
-    background-color: #4B2E83;
-    color: white;
-    width: 75px;
-    border-radius: 10px;
-  }
-
   .link {
     color: blue;
     font-weight: bolder;
