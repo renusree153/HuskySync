@@ -54,16 +54,12 @@ export const listQuizzes = /* GraphQL */ `
     listQuizzes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        curnumbers
         class
         date
         description
         quizname
         tags
         time
-        createdAt
-        updatedAt
-        __typename
       }
       nextToken
       __typename
