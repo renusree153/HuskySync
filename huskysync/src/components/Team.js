@@ -7,7 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 import {QuizBlock} from './QuizBlock';
 import { listClasses } from '../graphql/queries';
 import { listQuizzes } from '../graphql/queries';
-import ClassBucket from './ClassBuckets';
 
 function Team (props) {
 

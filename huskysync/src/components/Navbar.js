@@ -32,6 +32,11 @@ function NavBar() {
                             <p className="labels">Settings</p>
                         </Link>
                     </li>
+                    <li className="link">
+                        <Link to="/Upload">
+                            <p className="labels">Upload Docs</p>
+                        </Link>
+                    </li>
                     <li>
                         <img src="imgs/profile.png" alt="Profile Page"/>
                     </li>
