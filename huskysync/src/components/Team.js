@@ -11,7 +11,6 @@ import {useNavigate} from 'react-router-dom';
 
 
 function Team (props) {
-
     const navigate = useNavigate();
 
     const handleMove = () => {
