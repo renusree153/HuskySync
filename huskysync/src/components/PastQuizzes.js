@@ -10,11 +10,6 @@ import { pastQuizzesForUser } from '../graphql/queries';
 
 
 function PastQuizzes (props) {
-    const navigate = useNavigate();
-
-    const handleMove = () => {
-        navigate('../Upload');
-    }
     const [classStates, setClassStates] = useState({});
 
     const toggleExpand = (classId) => {
@@ -46,8 +41,6 @@ function PastQuizzes (props) {
     }, []);
 
     const [listOfQuizzes, setQuizzes] = useState([]);
-
-   console.log("HELLLOOO FROM PASTTTT");
     
     return (
         <div className="container">

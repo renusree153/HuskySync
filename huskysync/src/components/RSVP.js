@@ -10,11 +10,6 @@ import { rsvpQuizzesForUser } from '../graphql/queries';
 
 
 function Rsvp (props) {
-    const navigate = useNavigate();
-
-    const handleMove = () => {
-        navigate('../Upload');
-    }
     const [classStates, setClassStates] = useState({});
 
     const toggleExpand = (classId) => {
@@ -46,8 +41,6 @@ function Rsvp (props) {
     }, []);
 
     const [listOfQuizzes, setQuizzes] = useState([]);
-
-   console.log("HELLLOOO FROM RSVPPPP");
     
     return (
         <div className="container">
