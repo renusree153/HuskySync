@@ -11,12 +11,18 @@
     justify-content: space-between;
     align-items: center; 
     white-space: nowrap; 
-    background-color:white;
+    background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     width: 70%;
     right: 10%;
 }
+
+#nameDate {
+    display: flex;
+    align-items: center;
+}
+
 
 .scrollable-container {
     overflow-y: auto; 
@@ -27,7 +33,15 @@
 .quiz-title {
     font-size: 20px;
     text-align: left;
-    margin-right: 20px; 
+    margin-right: 40px; 
+}
+
+#rsvpbtn {
+    background-color: white;
+    color: black;
+    padding: 0px;
+    margin: 0px;
+
 }
 
 .date-time {
@@ -115,6 +129,20 @@ h4 {
 }
 
 .quiz-title {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+.plus-icon {
+    margin-left: 10px; /* Adjust as needed */
+}
+
+
+.date-time-container {
+    display: flex;
+    align-items: center;
+}
+
+.date-time {
     margin-right: 10px; /* Adjust as needed */
 }
 

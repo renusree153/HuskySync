@@ -7,9 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import {QuizBlock} from './QuizBlock';
 import { listClasses } from '../graphql/queries';
 import { listQuizzes } from '../graphql/queries';
+import {useNavigate} from 'react-router-dom';
+
 
 function Team (props) {
 
+    const navigate = useNavigate();
+
+    const handleMove = () => {
+        navigate('../Upload');
+    }
     const [classStates, setClassStates] = useState({});
 
     const toggleExpand = (classId) => {
@@ -92,22 +99,25 @@ function Team (props) {
                   
                     <div className="h2-container">
                   
-                        <div className="scrollable-container">
+                        <div className="scrollable-container bottom">
                         {listOfQuizzes
-                        .filter((item) => item !== null && item.class === classObj.name)
-                          .map((item) => (
-                            <div key={item.id}>
-                              <div className="quiz-container">
-                              <h4 className="quiz-title">{item.quizname}</h4>
-                              <a href="/Upload">
-                              <i className="bi bi-plus-circle plus-icon"></i>
-                              </a>
-                            </div>
-                            <div className='tags'>
-                              <i className="bi bi-tags"></i>
-                              <p>{item.tags && item.tags.join(', ')}</p>
-                            </div>
-                      </div>
+    .filter((item) => item.class === classObj.name)
+    .map((item) => (
+        <div key={item.id}>
+            <div className="quiz-container">
+                <h4 className="quiz-title">{item.quizname}</h4>
+                <div className="date-time-container">
+                    <h4 className="date-time">{item.date} {item.time}</h4>
+                    <a href="/Upload">
+                        <i className="bi bi-plus-circle plus-icon"></i>
+                    </a>
+                </div>
+            </div>
+            <div className='tags'>
+                <i className="bi bi-tags"></i>
+                <p>{item.tags && item.tags.join(', ')}</p>
+            </div>
+        </div>
 ))}
 
                         </div>
@@ -120,34 +130,3 @@ function Team (props) {
     }    
   
   export default Team;
-
-  /*return (
-      <div className="container">
-        <div className="horizontal-bar">
-          <div className="bar">
-            <h4>{listOfClasses.length > 0 ? listOfClasses[0].name : "No classes available"}</h4>
-            <div className="text-right-bottom"> 
-              <p className="small-text">2 Quizzes</p>
-            </div>
-            <button onClick={toggleExpand}>
-              {expanded ? <i className="bi bi-caret-up-fill"></i> : <i className="bi bi-caret-down-fill"></i>}
-            </button>
-          </div>
-          {expanded && (
-            <div className="expanded-content">
-              <div className="h2-container">
-                <div>
-                  <h4 className="quiz-title">Cardio</h4>
-                  <div className='tags'>
-                    <i className="bi bi-tags"></i>
-                    <p>cardiovascular, bloodstream, vessels</p>
-                  </div>
-                </div>
-                <h4 className="date-time">2/21/24 6:30PM</h4>
-            </div>
-            </div>
-            )}
-        </div>
-      </div>
-    );
-    */
