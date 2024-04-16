@@ -34,18 +34,20 @@
     padding: 8px 16px;
     border: none;
     border-radius: 12px;
-    background-color: #4B2E83;
     color: white;
     cursor: pointer;
 }
 
-.create-quiz button:hover {
-    background-color: #4B2E83;
-}
-
 .close-btn {
     position: absolute;
-    top:0.45em;
-    right: 0.45em;
-    background-color: #ccc;
+    top: 0.3em;
+    right: 0.1em;
+    background-color: transparent;
+    border: none; 
+    color: #000; 
+    cursor: pointer;
+}
+
+.close-btn .bi-x-circle {
+    color: black; 
 }
