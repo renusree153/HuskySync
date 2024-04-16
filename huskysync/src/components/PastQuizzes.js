@@ -5,12 +5,11 @@ import awsconfig from '../aws-exports';
 import {Route, Routes} from "react-router-dom";
 import { BrowserRouter } from 'react-router-dom';
 import {QuizBlock} from './QuizBlock';
-import { listClasses } from '../graphql/queries';
-import { listQuizzes } from '../graphql/queries';
 import {useNavigate} from 'react-router-dom';
+import { pastQuizzesForUser } from '../graphql/queries';
 
 
-function Team (props) {
+function PastQuizzes (props) {
     const navigate = useNavigate();
 
     const handleMove = () => {
@@ -37,46 +36,26 @@ function Team (props) {
               'X-Api-Key': awsconfig.aws_appsync_apiKey
             },
             body: JSON.stringify({
-              query: listClasses
+              query: pastQuizzesForUser
             })
           })
           data = await data.json();
-          setClasses(data.data.listClasses.items);
+          setClasses(data.data.getUsers.pastquizzes);
         }
         pullData()
     }, []);
 
     const [listOfQuizzes, setQuizzes] = useState([]);
 
-    useEffect(() => {
-        const pullData = async () => {
-          let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-              'X-Api-Key': awsconfig.aws_appsync_apiKey
-            },
-            body: JSON.stringify({
-              query: listQuizzes
-            })
-          })
-          data = await data.json();
-          setQuizzes(data.data.listQuizzes.items);
-        }
-        pullData()
-    }, []);
+   console.log("HELLLOOO FROM PASTTTT");
     
     return (
         <div className="container">
             <div className="horizontal-bar">
-                {listOfClasses.map((classObj) => (
+                {listOfClasses.filter((classObj) => classObj !== null)
+                .map((classObj) => (
                     <div key={classObj.id} className="bar">
-                        <h4>{classObj.name}</h4>
-                    
-                        <div className="text-right-bottom">
-                            <p className="small-text">2 Quizzes</p>
-                        </div>
+                        <h4>{classObj}</h4>
                         <button onClick={() => toggleExpand(classObj.id)}>
                             {classStates[classObj.id] ? (
                                 <i className="bi bi-caret-up-fill"></i>
@@ -95,11 +74,10 @@ function Team (props) {
                   
                         <div className="scrollable-container bottom">
                         {listOfQuizzes
-    .filter((item) => item.class === classObj.name)
     .map((item) => (
         <div key={item.id}>
             <div className="quiz-container">
-                <h4 className="quiz-title">{item.quizname}</h4>
+                <h4 className="quiz-title">{item.rsvpquizzes}</h4>
                 <div className="date-time-container">
                     <h4 className="date-time">{item.date} {item.time}</h4>
                     <a href="/Upload">
@@ -123,4 +101,4 @@ function Team (props) {
     );
     }    
   
-  export default Team;
+  export default PastQuizzes

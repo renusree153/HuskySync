@@ -4,12 +4,14 @@ import './GroupMain.css';
 import NavBar from './components/Navbar';
 import {Multiselect} from 'multiselect-react-dropdown';
 import Team from "./components/Team";
-import {Route, Routes, Navigate} from "react-router-dom";
+import Rsvp from "./components/RSVP";
+import PastQuizzes from "./components/PastQuizzes.js"
+import {BrowserRouter, Routes, Navigate} from "react-router-dom";
 import Login from "./Login.js";
 import Home from './Home.js';
 import Settings from './Settings';
 import FAQ from './FAQ';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Amplify} from "aws-amplify";
 import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 import awsconfig from './aws-exports';
@@ -28,13 +30,13 @@ const AWS = require('aws-sdk');
 
 function GroupMain() {
 
+    const [activeTab, setActiveTab] = useState("join");
 
     const [showQuizModal, setShowQuizModal] = useState(false);
     const [showCreateQuizButton, setShowCreateQuizButton] = useState(true);
 
     const [data, setData] = useState([]);
     const [listOfClasses, setClasses] = useState([]);
-
     // this approach isn't working bc API import isnt working.
     // using the fetch approach for now 
     /*
@@ -70,8 +72,7 @@ function GroupMain() {
         setShowCreateQuizButton(!showCreateQuizButton);
     };
 
-
-    // handleRSVP and handleJoin change colors of the two buttons
+    // handleRSVP, handleJoin, and handlePast change colors of the two buttons
     // RSVP'd and Join based on which one is clicked 
 
     const handleRSVP = () => {
@@ -81,7 +82,7 @@ function GroupMain() {
         document.getElementById("pastquizzes").style.color = "black";
         document.getElementById("joinlive").style.backgroundColor = "purple";
         document.getElementById("joinlive").style.color = "white";
-        
+        setActiveTab("rsvp");
     }
 
     const handleJoin = () => {
@@ -91,6 +92,7 @@ function GroupMain() {
         document.getElementById("pastquizzes").style.color = "black";
         document.getElementById("creategroup").style.backgroundColor = "purple";
         document.getElementById("creategroup").style.color = "white";
+        setActiveTab("join");
     }
 
     const handlePast = () => {
@@ -100,6 +102,7 @@ function GroupMain() {
         document.getElementById("creategroup").style.color = "black";
         document.getElementById("pastquizzes").style.backgroundColor = "purple";
         document.getElementById("pastquizzes").style.color = "white";
+        setActiveTab("pastquizzes")
     }
 
     return (
@@ -119,11 +122,19 @@ function GroupMain() {
             <div class="line"></div>
             <div class="right-panel">
                 <h2>Quizzes</h2>
-                <button id="creategroup" onClick={handleJoin}>Join</button>
-                <button id="joinlive" onClick={handleRSVP}> RSVP'd</button>
-                <button id="pastquizzes" onClick={handlePast}>Past Quizzes</button>
+                <button id="creategroup" onClick={handleJoin}>
+                    Join
+                </button>
+                <button id="joinlive" onClick={handleRSVP}>
+                    RSVP'd
+                </button>
+                <button id="pastquizzes" onClick={handlePast}>
+                    Past Quizzes
+                </button>
                 <hr id="hrgroups"></hr>
-                <Team />
+                {activeTab === "join" && <Team />}
+                {activeTab === "rsvp" && <Rsvp />}
+                {activeTab === "pastquizzes" && <PastQuizzes />}
             </div>
             {showCreateQuizButton && <button class="create-quiz-button" onClick={toggleQuizModal}>Create Quiz</button>}
             {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}

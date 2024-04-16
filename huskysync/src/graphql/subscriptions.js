@@ -90,6 +90,13 @@ export const onCreateUsers = /* GraphQL */ `
     onCreateUsers(filter: $filter) {
       id
       username
+      firstname
+      lastname
+      groups
+      bio
+      email
+      pastquizzes
+      rsvpquizzes
       createdAt
       updatedAt
       __typename
@@ -101,6 +108,13 @@ export const onUpdateUsers = /* GraphQL */ `
     onUpdateUsers(filter: $filter) {
       id
       username
+      firstname
+      lastname
+      groups
+      bio
+      email
+      pastquizzes
+      rsvpquizzes
       createdAt
       updatedAt
       __typename
@@ -112,6 +126,13 @@ export const onDeleteUsers = /* GraphQL */ `
     onDeleteUsers(filter: $filter) {
       id
       username
+      firstname
+      lastname
+      groups
+      bio
+      email
+      pastquizzes
+      rsvpquizzes
       createdAt
       updatedAt
       __typename

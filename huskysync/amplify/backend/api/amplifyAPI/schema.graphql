@@ -21,4 +21,12 @@ type Quiz @model {
 type Users @model {
   id: ID!
   username: String!
+  firstname: String!
+  lastname: String!
+  groups: [String!]
+  bio: String!
+  email: String!
+  pastquizzes: [String!]
+  rsvpquizzes: [String!]
+
 }

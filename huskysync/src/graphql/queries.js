@@ -66,36 +66,6 @@ export const listQuizzes = /* GraphQL */ `
     }
   }
 `;
-export const getUsers = /* GraphQL */ `
-  query GetUsers($id: ID!) {
-    getUsers(id: $id) {
-      id
-      username
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUsersFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
 
 
 // This is a simple query to pull all quizes and stores them in an items. We will probably need to modify this later
@@ -121,3 +91,66 @@ query filterClassNameBIO {
   }
 }
 `;
+export const getUsers = /* GraphQL */ `
+  query GetUsers($id: ID!) {
+    getUsers(id: $id) {
+      id
+      username
+      firstname
+      lastname
+      groups
+      bio
+      email
+      pastquizzes
+      rsvpquizzes
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUsersFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        firstname
+        lastname
+        groups
+        bio
+        email
+        pastquizzes
+        rsvpquizzes
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+
+export const rsvpQuizzesForUser = `
+query rsvpQuizzesForUser {
+  getUsers(id: "5") {
+      id
+    	rsvpquizzes
+  }
+}
+`
+;
+export const pastQuizzesForUser = `
+query pastQuizzesForUser {
+  getUsers(id: "4") {
+      id
+    	pastquizzes
+  }
+}
+`
+;
