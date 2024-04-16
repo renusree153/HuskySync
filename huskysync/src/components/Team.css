@@ -118,3 +118,34 @@ h4 {
     margin-right: 0.5em;
     margin-left: 1em;
 }
+
+.bottom {
+    display:inline
+}
+
+.quiz-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.quiz-title {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+.plus-icon {
+    margin-left: 10px; /* Adjust as needed */
+}
+
+
+.date-time-container {
+    display: flex;
+    align-items: center;
+}
+
+.date-time {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+.plus-icon {
+    margin-left: 10px; /* Adjust as needed */
+}
