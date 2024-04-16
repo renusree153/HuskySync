@@ -15,7 +15,7 @@ function Home() {
         <NavBar/>
         <header className="Home-header">
           <h1>
-            Welcome, Samantha{username}!
+            Welcome, user{username}!
           </h1>
           <h2 className='subheader'>
             Start your customized learning experience here.
