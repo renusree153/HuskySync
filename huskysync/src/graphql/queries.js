@@ -92,7 +92,7 @@ query filterClassNameBIO {
 }
 `;
 export const getUsers = /* GraphQL */ `
-  query GetUsers($id: ID!) {
+  query GetUsers {
     getUsers(id: $id) {
       id
       username
@@ -103,8 +103,6 @@ export const getUsers = /* GraphQL */ `
       email
       pastquizzes
       rsvpquizzes
-      createdAt
-      updatedAt
       __typename
     }
   }
