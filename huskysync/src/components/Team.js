@@ -72,6 +72,7 @@ function Team (props) {
                 {listOfClasses.map((classObj) => (
                     <div key={classObj.id} className="bar">
                         <h4>{classObj.name}</h4>
+                    
                         <div className="text-right-bottom">
                             <p className="small-text">2 Quizzes</p>
                         </div>
@@ -88,21 +89,27 @@ function Team (props) {
             {listOfClasses.map((classObj) => (
             classStates[classObj.id] && (
                 <div key={`expanded-${classObj.id}`} className="expanded-content">
+                  
                     <div className="h2-container">
+                  
                         <div className="scrollable-container">
-                            {listOfQuizzes
-                                .filter((item) => item !== null && item.class === classObj.name)
-                                .map((item) => (
-                                    <div key={item.id}>
-                                        <h4 className="quiz-title">{item.quizname}</h4>
-                                        <div className='tags'>
-                                            <i className="bi bi-tags"></i>
-                                            <p>
-                                                {item.tags && item.tags.join(', ')}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))}
+                        {listOfQuizzes
+                        .filter((item) => item !== null && item.class === classObj.name)
+                          .map((item) => (
+                            <div key={item.id}>
+                              <div className="quiz-container">
+                              <h4 className="quiz-title">{item.quizname}</h4>
+                              <a href="/Upload">
+                              <i className="bi bi-plus-circle plus-icon"></i>
+                              </a>
+                            </div>
+                            <div className='tags'>
+                              <i className="bi bi-tags"></i>
+                              <p>{item.tags && item.tags.join(', ')}</p>
+                            </div>
+                      </div>
+))}
+
                         </div>
                     </div>
                 </div>
