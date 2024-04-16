@@ -77,17 +77,29 @@ function GroupMain() {
     const handleRSVP = () => {
         document.getElementById("creategroup").style.backgroundColor = "white";
         document.getElementById("creategroup").style.color = "black";
+        document.getElementById("pastquizzes").style.backgroundColor = "white";
+        document.getElementById("pastquizzes").style.color = "black";
         document.getElementById("joinlive").style.backgroundColor = "purple";
         document.getElementById("joinlive").style.color = "white";
-        document.getElementById("rightpanel").appendChild("right-panel.dont-show");
         
     }
 
     const handleJoin = () => {
         document.getElementById("joinlive").style.backgroundColor = "white";
         document.getElementById("joinlive").style.color = "black";
+        document.getElementById("pastquizzes").style.backgroundColor = "white";
+        document.getElementById("pastquizzes").style.color = "black";
         document.getElementById("creategroup").style.backgroundColor = "purple";
         document.getElementById("creategroup").style.color = "white";
+    }
+
+    const handlePast = () => {
+        document.getElementById("joinlive").style.backgroundColor = "white";
+        document.getElementById("joinlive").style.color = "black";
+        document.getElementById("creategroup").style.backgroundColor = "white";
+        document.getElementById("creategroup").style.color = "black";
+        document.getElementById("pastquizzes").style.backgroundColor = "purple";
+        document.getElementById("pastquizzes").style.color = "white";
     }
 
     return (
@@ -109,6 +121,7 @@ function GroupMain() {
                 <h2>Quizzes</h2>
                 <button id="creategroup" onClick={handleJoin}>Join</button>
                 <button id="joinlive" onClick={handleRSVP}> RSVP'd</button>
+                <button id="pastquizzes" onClick={handlePast}>Past Quizzes</button>
                 <hr id="hrgroups"></hr>
                 <Team />
             </div>
