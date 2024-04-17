@@ -32,9 +32,6 @@ function NavBar() {
                             <p className="labels">Settings</p>
                         </Link>
                     </li>
-                    <li>
-                        <img src="imgs/profile.png" alt="Profile Page"/>
-                    </li>
                 </ul>
             </nav>
             <div id="horizontal-line"></div>
