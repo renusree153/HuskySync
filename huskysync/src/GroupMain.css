@@ -33,8 +33,9 @@
     top: 102px; 
     bottom: 0; 
     left: 30%; 
-    width: 2px;
-    background-color: black;
+    width: 3px;
+    background-color: #4B2E83;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #joinlive, #pastquizzes {
@@ -94,6 +95,9 @@
     right: 0.45em;
 }
 
-p {
-    color: white;
+#hrgroups {
+    border: none;
+    height: 3px;
+    background-color: #4B2E83;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
 }
