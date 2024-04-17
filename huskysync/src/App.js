@@ -18,7 +18,6 @@ import { listClasses } from './graphql/queries';
 import { createClass } from './graphql/mutations';
 import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 import UploaderPage from './UploadDocsPage.js';
-
 Amplify.configure(awsconfig);
 
 function App() {
@@ -90,4 +89,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
