@@ -5,7 +5,6 @@ import NavBar from './components/Navbar';
 function Settings() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [profileVisibility, setProfileVisibility] = useState('private');
     const [bio, setBio] = useState('');
     const [profilePic, setProfilePic] = useState('');
     const [addGroupCode, setAddGroupCode] = useState('');
@@ -13,7 +12,6 @@ function Settings() {
 
     const handleFirstNameChange = (e) => setFirstName(e.target.value);
     const handleLastNameChange = (e) => setLastName(e.target.value);
-    const handleProfileVisibilityChange = (e) => setProfileVisibility(e.target.value);
     const handleBioChange = (e) => setBio(e.target.value);
     const handleProfilePicChange = (e) => {
         if (e.target.files[0]) {
@@ -33,7 +31,7 @@ function Settings() {
     };
     const handleSaveChanges = () => {
         // Here you would typically send the data to your backend
-        console.log('Saved data:', { firstName, lastName, profileVisibility, bio, groups });
+        console.log('Saved data:', { firstName, lastName, bio, groups });
     };
 
     return (
@@ -48,13 +46,6 @@ function Settings() {
                 <div className="setting-item">
                     <label>Last Name</label>
                     <input type="text" value={lastName} onChange={handleLastNameChange} />
-                </div>
-                <div className="setting-item">
-                    <label>Profile Visibility</label>
-                    <select value={profileVisibility} onChange={handleProfileVisibilityChange}>
-                        <option value="private">Private</option>
-                        <option value="public">Public</option>
-                    </select>
                 </div>
                 <div className="setting-item">
                     <label>Bio</label>
@@ -77,7 +68,6 @@ function Settings() {
             <div className="profile-blob">
                 {profilePic && <img src={profilePic} alt="Profile" className="profile-picture" />}
                 <h2>{`${firstName} ${lastName}`}</h2>
-                <p>{profileVisibility === 'public' ? 'Public Profile' : 'Private Profile'}</p>
                 <p>{bio}</p>
                 {groups.length > 0 && (
                     <div>

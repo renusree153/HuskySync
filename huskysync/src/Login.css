@@ -44,7 +44,7 @@
 
   .left-half {
     flex: 45;
-    background: linear-gradient(to bottom, purple, white);
+    background: linear-gradient(to bottom, #4B2E83, white);
     color: rgb(161, 100, 161);
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@
   }
 
   #hello {
-    color: purple;
+    color: #4B2E83;
   }
   
   #create {

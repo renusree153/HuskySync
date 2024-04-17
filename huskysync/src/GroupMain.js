@@ -80,7 +80,7 @@ function GroupMain() {
         document.getElementById("creategroup").style.color = "black";
         document.getElementById("pastquizzes").style.backgroundColor = "white";
         document.getElementById("pastquizzes").style.color = "black";
-        document.getElementById("joinlive").style.backgroundColor = "purple";
+        document.getElementById("joinlive").style.backgroundColor = "#4B2E83";
         document.getElementById("joinlive").style.color = "white";
         setActiveTab("rsvp");
     }
@@ -90,7 +90,7 @@ function GroupMain() {
         document.getElementById("joinlive").style.color = "black";
         document.getElementById("pastquizzes").style.backgroundColor = "white";
         document.getElementById("pastquizzes").style.color = "black";
-        document.getElementById("creategroup").style.backgroundColor = "purple";
+        document.getElementById("creategroup").style.backgroundColor = "#4B2E83";
         document.getElementById("creategroup").style.color = "white";
         setActiveTab("join");
     }
@@ -100,7 +100,7 @@ function GroupMain() {
         document.getElementById("joinlive").style.color = "black";
         document.getElementById("creategroup").style.backgroundColor = "white";
         document.getElementById("creategroup").style.color = "black";
-        document.getElementById("pastquizzes").style.backgroundColor = "purple";
+        document.getElementById("pastquizzes").style.backgroundColor = "#4B2E83";
         document.getElementById("pastquizzes").style.color = "white";
         setActiveTab("pastquizzes")
     }
