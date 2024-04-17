@@ -20,8 +20,8 @@ import {
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { getQuiz } from "../graphql/queries";
-import { updateQuiz } from "../graphql/mutations";
+import { getUsers } from "../graphql/queries";
+import { updateUsers } from "../graphql/mutations";
 const client = generateClient();
 function ArrayField({
   items = [],
@@ -178,10 +178,10 @@ function ArrayField({
     </React.Fragment>
   );
 }
-export default function QuizUpdateForm(props) {
+export default function UsersUpdateForm(props) {
   const {
     id: idProp,
-    quiz: quizModelProp,
+    users: usersModelProp,
     onSuccess,
     onError,
     onSubmit,
@@ -191,64 +191,78 @@ export default function QuizUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    curnumbers: "",
-    class: "",
-    date: "",
-    description: "",
-    quizname: "",
-    tags: [],
-    time: "",
+    username: "",
+    firstname: "",
+    lastname: "",
+    groups: [],
+    bio: "",
+    email: "",
+    pastquizzes: [],
+    rsvpquizzes: [],
   };
-  const [curnumbers, setCurnumbers] = React.useState(initialValues.curnumbers);
-  const [class1, setClass1] = React.useState(initialValues.class);
-  const [date, setDate] = React.useState(initialValues.date);
-  const [description, setDescription] = React.useState(
-    initialValues.description
+  const [username, setUsername] = React.useState(initialValues.username);
+  const [firstname, setFirstname] = React.useState(initialValues.firstname);
+  const [lastname, setLastname] = React.useState(initialValues.lastname);
+  const [groups, setGroups] = React.useState(initialValues.groups);
+  const [bio, setBio] = React.useState(initialValues.bio);
+  const [email, setEmail] = React.useState(initialValues.email);
+  const [pastquizzes, setPastquizzes] = React.useState(
+    initialValues.pastquizzes
   );
-  const [quizname, setQuizname] = React.useState(initialValues.quizname);
-  const [tags, setTags] = React.useState(initialValues.tags);
-  const [time, setTime] = React.useState(initialValues.time);
+  const [rsvpquizzes, setRsvpquizzes] = React.useState(
+    initialValues.rsvpquizzes
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    const cleanValues = quizRecord
-      ? { ...initialValues, ...quizRecord }
+    const cleanValues = usersRecord
+      ? { ...initialValues, ...usersRecord }
       : initialValues;
-    setCurnumbers(cleanValues.curnumbers);
-    setClass1(cleanValues.class);
-    setDate(cleanValues.date);
-    setDescription(cleanValues.description);
-    setQuizname(cleanValues.quizname);
-    setTags(cleanValues.tags ?? []);
-    setCurrentTagsValue("");
-    setTime(cleanValues.time);
+    setUsername(cleanValues.username);
+    setFirstname(cleanValues.firstname);
+    setLastname(cleanValues.lastname);
+    setGroups(cleanValues.groups ?? []);
+    setCurrentGroupsValue("");
+    setBio(cleanValues.bio);
+    setEmail(cleanValues.email);
+    setPastquizzes(cleanValues.pastquizzes ?? []);
+    setCurrentPastquizzesValue("");
+    setRsvpquizzes(cleanValues.rsvpquizzes ?? []);
+    setCurrentRsvpquizzesValue("");
     setErrors({});
   };
-  const [quizRecord, setQuizRecord] = React.useState(quizModelProp);
+  const [usersRecord, setUsersRecord] = React.useState(usersModelProp);
   React.useEffect(() => {
     const queryData = async () => {
       const record = idProp
         ? (
             await client.graphql({
-              query: getQuiz.replaceAll("__typename", ""),
+              query: getUsers.replaceAll("__typename", ""),
               variables: { id: idProp },
             })
-          )?.data?.getQuiz
-        : quizModelProp;
-      setQuizRecord(record);
+          )?.data?.getUsers
+        : usersModelProp;
+      setUsersRecord(record);
     };
     queryData();
-  }, [idProp, quizModelProp]);
-  React.useEffect(resetStateValues, [quizRecord]);
-  const [currentTagsValue, setCurrentTagsValue] = React.useState("");
-  const tagsRef = React.createRef();
+  }, [idProp, usersModelProp]);
+  React.useEffect(resetStateValues, [usersRecord]);
+  const [currentGroupsValue, setCurrentGroupsValue] = React.useState("");
+  const groupsRef = React.createRef();
+  const [currentPastquizzesValue, setCurrentPastquizzesValue] =
+    React.useState("");
+  const pastquizzesRef = React.createRef();
+  const [currentRsvpquizzesValue, setCurrentRsvpquizzesValue] =
+    React.useState("");
+  const rsvpquizzesRef = React.createRef();
   const validations = {
-    curnumbers: [],
-    class: [{ type: "Required" }],
-    date: [{ type: "Required" }],
-    description: [{ type: "Required" }],
-    quizname: [{ type: "Required" }],
-    tags: [{ type: "Required" }],
-    time: [{ type: "Required" }],
+    username: [{ type: "Required" }],
+    firstname: [{ type: "Required" }],
+    lastname: [{ type: "Required" }],
+    groups: [{ type: "Required" }],
+    bio: [{ type: "Required" }],
+    email: [{ type: "Required" }],
+    pastquizzes: [{ type: "Required" }],
+    rsvpquizzes: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -276,13 +290,14 @@ export default function QuizUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          curnumbers: curnumbers ?? null,
-          class: class1,
-          date,
-          description,
-          quizname,
-          tags,
-          time,
+          username,
+          firstname,
+          lastname,
+          groups,
+          bio,
+          email,
+          pastquizzes,
+          rsvpquizzes,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -313,10 +328,10 @@ export default function QuizUpdateForm(props) {
             }
           });
           await client.graphql({
-            query: updateQuiz.replaceAll("__typename", ""),
+            query: updateUsers.replaceAll("__typename", ""),
             variables: {
               input: {
-                id: quizRecord.id,
+                id: usersRecord.id,
                 ...modelFields,
               },
             },
@@ -331,244 +346,324 @@ export default function QuizUpdateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "QuizUpdateForm")}
+      {...getOverrideProps(overrides, "UsersUpdateForm")}
       {...rest}
     >
       <TextField
-        label="Curnumbers"
-        isRequired={false}
-        isReadOnly={false}
-        type="number"
-        step="any"
-        value={curnumbers}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              curnumbers: value,
-              class: class1,
-              date,
-              description,
-              quizname,
-              tags,
-              time,
-            };
-            const result = onChange(modelFields);
-            value = result?.curnumbers ?? value;
-          }
-          if (errors.curnumbers?.hasError) {
-            runValidationTasks("curnumbers", value);
-          }
-          setCurnumbers(value);
-        }}
-        onBlur={() => runValidationTasks("curnumbers", curnumbers)}
-        errorMessage={errors.curnumbers?.errorMessage}
-        hasError={errors.curnumbers?.hasError}
-        {...getOverrideProps(overrides, "curnumbers")}
-      ></TextField>
-      <TextField
-        label="Class"
+        label="Username"
         isRequired={true}
         isReadOnly={false}
-        value={class1}
+        value={username}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              curnumbers,
-              class: value,
-              date,
-              description,
-              quizname,
-              tags,
-              time,
+              username: value,
+              firstname,
+              lastname,
+              groups,
+              bio,
+              email,
+              pastquizzes,
+              rsvpquizzes,
             };
             const result = onChange(modelFields);
-            value = result?.class ?? value;
+            value = result?.username ?? value;
           }
-          if (errors.class?.hasError) {
-            runValidationTasks("class", value);
+          if (errors.username?.hasError) {
+            runValidationTasks("username", value);
           }
-          setClass1(value);
+          setUsername(value);
         }}
-        onBlur={() => runValidationTasks("class", class1)}
-        errorMessage={errors.class?.errorMessage}
-        hasError={errors.class?.hasError}
-        {...getOverrideProps(overrides, "class")}
+        onBlur={() => runValidationTasks("username", username)}
+        errorMessage={errors.username?.errorMessage}
+        hasError={errors.username?.hasError}
+        {...getOverrideProps(overrides, "username")}
       ></TextField>
       <TextField
-        label="Date"
+        label="Firstname"
         isRequired={true}
         isReadOnly={false}
-        value={date}
+        value={firstname}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              curnumbers,
-              class: class1,
-              date: value,
-              description,
-              quizname,
-              tags,
-              time,
+              username,
+              firstname: value,
+              lastname,
+              groups,
+              bio,
+              email,
+              pastquizzes,
+              rsvpquizzes,
             };
             const result = onChange(modelFields);
-            value = result?.date ?? value;
+            value = result?.firstname ?? value;
           }
-          if (errors.date?.hasError) {
-            runValidationTasks("date", value);
+          if (errors.firstname?.hasError) {
+            runValidationTasks("firstname", value);
           }
-          setDate(value);
+          setFirstname(value);
         }}
-        onBlur={() => runValidationTasks("date", date)}
-        errorMessage={errors.date?.errorMessage}
-        hasError={errors.date?.hasError}
-        {...getOverrideProps(overrides, "date")}
+        onBlur={() => runValidationTasks("firstname", firstname)}
+        errorMessage={errors.firstname?.errorMessage}
+        hasError={errors.firstname?.hasError}
+        {...getOverrideProps(overrides, "firstname")}
       ></TextField>
       <TextField
-        label="Description"
+        label="Lastname"
         isRequired={true}
         isReadOnly={false}
-        value={description}
+        value={lastname}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              curnumbers,
-              class: class1,
-              date,
-              description: value,
-              quizname,
-              tags,
-              time,
+              username,
+              firstname,
+              lastname: value,
+              groups,
+              bio,
+              email,
+              pastquizzes,
+              rsvpquizzes,
             };
             const result = onChange(modelFields);
-            value = result?.description ?? value;
+            value = result?.lastname ?? value;
           }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
+          if (errors.lastname?.hasError) {
+            runValidationTasks("lastname", value);
           }
-          setDescription(value);
+          setLastname(value);
         }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
-        label="Quizname"
-        isRequired={true}
-        isReadOnly={false}
-        value={quizname}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              curnumbers,
-              class: class1,
-              date,
-              description,
-              quizname: value,
-              tags,
-              time,
-            };
-            const result = onChange(modelFields);
-            value = result?.quizname ?? value;
-          }
-          if (errors.quizname?.hasError) {
-            runValidationTasks("quizname", value);
-          }
-          setQuizname(value);
-        }}
-        onBlur={() => runValidationTasks("quizname", quizname)}
-        errorMessage={errors.quizname?.errorMessage}
-        hasError={errors.quizname?.hasError}
-        {...getOverrideProps(overrides, "quizname")}
+        onBlur={() => runValidationTasks("lastname", lastname)}
+        errorMessage={errors.lastname?.errorMessage}
+        hasError={errors.lastname?.hasError}
+        {...getOverrideProps(overrides, "lastname")}
       ></TextField>
       <ArrayField
         onChange={async (items) => {
           let values = items;
           if (onChange) {
             const modelFields = {
-              curnumbers,
-              class: class1,
-              date,
-              description,
-              quizname,
-              tags: values,
-              time,
+              username,
+              firstname,
+              lastname,
+              groups: values,
+              bio,
+              email,
+              pastquizzes,
+              rsvpquizzes,
             };
             const result = onChange(modelFields);
-            values = result?.tags ?? values;
+            values = result?.groups ?? values;
           }
-          setTags(values);
-          setCurrentTagsValue("");
+          setGroups(values);
+          setCurrentGroupsValue("");
         }}
-        currentFieldValue={currentTagsValue}
-        label={"Tags"}
-        items={tags}
-        hasError={errors?.tags?.hasError}
+        currentFieldValue={currentGroupsValue}
+        label={"Groups"}
+        items={groups}
+        hasError={errors?.groups?.hasError}
         runValidationTasks={async () =>
-          await runValidationTasks("tags", currentTagsValue)
+          await runValidationTasks("groups", currentGroupsValue)
         }
-        errorMessage={errors?.tags?.errorMessage}
-        setFieldValue={setCurrentTagsValue}
-        inputFieldRef={tagsRef}
+        errorMessage={errors?.groups?.errorMessage}
+        setFieldValue={setCurrentGroupsValue}
+        inputFieldRef={groupsRef}
         defaultFieldValue={""}
       >
         <TextField
-          label="Tags"
+          label="Groups"
           isRequired={true}
           isReadOnly={false}
-          value={currentTagsValue}
+          value={currentGroupsValue}
           onChange={(e) => {
             let { value } = e.target;
-            if (errors.tags?.hasError) {
-              runValidationTasks("tags", value);
+            if (errors.groups?.hasError) {
+              runValidationTasks("groups", value);
             }
-            setCurrentTagsValue(value);
+            setCurrentGroupsValue(value);
           }}
-          onBlur={() => runValidationTasks("tags", currentTagsValue)}
-          errorMessage={errors.tags?.errorMessage}
-          hasError={errors.tags?.hasError}
-          ref={tagsRef}
+          onBlur={() => runValidationTasks("groups", currentGroupsValue)}
+          errorMessage={errors.groups?.errorMessage}
+          hasError={errors.groups?.hasError}
+          ref={groupsRef}
           labelHidden={true}
-          {...getOverrideProps(overrides, "tags")}
+          {...getOverrideProps(overrides, "groups")}
         ></TextField>
       </ArrayField>
       <TextField
-        label="Time"
+        label="Bio"
         isRequired={true}
         isReadOnly={false}
-        value={time}
+        value={bio}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              curnumbers,
-              class: class1,
-              date,
-              description,
-              quizname,
-              tags,
-              time: value,
+              username,
+              firstname,
+              lastname,
+              groups,
+              bio: value,
+              email,
+              pastquizzes,
+              rsvpquizzes,
             };
             const result = onChange(modelFields);
-            value = result?.time ?? value;
+            value = result?.bio ?? value;
           }
-          if (errors.time?.hasError) {
-            runValidationTasks("time", value);
+          if (errors.bio?.hasError) {
+            runValidationTasks("bio", value);
           }
-          setTime(value);
+          setBio(value);
         }}
-        onBlur={() => runValidationTasks("time", time)}
-        errorMessage={errors.time?.errorMessage}
-        hasError={errors.time?.hasError}
-        {...getOverrideProps(overrides, "time")}
+        onBlur={() => runValidationTasks("bio", bio)}
+        errorMessage={errors.bio?.errorMessage}
+        hasError={errors.bio?.hasError}
+        {...getOverrideProps(overrides, "bio")}
       ></TextField>
+      <TextField
+        label="Email"
+        isRequired={true}
+        isReadOnly={false}
+        value={email}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              username,
+              firstname,
+              lastname,
+              groups,
+              bio,
+              email: value,
+              pastquizzes,
+              rsvpquizzes,
+            };
+            const result = onChange(modelFields);
+            value = result?.email ?? value;
+          }
+          if (errors.email?.hasError) {
+            runValidationTasks("email", value);
+          }
+          setEmail(value);
+        }}
+        onBlur={() => runValidationTasks("email", email)}
+        errorMessage={errors.email?.errorMessage}
+        hasError={errors.email?.hasError}
+        {...getOverrideProps(overrides, "email")}
+      ></TextField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              username,
+              firstname,
+              lastname,
+              groups,
+              bio,
+              email,
+              pastquizzes: values,
+              rsvpquizzes,
+            };
+            const result = onChange(modelFields);
+            values = result?.pastquizzes ?? values;
+          }
+          setPastquizzes(values);
+          setCurrentPastquizzesValue("");
+        }}
+        currentFieldValue={currentPastquizzesValue}
+        label={"Pastquizzes"}
+        items={pastquizzes}
+        hasError={errors?.pastquizzes?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("pastquizzes", currentPastquizzesValue)
+        }
+        errorMessage={errors?.pastquizzes?.errorMessage}
+        setFieldValue={setCurrentPastquizzesValue}
+        inputFieldRef={pastquizzesRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Pastquizzes"
+          isRequired={true}
+          isReadOnly={false}
+          value={currentPastquizzesValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.pastquizzes?.hasError) {
+              runValidationTasks("pastquizzes", value);
+            }
+            setCurrentPastquizzesValue(value);
+          }}
+          onBlur={() =>
+            runValidationTasks("pastquizzes", currentPastquizzesValue)
+          }
+          errorMessage={errors.pastquizzes?.errorMessage}
+          hasError={errors.pastquizzes?.hasError}
+          ref={pastquizzesRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "pastquizzes")}
+        ></TextField>
+      </ArrayField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              username,
+              firstname,
+              lastname,
+              groups,
+              bio,
+              email,
+              pastquizzes,
+              rsvpquizzes: values,
+            };
+            const result = onChange(modelFields);
+            values = result?.rsvpquizzes ?? values;
+          }
+          setRsvpquizzes(values);
+          setCurrentRsvpquizzesValue("");
+        }}
+        currentFieldValue={currentRsvpquizzesValue}
+        label={"Rsvpquizzes"}
+        items={rsvpquizzes}
+        hasError={errors?.rsvpquizzes?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("rsvpquizzes", currentRsvpquizzesValue)
+        }
+        errorMessage={errors?.rsvpquizzes?.errorMessage}
+        setFieldValue={setCurrentRsvpquizzesValue}
+        inputFieldRef={rsvpquizzesRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Rsvpquizzes"
+          isRequired={true}
+          isReadOnly={false}
+          value={currentRsvpquizzesValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.rsvpquizzes?.hasError) {
+              runValidationTasks("rsvpquizzes", value);
+            }
+            setCurrentRsvpquizzesValue(value);
+          }}
+          onBlur={() =>
+            runValidationTasks("rsvpquizzes", currentRsvpquizzesValue)
+          }
+          errorMessage={errors.rsvpquizzes?.errorMessage}
+          hasError={errors.rsvpquizzes?.hasError}
+          ref={rsvpquizzesRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "rsvpquizzes")}
+        ></TextField>
+      </ArrayField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
@@ -580,7 +675,7 @@ export default function QuizUpdateForm(props) {
             event.preventDefault();
             resetStateValues();
           }}
-          isDisabled={!(idProp || quizModelProp)}
+          isDisabled={!(idProp || usersModelProp)}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
@@ -592,7 +687,7 @@ export default function QuizUpdateForm(props) {
             type="submit"
             variation="primary"
             isDisabled={
-              !(idProp || quizModelProp) ||
+              !(idProp || usersModelProp) ||
               Object.values(errors).some((e) => e?.hasError)
             }
             {...getOverrideProps(overrides, "SubmitButton")}

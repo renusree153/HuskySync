@@ -22,15 +22,33 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type QuizCreateFormInputValues = {
-    name?: string;
+    curnumbers?: number;
+    class?: string;
+    date?: string;
+    description?: string;
+    quizname?: string;
+    tags?: string[];
+    time?: string;
 };
 export declare type QuizCreateFormValidationValues = {
-    name?: ValidationFunction<string>;
+    curnumbers?: ValidationFunction<number>;
+    class?: ValidationFunction<string>;
+    date?: ValidationFunction<string>;
+    description?: ValidationFunction<string>;
+    quizname?: ValidationFunction<string>;
+    tags?: ValidationFunction<string>;
+    time?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type QuizCreateFormOverridesProps = {
     QuizCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    name?: PrimitiveOverrideProps<TextFieldProps>;
+    curnumbers?: PrimitiveOverrideProps<TextFieldProps>;
+    class?: PrimitiveOverrideProps<TextFieldProps>;
+    date?: PrimitiveOverrideProps<TextFieldProps>;
+    description?: PrimitiveOverrideProps<TextFieldProps>;
+    quizname?: PrimitiveOverrideProps<TextFieldProps>;
+    tags?: PrimitiveOverrideProps<TextFieldProps>;
+    time?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type QuizCreateFormProps = React.PropsWithChildren<{
     overrides?: QuizCreateFormOverridesProps | undefined | null;
