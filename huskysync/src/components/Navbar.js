@@ -37,7 +37,12 @@ function NavBar() {
                         </Link>
                     </li>
                     <li >
-                        <Button onClick = {signOut}>Signout</Button>
+                    <div style={{ marginLeft: 'auto' }}>
+                    <Button style={{ outline: 'none', boxShadow: 'none' }}>Log Out</Button>
+                    </div>
+
+
+                        
                     </li>
                 </ul>
             </nav>
