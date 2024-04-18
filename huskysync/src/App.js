@@ -16,9 +16,10 @@ import awsconfig from './aws-exports';
 import { DataStore} from '@aws-amplify/datastore';
 import { listClasses } from './graphql/queries';
 import { createClass } from './graphql/mutations';
-import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+import { useAuthenticator, withAuthenticator, Button } from '@aws-amplify/ui-react';
 import UploaderPage from './UploadDocsPage.js';
 Amplify.configure(awsconfig);
+
 
 function App() {
   
@@ -29,6 +30,8 @@ function App() {
   const handleLogin = () => {
     setIsAuthenticated(false);
   }
+
+
 
   /*
 

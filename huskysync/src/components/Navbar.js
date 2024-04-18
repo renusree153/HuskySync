@@ -6,8 +6,12 @@ import Home from '../Home';
 import Settings from '../Settings';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { signOut } from 'aws-amplify/auth';
+import { useAuthenticator, withAuthenticator, Button } from '@aws-amplify/ui-react';
 
 function NavBar() {
+    const { signOut } = useAuthenticator((context) => [context.signOut])
+
     return (
         <div id="fullnavbar">
             <nav className="navbar">
@@ -19,7 +23,7 @@ function NavBar() {
                     </li>
                     <li className="link">
                         <Link to="/GroupMain">
-                        <p className="labels">Quiz</p>
+                            <p className="labels">Quiz</p>
                         </Link>
                     </li>
                     <li className="link">
@@ -31,6 +35,9 @@ function NavBar() {
                         <Link to="/Settings">
                             <p className="labels">Settings</p>
                         </Link>
+                    </li>
+                    <li >
+                        <Button onClick = {signOut}>Signout</Button>
                     </li>
                 </ul>
             </nav>
