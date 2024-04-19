@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import awsconfig from './aws-exports';
-
+import folderIcon from './folder.svg'; 
 const AWS = require('aws-sdk');
 
-const S3Uploader = () => {
+const S3Uploader = ({ onUpload }) => {
     const [success, setSuccess] = useState(false);
-    // set access key ID & secret access key id in .env file in the
-    // huskysync folder NOT src
+    const [selectedFile, setSelectedFile] = useState(null);
+
     AWS.config.update({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
         region: 'us-east-1' 
-    })
-
-    const [selectedFile, setSelectedFile] = useState(null);
+    });
 
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0]);
+    };
+
+    const handleDrop = (event) => {
+        event.preventDefault();
+        const file = event.dataTransfer.files[0];
+        setSelectedFile(file);
     };
 
     const uploadFile = async () => {
@@ -37,18 +41,26 @@ const S3Uploader = () => {
             const data = await s3.upload(params).promise();
             console.log('File uploaded successfully');
             setSuccess(true);
+            onUpload(selectedFile); // Notify parent component about successful upload
         } catch (error) {
-            console.error('Error uploading file please try again');
+            console.error('Error uploading file, please try again');
         }
-    }
+    };
 
     return (
-        <div>
+        <div className="drop-zone">
+            {/* Icon and rectangles */}
+            
+            {/* Text and file input */}
+            <img src={folderIcon} alt="SVG Image"></img>
+            <p>Drag & Drop files here</p>
             <input type="file" onChange={handleFileSelect} />
+            <p> </p>
             <button onClick={uploadFile}>Upload</button>
+            {/* Success message */}
             {success && (
                 <div>
-                    <h3> File upload was successful! </h3>
+                    <h3>File upload was successful!</h3>
                 </div>
             )}
         </div>
@@ -56,3 +68,5 @@ const S3Uploader = () => {
 };
 
 export default S3Uploader;
+
+
