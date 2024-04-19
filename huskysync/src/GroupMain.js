@@ -109,19 +109,21 @@ function GroupMain() {
         <div className="splitContainer">
             <NavBar/>
             <div class="left-panel">
-                <h2>Classes</h2>
-                <select className="dropdown">
-                    <option value="">Select a Class</option>
-                    {listOfClasses.map((item) => (
-                        <option key={item.id} value={item.id}>
-                            {item.name}
-                        </option>
-                    ))}
-                </select>
             </div>
             <div class="line"></div>
             <div class="right-panel">
                 <h2>Quizzes</h2>
+                <div className="class-filter">
+                    <h3>Filter by Class: </h3>
+                    <select className="dropdown">
+                        <option value="">Select a Class</option>
+                        {listOfClasses.map((item) => (
+                            <option key={item.id} value={item.id}>
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <button id="creategroup" onClick={handleJoin}>
                     Join
                 </button>

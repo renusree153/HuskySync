@@ -31,7 +31,7 @@
 .line {
     position: absolute; 
     top: 102px; 
-    bottom: 0; 
+    height: 100%;
     left: 30%; 
     width: 3px;
     background-color: #4B2E83;
@@ -82,17 +82,14 @@
     margin-top: 10px;
   }
 
+.create-quiz-button {
+    margin-top: 2em;
+}
 
 .right-panel hr {
     border-width: 2px;
     clear: both;
-    margin-top: 60px;
-}
-
-.create-quiz-button {
-    position:absolute;
-    bottom:0.45em;
-    right: 0.45em;
+    margin-top: 50px;
 }
 
 #hrgroups {
@@ -100,4 +97,9 @@
     height: 3px;
     background-color: #4B2E83;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.class-filter {
+    text-align: left;
+    margin-left: 15px;
 }
