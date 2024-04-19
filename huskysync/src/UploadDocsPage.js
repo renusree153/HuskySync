@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import S3Uploader from './S3upload';
 import NavBar from './components/Navbar';
 import './UploadDocsPage.css'; 
+import folderIcon from './folder.svg'; 
 
 const UploaderPage = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -17,6 +18,8 @@ const UploaderPage = () => {
                 <h1>Upload Documents</h1>
                 <div className="drag-drop-area">
                     <div className="drop-zone">
+                        <img src={folderIcon} alt="SVG Image"></img>
+                        <p>Drag & Drop files here</p>
                         <S3Uploader onUpload={handleUpload} />
                     </div>
                     <div className="uploaded-files">

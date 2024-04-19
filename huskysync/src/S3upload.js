@@ -49,15 +49,8 @@ const S3Uploader = ({ onUpload }) => {
 
     return (
         <div className="drop-zone">
-            {/* Icon and rectangles */}
-            
-            {/* Text and file input */}
-            <img src={folderIcon} alt="SVG Image"></img>
-            <p>Drag & Drop files here</p>
             <input type="file" onChange={handleFileSelect} />
-            <p> </p>
             <button onClick={uploadFile}>Upload</button>
-            {/* Success message */}
             {success && (
                 <div>
                     <h3>File upload was successful!</h3>
@@ -68,5 +61,3 @@ const S3Uploader = ({ onUpload }) => {
 };
 
 export default S3Uploader;
-
-

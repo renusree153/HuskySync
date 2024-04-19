@@ -4,6 +4,7 @@ import awsconfig from './aws-exports';
 import { listClasses } from './graphql/queries';
 import './CreateQuiz.css';
 import S3Uploader from "./S3upload";
+import { createQuiz } from './graphql/mutations';
 
 const CreateQuiz = ({ onClose }) => {
     const [quizName, setQuizName] = useState('');
@@ -32,9 +33,39 @@ const CreateQuiz = ({ onClose }) => {
         pullData()
     }, []);
 
-    const handleSave = () => {
-        console.log('Quiz saved!');
-        onClose();
+    const handleSave = async () => {
+        const inputParams = 
+            {id: "2", curnumbers: 0, quizname: quizName, description: "HELLO", class: selectedClass, date: date, tags: tags, time: time};
+        
+        try {
+            const response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                    'X-Api-Key': awsconfig.aws_appsync_apiKey
+                },
+                body: JSON.stringify({
+                    query: createQuiz,
+                    variables: {
+                        input: inputParams
+                    }
+                })
+            });
+    
+            const responseData = await response.json();
+    
+            // Check for errors in the response
+            if (responseData.errors) {
+                console.error("Mutation failed:", responseData.errors);
+            } else {
+                console.log("Mutation successful:", responseData.data);
+            }
+    
+            onClose(); // Close the modal or perform any other action
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     return (
