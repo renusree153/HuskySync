@@ -11,3 +11,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Add this to your index.css or any other CSS file */
+/* Custom styles for Amplify Authenticator */
+
+/* Container styles */
+.amplify-authenticator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Fill the entire viewport height */
+  background-color: #4B2E83; /* Purple background color */
+}
+
+/* Sign-in box styles */
+.amplify-form-container {
+  background-color: #fff; /* White background color */
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1); /* Box shadow for depth */
+  padding: 40px;
+  width: 400px; /* Width of the sign-in box */
+}
+
+/* Header styles */
+.amplify-form-section-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.amplify-form-section-header h1 {
+  color: #4B2E83; /* Purple header color */
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Form styles */
+.amplify-form-field {
+  margin-bottom: 20px;
+}
+
+.amplify-form-field label {
+  display: block;
+  margin-bottom: 5px;
+  color: #4B2E83; /* Purple label color */
+}
+
+.amplify-form-field input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Sign-in button styles */
+.amplify-form-button {
+  background-color: #4B2E83; /* Purple button background color */
+  color: #fff; /* White button text color */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.amplify-form-button:hover {
+  background-color: #593aad; /* Darker purple on hover */
+}
+
+/* Link styles */
+.amplify-form-section-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.amplify-form-section-footer a {
+  color: #4B2E83; /* Purple link color */
+  text-decoration: none;
+}
+
+.amplify-form-section-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Additional styling for specific components can be added as needed */
