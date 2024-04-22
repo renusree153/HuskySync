@@ -134,9 +134,9 @@ function GroupMain() {
                     Past Quizzes
                 </button>
                 <hr id="hrgroups"></hr>
-                {activeTab === "join" && <Team />}
-                {activeTab === "rsvp" && <Rsvp />}
-                {activeTab === "pastquizzes" && <PastQuizzes />}
+                {activeTab === "join" && <div className="scrollable-content"><Team /></div>}
+                {activeTab === "rsvp" && <div className="scrollable-content"><Rsvp /></div>}
+                {activeTab === "pastquizzes" && <div className="scrollable-content"><PastQuizzes /></div>}
             </div>
             {showCreateQuizButton && <button class="create-quiz-button" onClick={toggleQuizModal}>Create Quiz</button>}
             {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}
