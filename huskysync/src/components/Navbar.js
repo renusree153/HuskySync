@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { Button, useAuthenticator } from '@aws-amplify/ui-react';
 
 function NavBar() {
   const { signOut, user } = useAuthenticator();
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleDropdownToggle = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   return (
     <div id="fullnavbar">
@@ -25,16 +30,25 @@ function NavBar() {
               <p className="labels">FAQ</p>
             </Link>
           </li>
-          <li className="link">
-            <Link to="/Settings">
-              <p className="labels">Settings</p>
-            </Link>
-          </li>
-          {user && (
-            <li className="link">
-              <Button onClick={signOut}>Signout</Button>
-            </li>
-          )}
+
+          <li className="link dropdown" onClick={handleDropdownToggle}>
+            <p className="labels">Profile</p>
+            {showDropdown && (
+                <ul className="dropdown-menu">
+                <li className="dropdown-item">
+                  <Link to="/Settings">
+                    <p className="labels">Account</p>
+                  </Link>
+                </li>
+                <li className="dropdown-item">
+                  {user && (
+                    <Button onClick={signOut}>Signout</Button>
+                  )}
+                </li>
+                </ul>
+            )}
+        </li>
+
         </ul>
       </nav>
       <div id="horizontal-line"></div>
