@@ -128,7 +128,7 @@ function GroupMain() {
                     Join
                 </button>
                 <button id="joinlive" onClick={handleRSVP}>
-                    RSVP'd
+                    Upcoming
                 </button>
                 <button id="pastquizzes" onClick={handlePast}>
                     Past Quizzes

@@ -49,13 +49,6 @@ function Rsvp (props) {
                 .map((classObj) => (
                     <div key={classObj.id} className="bar">
                         <h4>{classObj}</h4>
-                        <button onClick={() => toggleExpand(classObj.id)}>
-                            {classStates[classObj.id] ? (
-                                <i className="bi bi-caret-up-fill"></i>
-                            ) : (
-                                <i className="bi bi-caret-down-fill"></i>
-                            )}
-                        </button>
                     </div>
                 ))}
             </div>

@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Amplify } from "aws-amplify";
 import awsconfig from './aws-exports';
 import { Authenticator, View, Image, Text, useTheme } from '@aws-amplify/ui-react';
-
 import NavBar from './components/Navbar';  // Assuming this is your navbar component
 import Home from './Home.js';
 import GroupMain from "./GroupMain.js";
@@ -22,9 +21,11 @@ function App() {
   const components = {
     Header() {
       return (
-        <View textAlign="center" padding={tokens.space.large}>
-          <Image alt="HuskySync Logo" src={huskyLogo} />
-        </View>
+        <div>
+          <View>
+            <Image alt="HuskySync Logo" src={huskyLogo} />
+          </View>
+        </div>
       );
     },
     Footer() {
@@ -37,6 +38,7 @@ function App() {
       );
     }
   };
+
 
   // Define your light purple color
   const lightPurple = '#CAB8FF'; // Light purple color hex code
@@ -72,7 +74,6 @@ function App() {
               </Routes>
             </div>
           </BrowserRouter>
-        
       </Authenticator>
     </>
   );

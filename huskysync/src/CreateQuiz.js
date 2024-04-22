@@ -33,9 +33,11 @@ const CreateQuiz = ({ onClose }) => {
         pullData()
     }, []);
 
+    console.log(selectedClass.name);
+
     const handleSave = async () => {
         const inputParams = 
-            {id: "2", curnumbers: 0, quizname: quizName, description: "HELLO", class: selectedClass, date: date, tags: tags, time: time};
+            {id: "7", curnumbers: 0, quizname: quizName, description: "HELLO", class: selectedClass, date: date, tags: tags, time: time};
         
         try {
             const response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
