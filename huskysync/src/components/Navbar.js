@@ -25,11 +25,6 @@ function NavBar() {
               <p className="labels">Quiz</p>
             </Link>
           </li>
-          <li className="link">
-            <Link to="/FAQ">
-              <p className="labels">FAQ</p>
-            </Link>
-          </li>
 
           <li className="link dropdown" onClick={handleDropdownToggle}>
             <p className="labels">Profile</p>

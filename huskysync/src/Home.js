@@ -17,17 +17,23 @@ function Home() {
           <h1>
             Welcome, user{username}!
           </h1>
-          <h2 className='subheader'>
+          <h3 className='subheader'>
             Start your customized learning experience here.
-          </h2>
+          </h3>
           <br></br>
           <Link to="/GroupMain">
             <button>Get Started</button>
           </Link>
           <br></br>
-          <h2 className='demo-title'>
+          <h3 className='demo-title'>
             How to use:
-          </h2>
+          </h3>
+          <p>Insert demo video</p>
+          <br></br>
+          <Link to="/FAQ">
+            <button>FAQ</button>
+          </Link>
+          <br></br>
 
         </header>
       </div>
