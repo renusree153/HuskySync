@@ -12,7 +12,7 @@ function NavBar() {
   };
 
   return (
-    <div id="fullnavbar">
+    <div className="fullnavbar">
       <nav className="navbar">
         <ul className="nav-items">
           <li className="link">
