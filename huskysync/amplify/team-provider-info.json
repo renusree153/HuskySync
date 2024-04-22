@@ -20,6 +20,12 @@
       },
       "api": {
         "amplifyAPI": {}
+      },
+      "function": {
+        "awslambda1": {
+          "deploymentBucketName": "amplify-amplify-dev-c500b-deployment",
+          "s3Key": "amplify-builds/awslambda1-792f55737a72784b3659-build.zip"
+        }
       }
     }
   }

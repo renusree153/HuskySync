@@ -35,7 +35,7 @@ const CreateQuiz = ({ onClose }) => {
 
     const handleSave = async () => {
         const inputParams = 
-            {id: "2", curnumbers: 0, quizname: quizName, description: "HELLO", class: selectedClass, date: date, tags: tags, time: time};
+            {id: "7", curnumbers: 0, quizname: quizName, description: "HELLO", class: selectedClass, date: date, tags: tags, time: time};
         
         try {
             const response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
@@ -55,14 +55,13 @@ const CreateQuiz = ({ onClose }) => {
     
             const responseData = await response.json();
     
-            // Check for errors in the response
             if (responseData.errors) {
                 console.error("Mutation failed:", responseData.errors);
             } else {
                 console.log("Mutation successful:", responseData.data);
             }
     
-            onClose(); // Close the modal or perform any other action
+            onClose(); 
         } catch (error) {
             console.error("Error:", error);
         }

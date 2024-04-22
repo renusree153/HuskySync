@@ -49,6 +49,42 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "awslambda1": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "amplifyAPI"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_awslambda1_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "awslambda1"
+        }
+      ]
+    },
+    "AMPLIFY_function_awslambda1_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "awslambda1"
+        }
+      ]
+    }
+  },
   "storage": {
     "huskysyncstorage": {
       "dependsOn": [],
