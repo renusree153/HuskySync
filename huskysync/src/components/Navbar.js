@@ -17,22 +17,22 @@ function NavBar() {
         <ul className="nav-items">
           <li className="link">
             <Link to="/Home">
-              <p className="labels">Home</p>
+              <p className="labels"> Home </p>
             </Link>
           </li>
           <li className="link">
             <Link to="/GroupMain">
-              <p className="labels">Quiz</p>
+              <p className="labels"> Quiz </p>
             </Link>
           </li>
 
           <li className="link dropdown" onClick={handleDropdownToggle}>
-            <p className="labels">Profile</p>
+            <p className="labels"> Profile </p>
             {showDropdown && (
                 <ul className="dropdown-menu">
                 <li className="dropdown-item">
                   <Link to="/Settings">
-                    <p className="labels">Account</p>
+                    <p className="account">Account</p>
                   </Link>
                 </li>
                 <li className="dropdown-item">

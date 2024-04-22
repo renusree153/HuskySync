@@ -12,12 +12,6 @@
     background-color: white;
   }
 
-  .labels {
-    color: #4B2E83;
-    margin-left: 40px;
-    margin-right: 30px;
-  }
-
   .link {
     color: blue;
     font-weight: bolder;
@@ -30,8 +24,8 @@
   
   .dropdown-menu {
     position: absolute;
-    top: calc(100% + 20px);
-    left: 0;
+    top: calc(100% + 35px);
+    left: 60px;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -43,6 +37,7 @@
   
   .dropdown-item {
     padding: 0;
+    margin:0
   }
   
   .dropdown-item a {
@@ -51,7 +46,6 @@
     text-decoration: none;
     color: #333;
     font-size: medium; 
-    transition: background-color 0.3s, color 0.3s;
   }
   
   .dropdown-item a:hover {
@@ -88,6 +82,35 @@
   .nav-items a {
     text-decoration: none;
     color: #333;
+  }
+
+  .nav-items a:hover,
+  .nav-items a:active {
+  background-color: #4B2E83; /* Purple background color on hover/active */
+  color: white; /* White text color on hover/active */
+}
+  .labels {
+    color: #4B2E83;
+    margin-left: 40px;
+    margin-right: 30px;
+    padding: 10px 20px;
+    border-radius: 12px;
+  }
+
+  .account {
+    color: #4B2E83;
+  }
+
+  .account:hover,
+  .account:active {
+    background-color: #4B2E83; /* Purple background color on hover/active */
+    color: white; /* White text color on hover/active */
+  }
+
+  .labels:hover,
+  .labels:active {
+    background-color: #4B2E83; /* Purple background color on hover/active */
+    color: white; /* White text color on hover/active */
   }
 
   #horizontal-line {
