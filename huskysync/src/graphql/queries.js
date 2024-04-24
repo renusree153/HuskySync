@@ -152,3 +152,28 @@ query pastQuizzesForUser {
 }
 `
 ;
+
+
+export const listQuizzesFilteredByClass = /* GraphQL */ `
+  query ListQuizzesFilteredByClass($classType: String, $limit: Int, $nextToken: String) {
+    listQuizzes(
+      filter: {
+        class: { beginsWith: $classType }
+      }
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        class
+        date
+        description
+        quizname
+        tags
+        time
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
