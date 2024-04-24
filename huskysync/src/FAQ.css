@@ -1,21 +1,4 @@
-/*.FAQ {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .FAQ-header {
-    background-color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: #4B2E83;
-    margin-top: 50px;
-  }*/
+
 
   .FAQ {
     display: flex;
@@ -37,6 +20,11 @@
   
   .demo-title {
     justify-content: left;
+    margin-left: 20px;
+  }
+
+  .content {
+    margin-left: auto;
   }
   
   button {
@@ -67,20 +55,8 @@
   }
   
   
-  
-  .FAQ-section h2 {
-    margin: 10px 0;
-    position: relative;
-  }
-  
-  .FAQ-section h2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -15px;
-    width: 10px;
-    height: 100%;
-    background-color: lightpurple; /* Adjust color as needed */
-    border-radius: 50%;
+
+  .bold-list {
+    font-weight: bold;
   }
   
