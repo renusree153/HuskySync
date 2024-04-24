@@ -22,15 +22,36 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type UsersCreateFormInputValues = {
+    bio?: string;
     email?: string;
+    firstname?: string;
+    lastname?: string;
+    groups?: string[];
+    pastquizzes?: string[];
+    rsvpquizzes?: string[];
+    username?: string;
 };
 export declare type UsersCreateFormValidationValues = {
+    bio?: ValidationFunction<string>;
     email?: ValidationFunction<string>;
+    firstname?: ValidationFunction<string>;
+    lastname?: ValidationFunction<string>;
+    groups?: ValidationFunction<string>;
+    pastquizzes?: ValidationFunction<string>;
+    rsvpquizzes?: ValidationFunction<string>;
+    username?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UsersCreateFormOverridesProps = {
     UsersCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    bio?: PrimitiveOverrideProps<TextFieldProps>;
     email?: PrimitiveOverrideProps<TextFieldProps>;
+    firstname?: PrimitiveOverrideProps<TextFieldProps>;
+    lastname?: PrimitiveOverrideProps<TextFieldProps>;
+    groups?: PrimitiveOverrideProps<TextFieldProps>;
+    pastquizzes?: PrimitiveOverrideProps<TextFieldProps>;
+    rsvpquizzes?: PrimitiveOverrideProps<TextFieldProps>;
+    username?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UsersCreateFormProps = React.PropsWithChildren<{
     overrides?: UsersCreateFormOverridesProps | undefined | null;

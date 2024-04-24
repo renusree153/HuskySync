@@ -59,6 +59,7 @@ function GroupMain() {
           })
           data = await data.json();
           setClasses(data.data.listClasses.items);
+          console.log(data);
         }
         pullData()
     }, []);
