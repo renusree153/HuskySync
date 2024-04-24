@@ -33,7 +33,9 @@
     "resourceName": "amplifyd08d8ec9",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "manual",
-    "userPoolGroupList": [],
+    "userPoolGroupList": [
+      "Admin1"
+    ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
@@ -56,9 +58,7 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "hostedUI": false,
-    "triggers": {
-      "preSignup": "awslambda1"
-    },
+    "triggers": {},
     "parentStack": {
       "Ref": "AWS::StackId"
     },

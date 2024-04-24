@@ -110,17 +110,7 @@ export const createUsers = /* GraphQL */ `
   ) {
     createUsers(input: $input, condition: $condition) {
       id
-      username
-      firstname
-      lastname
-      groups
-      bio
       email
-      pastquizzes
-      rsvpquizzes
-      createdAt
-      updatedAt
-      __typename
     }
   }
 `;

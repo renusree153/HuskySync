@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "amplifyd08d8ec9": {}
+        "amplifyd08d8ec9": {},
+        "userPoolGroups": {}
       },
       "storage": {
         "huskysyncstorage": {}
@@ -25,6 +26,10 @@
         "awslambda1": {
           "deploymentBucketName": "amplify-amplify-dev-c500b-deployment",
           "s3Key": "amplify-builds/awslambda1-792f55737a72784b3659-build.zip"
+        },
+        "amplifyd08d8ec9PreSignup": {
+          "deploymentBucketName": "amplify-amplify-dev-c500b-deployment",
+          "s3Key": "amplify-builds/amplifyd08d8ec9PreSignup-616d6666684f64596852-build.zip"
         }
       }
     }

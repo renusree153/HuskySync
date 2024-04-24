@@ -13,6 +13,7 @@ function Home() {
   return (
       <div className="Home">
         <NavBar/>
+        <div className="scrollable">
         <header className="Home-header">
           <h1>
             Welcome, user{username}!
@@ -34,8 +35,8 @@ function Home() {
             <button>FAQ</button>
           </Link>
           <br></br>
-
-        </header>
+          </header>
+        </div>
       </div>
   );
 }
