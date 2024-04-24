@@ -9,6 +9,7 @@ import GroupMain from "./GroupMain.js";
 import Settings from './Settings';
 import FAQ from './FAQ';
 import UploaderPage from './UploadDocsPage.js';
+import Quiz from './Quiz';
 
 import './App.css';
 import huskyLogo from './imgs/huskysync.png'; // Adjust the path if necessary
@@ -71,6 +72,7 @@ function App() {
                 <Route path="/Settings" element={<Settings />} />
                 <Route path="/FAQ" element={<FAQ />} />
                 <Route path="/Upload" element={<UploaderPage />} />
+                <Route path="/Quiz" element={<Quiz />} />
               </Routes>
             </div>
           </BrowserRouter>
