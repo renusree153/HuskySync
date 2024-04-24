@@ -23,16 +23,16 @@ function FAQ() {
           Quizzes
         </h2>
           <ul className='bold-list'> How do I create one? </ul>
-            <p> On the left hand of the quiz page, enter the details of the quiz you would like to create. Click Create and promptly upload your study notes.</p>
+            <p className="demoo-title"> On the left hand of the quiz page, enter the details of the quiz you would like to create. Click Create and promptly upload your study notes.</p>
           <ul className='bold-list'> If I create a quiz, am I responsible for anything else? </ul>
-            <p> No! After you create a quiz, you are free to take it as if someone else created it. This means it’s totally okay if you are not able to make it. At the end of the day, your quiz will help other classmates study as well!</p>
+            <p className="demoo-title"> No! After you create a quiz, you are free to take it as if someone else created it. This means it’s totally okay if you are not able to make it. At the end of the day, your quiz will help other classmates study as well!</p>
           <ul className='bold-list'> Are my quizzes public? </ul>
-            <p> Yes, all quizzes are inherently public to allow other users access to study material.</p>
+            <p className="demoo-title"> Yes, all quizzes are inherently public to allow other users access to study material.</p>
         <h2>
           Groups
         </h2>
           <ul className='bold-list'> Is there a minimum or maximum for groups? </ul>
-            <p> 1-5 students per quiz is the current min & max. As popularity increases we plan to increase the maximum number per quiz!</p> 
+            <p className="demoo-title"> 1-5 students per quiz is the current min & max. As popularity increases we plan to increase the maximum number per quiz!</p> 
         </div>
     </div>
   );
