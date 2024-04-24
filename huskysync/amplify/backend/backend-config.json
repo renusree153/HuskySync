@@ -1,7 +1,15 @@
 {
   "api": {
     "amplifyAPI": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "amplifyd08d8ec9"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
@@ -12,6 +20,12 @@
                 "description": "API key"
               },
               "authenticationType": "API_KEY"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authamplifyd08d8ec9"
+              }
             }
           ],
           "defaultAuthentication": {
@@ -47,9 +61,41 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "amplifyd08d8ec9"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
     }
   },
   "function": {
+    "amplifyd08d8ec9PreSignup": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "amplifyAPI"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "awslambda1": {
       "build": true,
       "dependsOn": [
@@ -68,6 +114,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_amplifyd08d8ec9PreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifyd08d8ec9PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifyd08d8ec9PreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifyd08d8ec9PreSignup"
+        }
+      ]
+    },
     "AMPLIFY_function_awslambda1_deploymentBucketName": {
       "usedBy": [
         {
