@@ -9,7 +9,10 @@
     align-items: center;
     justify-content: center;
     padding: 1rem 2rem;
-    background-color: white;
+    background-color: #E5DDF4;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 
   .link {
@@ -26,11 +29,11 @@
     position: absolute;
     top: calc(100% + 35px);
     left: 60px;
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: #E5DDF4;
+    border: 1px solid #E5DDF4;
     border-radius: 5px;
     padding: 0;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
     list-style: none; 
   }
@@ -48,11 +51,12 @@
     font-size: medium; 
   }
   
-  .dropdown-item a:hover {
+  .dropdown-item a:hover,
+  .dropdown-item a:active {
     background-color: white; 
     color: white; 
   }
-  
+
   .dropdown-item button {
     background-color: transparent;
     border: none;
@@ -63,8 +67,8 @@
     font-size:medium
   }
   
-  .dropdown-item button:hover {
-    background-color: #4B2E83; 
+  .dropdown-item button:hover,
+  .dropdown-item button:active {
     color: white
   }
   
@@ -86,7 +90,7 @@
 
   .nav-items a:hover,
   .nav-items a:active {
-  background-color: #4B2E83; /* Purple background color on hover/active */
+  background-color: #E5DDF4; 
   color: white; /* White text color on hover/active */
 }
   .labels {
@@ -103,19 +107,14 @@
 
   .account:hover,
   .account:active {
-    background-color: #4B2E83; /* Purple background color on hover/active */
+    background-color: #E5DDF4; /* Purple background color on hover/active */
     color: white; /* White text color on hover/active */
   }
 
   .labels:hover,
   .labels:active {
-    background-color: #4B2E83; /* Purple background color on hover/active */
+    background-color: #E5DDF4; /* Purple background color on hover/active */
     color: white; /* White text color on hover/active */
   }
 
-  #horizontal-line {
-    height: 5px;
-    background-color: #4B2E83;
-    width: 100%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
+

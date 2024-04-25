@@ -1,3 +1,17 @@
+.chat {
+    width: 30%;
+    background-color: #4B2E83;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 100px;
+    margin-bottom: 400px;
+}
+
 .header {
     display: flex;
     justify-content: space-between; /* Aligns items to both ends */
@@ -20,10 +34,9 @@
 #end-quiz {
     margin-left: auto; 
     padding: 10px 20px;
-    border: 2px solid black;
     cursor: pointer;
     color: black;
-    background-color: white;
+    background-color: #E5DDF4;
 }
 
 #end-quiz:hover,
@@ -49,7 +62,7 @@
   .quiz-progress li {
     width: 30px; /* Adjust the width of each number as needed */
     height: 30px; /* Adjust the height of each number as needed */
-    background-color: #4B2E83; /* Background color of each number */
+    background-color: #E5DDF4; /* Background color of each number */
     color: white; /* Text color of each number */
     border-radius: 50%; /* Make each number circular */
     display: flex;
@@ -57,6 +70,10 @@
     justify-content: center;
     margin-right: 10px; 
     font-weight: bold;
+  }
+
+  #q1 {
+    background-color: #4B2E83;
   }
 
   .question {
@@ -80,10 +97,9 @@
     margin: 4px 2px;
     cursor: pointer;
     vertical-align: middle;
-    border: 2px solid black;
     cursor: pointer;
     color: black;
-    background-color: white;    
+    background-color: #E5DDF4;    
 }
 
 div.buttonBlock button:hover,
@@ -108,16 +124,16 @@ div.buttonBlock button:active {
     margin-left: 100px;
 }
 
-.chat {
-    width: 30%;
-    background-color: #4B2E83;
-    padding: 20px;
-    border-radius: 12px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: auto;
-    margin-right: 100px;
-    margin-bottom: 400px;
+#next {
+    margin-left: auto; 
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    background-color: #E5DDF4;
+}
+
+#next:hover,
+#next:active {
+    background-color: #4B2E83; 
+    color: white; 
 }
