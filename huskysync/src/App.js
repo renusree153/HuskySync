@@ -42,7 +42,7 @@ function App() {
 
 
   // Define your light purple color
-  const lightPurple = '#CAB8FF'; // Light purple color hex code
+  const lightPurple = '#E5DDF4'; // Light purple color hex code
 
   return (
     <>
