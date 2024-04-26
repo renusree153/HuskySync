@@ -1,0 +1,169 @@
+.chat {
+    width: 30%;
+    background-color: #4B2E83;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 100px;
+    margin-bottom: 400px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Aligns items to both ends */
+    align-items: center;
+}
+
+#title {
+    margin-left: 20px;
+}
+
+#titlet {
+    margin-left: 315px;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Adjust as needed */
+}
+
+.timer i {
+    margin-right: 5px; /* Adjust as needed */
+}
+
+#end-quiz {
+    margin-right: 40px; 
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    background-color: #E5DDF4;
+}
+
+#end-quiz:hover,
+#end-quiz:active {
+    background-color: #4B2E83; 
+    color: white; 
+}
+
+.quiz-progress {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px; 
+    margin-bottom: 20px
+  }
+  
+  .quiz-progress ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .quiz-progress li {
+    width: 30px; /* Adjust the width of each number as needed */
+    height: 30px; /* Adjust the height of each number as needed */
+    background-color: #E5DDF4; /* Background color of each number */
+    color: white; /* Text color of each number */
+    border-radius: 50%; /* Make each number circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px; 
+    font-weight: bold;
+  }
+
+  #q1 {
+    background-color: #4B2E83;
+  }
+
+  .question {
+    text-align: left;
+    margin-left: 100px;
+  }
+
+  div.buttonBlock {
+    text-align: left;
+    margin-left: 150px;
+  }
+
+  div.buttonBlock button {
+    width: 500px; 
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+    vertical-align: middle;
+    cursor: pointer;
+    color: black;
+    background-color: #E5DDF4;    
+}
+
+div.buttonBlock button:hover,
+div.buttonBlock button:active {
+    background-color: #4B2E83; 
+    color: white; 
+}
+
+.quiz-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+}
+
+.question {
+    flex: 1; /* Take up remaining space */
+    text-align: left;
+    margin-left: 100px;
+}
+
+#next {
+    margin-left: auto; 
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    background-color: #E5DDF4;
+}
+
+#next:hover,
+#next:active {
+    background-color: #4B2E83; 
+    color: white; 
+}
+
+
+.setting-item {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.setting-item label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.setting-item input[type="text"],
+.setting-item select,
+.setting-item textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.setting-item input[type="file"] {
+    margin-top: 10px;
+}

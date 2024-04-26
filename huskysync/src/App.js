@@ -10,6 +10,7 @@ import Settings from './Settings';
 import FAQ from './FAQ';
 import UploaderPage from './UploadDocsPage.js';
 import Quiz from './Quiz';
+import CustomizeQuiz from './CustomizeQuiz';
 
 import './App.css';
 import huskyLogo from './imgs/huskysync.png'; // Adjust the path if necessary
@@ -73,6 +74,7 @@ function App() {
                 <Route path="/FAQ" element={<FAQ />} />
                 <Route path="/Upload" element={<UploaderPage />} />
                 <Route path="/Quiz" element={<Quiz />} />
+                <Route path="/CustomizeQuiz" element={<CustomizeQuiz />} />
               </Routes>
             </div>
           </BrowserRouter>
