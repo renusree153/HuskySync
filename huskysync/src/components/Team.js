@@ -69,6 +69,11 @@ function Team (props) {
     
     return (
         <div className="container">
+          
+          <a href="/CustomizeQuiz"> 
+                        <i className="bi bi-plus-circle plus-icon"></i>
+                    </a>
+                    
             <div className="horizontal-bar">
                 {listOfClasses.map((classObj) => (
                     <div key={classObj.id} className="bar">
@@ -102,7 +107,7 @@ function Team (props) {
                 <h4 className="quiz-title">{item.quizname}</h4>
                 <div className="date-time-container">
                     <h4 className="date-time">{item.date} {item.time}</h4>
-                    <a href="/CustomizeQuiz"> 
+                    <a href="/Upload"> 
                         <i className="bi bi-plus-circle plus-icon"></i>
                     </a>
                 </div>
