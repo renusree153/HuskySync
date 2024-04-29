@@ -13,6 +13,7 @@ function FAQ() {
   return (
     <div>
       <NavBar />
+      <div className="FAQ-content">
       <header className="FAQ-header">
           <h1>
             We know studying can be hard, and we want to help!
@@ -38,6 +39,7 @@ function FAQ() {
             questions in the quiz. Make sure to only include information you are okay to have potentially displayed for your peers. All information you upload
             will not be sent or sold to a third party!</p> 
         </div>
+    </div>
     </div>
   );
  } 

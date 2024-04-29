@@ -2,7 +2,21 @@
   text-align: center;
 }
 
-.Home-header {
+.body {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  align-items: center;
+  background-color: #faf7fe;
+}
+
+.logo-container {
+  flex: 1; /* Take up the remaining space */
+}
+
+#logo {
+  max-width: 100%; /* Ensure the logo doesn't exceed the container's width */
+}
+
+.content {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -10,12 +24,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #4B2E83;
-  min-height: 100vh;
-}
-
-.scrollable {
-  height: 750px;
-  overflow-y: auto;
+  min-height: calc(100vh - 100px); /* Adjusted to account for the height of the navbar */
+  overflow-y: auto; /* Enable vertical scrolling */
+  flex: 2; /* Take up 2/3 of the available space */
 }
 
 .subheader {
@@ -40,4 +51,19 @@ button {
   font-size: 20px;
   border-radius: 12px;
   cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Align buttons horizontally in the center */
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+.button-container button {
+  margin: 0 10px; /* Add space between buttons */
+  margin-bottom: 50px;
+}
+
+h1 {
+  margin-bottom: 0
 }
