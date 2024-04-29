@@ -74,22 +74,26 @@
   
   
   .demo-title h2 {
-    position: relative; /* Position relative to contain the ::before pseudo-element */
-    display: inline-block; /* Make the title inline-block to wrap the bubble around it */
-    padding: 10px 20px; /* Adjust padding as needed */
-    border: 2px solid #4B2E83; /* Set border properties */
-    border-radius: 20px; /* Adjust border radius to control the roundness of the bubble */
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4B2E83;
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
   }
   
   .demo-title h2::before {
-    content: ''; /* Required for pseudo-elements */
-    position: absolute; /* Position absolutely relative to the parent */
-    top: -6px; /* Adjust top position to match border width */
-    left: -6px; /* Adjust left position to match border width */
-    width: calc(100% + 12px); /* Adjust width to cover the title and border width */
-    height: calc(100% + 12px); /* Adjust height to cover the title and border width */
-    border: 2px solid #4B2E83; /* Set border properties */
-    border-radius: 30px; /* Adjust border radius to control the roundness of the bubble */
-    z-index: -1; /* Push the pseudo-element behind the title */
+    content: '';
+    position: absolute;
+    top: -4px; /* Adjust to fit the bubble */
+    left: -4px; /* Adjust to fit the bubble */
+    width: calc(100% + 8px); /* Adjust to fit the bubble */
+    height: calc(100% + 8px); /* Adjust to fit the bubble */
+    background-color: #4B2E83;
+    border-radius: 20px;
+    z-index: -1;
   }
+  
+  
   

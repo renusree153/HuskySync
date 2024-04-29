@@ -111,7 +111,9 @@ const CreateQuiz = () => {
                     <label htmlFor="upload">Upload Study Files</label>
                     <S3Uploader key={uploaderKey} />  {/* Simply include the S3Uploader component without any props */}
                     
+                    <a href="/CustomizeQuiz">
                     <button type="submit" className="save-btn">Next</button>
+                    </a>
                 </form>
             </div>
         </div>

@@ -19,11 +19,11 @@
 }
 
 #title {
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 #titlet {
-    margin-left: 315px;
+    margin-left: 50px;
 }
 
 .timer {
@@ -166,4 +166,45 @@ div.buttonBlock button:active {
 
 .setting-item input[type="file"] {
     margin-top: 10px;
+}
+
+
+.custom-quiz-panel {
+    /* Align the panel to the left side of the screen */
+    position: absolute; /* or fixed, depending on your needs */
+    top: 100px; /* Adjust as necessary to clear the navbar */
+    left: 0;
+    box-sizing: border-box;
+    overflow-y: auto; /* Add vertical scrollbar if content overflows */
+    max-height: calc(100vh - 100px); /* Adjust based on your layout */
+}
+
+.custom-quiz-container {
+    background-color: white;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 45px;
+    width: 100%; /* Adjust width to fit inside the .create-quiz-panel if necessary */
+    position: relative; /* Keep as relative */
+}
+
+.custom-quiz-title {
+    font-size: 1.5em;
+    color: black; /* Colour of your title */
+    padding-bottom: 10px; /* If you want space below the text */
+    position: sticky; /* Keep the title sticky */
+    top: 0; /* Stick the title to the top */
+    background-color: #C9BBE2; /* Match the container background color */
+    z-index: 1; /* Ensure it appears above other content */
+    width: 100%;
+}
+
+.custom-quiz-name {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ensure the width spans the full container */
+    margin: 0; /* Remove any default margin */
+    /* Rest of your styles for font size, color, etc. */
+    color: #4B2E83;
 }
