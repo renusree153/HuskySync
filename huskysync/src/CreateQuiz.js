@@ -4,6 +4,7 @@ import awsconfig from './aws-exports';
 import { listClasses } from './graphql/queries';
 import { createQuiz } from './graphql/mutations';
 import S3Uploader from "./S3upload"; // Corrected the file name here to match your file system
+import CustomizeQuiz from './CustomizeQuiz';
 
 
 const CreateQuiz = () => {
@@ -14,6 +15,7 @@ const CreateQuiz = () => {
     const [time, setTime] = useState('');
     const [listOfClasses, setClasses] = useState([]);
     const [uploaderKey, setUploaderKey] = useState(0);
+    const [showCustomizeQuiz, setShowCustomizeQuiz] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -76,7 +78,7 @@ const CreateQuiz = () => {
                 console.error("Mutation failed:", responseData.errors);
             } else if (responseData.data.createQuiz) {
                 console.log("Mutation successful:", responseData.data.createQuiz);
-                resetForm();
+                setShowCustomizeQuiz(true);
             }
         } catch (error) {
             console.error("Error saving quiz:", error);
@@ -84,38 +86,44 @@ const CreateQuiz = () => {
     };
 
     return (
-        <div className="create-quiz-panel">
-            <div className="create-quiz-container">
-                <form onSubmit={handleSave}>
-                    <label htmlFor="create-quiz-name" className="label-create-quiz">Create Quiz</label>
-                    <label htmlFor="class-select">Class</label>
-                    <select id="class-select" value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)} required>
-                        <option value="">Select a Class</option>
-                        {listOfClasses.map((item) => (
-                            <option key={item.id} value={item.id}>{item.name}</option>
-                        ))}
-                    </select>
-                    
-                    <label htmlFor="quiz-name">Quiz Name</label>
-                    <input id="quiz-name" type="text" value={quizName} onChange={(e) => setQuizName(e.target.value)} required />
-                    
-                    <label htmlFor="tags">Tags (min. 3 tags separated by commas)</label>
-                    <input id="tags" type="text" value={tags} onChange={(e) => setTags(e.target.value)} required />
-                    
-                    <label htmlFor="date">Date</label>
-                    <input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
-                    
-                    <label htmlFor="time">Time</label>
-                    <input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
-                    
-                    <label htmlFor="upload">Upload Study Files</label>
-                    <S3Uploader key={uploaderKey} />  {/* Simply include the S3Uploader component without any props */}
-                    
-                    <a href="/CustomizeQuiz">
-                    <button type="submit" className="save-btn">Next</button>
-                    </a>
-                </form>
-            </div>
+        <div>
+            {showCustomizeQuiz ? (
+                <div className="create-quiz-panel">
+                    <CustomizeQuiz/>
+                </div>
+            ) : (
+                <div className="create-quiz-panel">
+                    <div className="create-quiz-container">
+                        <form onSubmit={handleSave}>
+                            <label htmlFor="create-quiz-name" className="label-create-quiz">Create Quiz</label>
+                            <label htmlFor="class-select">Class</label>
+                            <select id="class-select" value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)} required>
+                                <option value="">Select a Class</option>
+                                {listOfClasses.map((item) => (
+                                    <option key={item.id} value={item.id}>{item.name}</option>
+                                ))}
+                            </select>
+                            
+                            <label htmlFor="quiz-name">Quiz Name</label>
+                            <input id="quiz-name" type="text" value={quizName} onChange={(e) => setQuizName(e.target.value)} required />
+                            
+                            <label htmlFor="tags">Tags (min. 3 tags separated by commas)</label>
+                            <input id="tags" type="text" value={tags} onChange={(e) => setTags(e.target.value)} required />
+                            
+                            <label htmlFor="date">Date</label>
+                            <input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+                            
+                            <label htmlFor="time">Time</label>
+                            <input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+                            
+                            <label htmlFor="upload">Upload Study Files</label>
+                            <S3Uploader key={uploaderKey} />  {/* Simply include the S3Uploader component without any props */}
+                            
+                            <button type="submit" className="save-btn">Next</button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
