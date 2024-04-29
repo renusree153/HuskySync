@@ -1,14 +1,37 @@
-.create-quiz-modal {
-    position: fixed;
-    top: 10%; /* Adjusted to move the box further down */
+.create-quiz-panel {
+    /* Align the panel to the left side of the screen */
+    position: absolute; /* or fixed, depending on your needs */
+    top: 100px; /* Adjust as necessary to clear the navbar */
     left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
+    width: 25%; /* Adjust width as necessary */
+    box-sizing: border-box;
+    padding: 20px; /* Add padding if needed */
+}
+
+.create-quiz-name {
+    text-align: center;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    width: 100%; /* Ensure the width spans the full container */
+    margin: 0; /* Remove any default margin */
+    padding: 10px 0; /* Add some padding at the top and bottom, no left-right padding */
+    /* Rest of your styles for font size, color, etc. */
+    color: #4B2E83;
+}
+
+
+/* Other styles can remain unchanged */
+
+
+.label-create-quiz {
+    display: block; /* Makes it a block element, taking the full width */
+    color: white; /* White text color */
+    text-align: center; /* Centers the text within the label */
+    padding: 10px 0; /* Padding on top and bottom */
+    border-radius: 12px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below the label */
+    font-size: 20px; /* Larger font size */
+    font-weight: bold; /* Makes the font bold */
 }
 
 
@@ -16,12 +39,16 @@
     background-color: #C9BBE2;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: auto;
-    max-width: 600px; /* Adjusted width */
-    margin: auto; /* This centers the modal box */
-    position: relative;
-    overflow-y: auto; /* Adds scroll to the container if the content is too long */
+    width: 90%; /* Adjust width to fit inside the .create-quiz-panel if necessary */
+    margin: 20px auto; /* Center the container within the panel */
+    position: relative; /* Keep as relative */
+}
+
+.create-quiz-title {
+    margin-bottom: 30px; /* Adds space below the title */
+    font-size: 1.5em;
+    color: #4B2E83; /* Colour of your title */
+    padding-bottom: 10px; /* If you want space below the text */
 }
 
 .close-btn {
@@ -156,3 +183,6 @@
         width: 100%; /* Full width buttons on smaller screens */
     }
 }
+
+
+

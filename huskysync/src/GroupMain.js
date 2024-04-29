@@ -106,6 +106,12 @@ function GroupMain() {
         <div className="splitContainer">
             <NavBar/>
             <div class="left-panel">
+                {/* Directly embed CreateQuiz component */}
+                <CreateQuiz />
+    
+                {/* The rest of your left-panel content can go here */}
+                {/* Example: A list of classes or other navigation items */}
+    
             </div>
             <div class="line"></div>
             <div class="right-panel">
@@ -135,10 +141,50 @@ function GroupMain() {
                 {activeTab === "rsvp" && <div className="scrollable-content"><Rsvp /></div>}
                 {activeTab === "pastquizzes" && <div className="scrollable-content"><PastQuizzes /></div>}
             </div>
-            {showCreateQuizButton && <button class="create-quiz-button" onClick={toggleQuizModal}>Create Quiz</button>}
-            {showQuizModal && <CreateQuiz onClose={toggleQuizModal} />}
         </div>
     )
+return (
+    <div className="splitContainer">
+        <NavBar/>
+        <div class="left-panel">
+            {/* Directly embed CreateQuiz component */}
+            <CreateQuiz />
+
+            {/* The rest of your left-panel content can go here */}
+            {/* Example: A list of classes or other navigation items */}
+
+        </div>
+        <div class="line"></div>
+        <div class="right-panel">
+            <h2>Quizzes</h2>
+            <div className="class-filter">
+                <h3>Filter by Class: </h3>
+                <select className="dropdown">
+                    <option value="">Select a Class</option>
+                    {listOfClasses.map((item) => (
+                        <option key={item.id} value={item.id}>
+                            {item.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <button id="creategroup" onClick={handleJoin}>
+                Join
+            </button>
+            <button id="joinlive" onClick={handleRSVP}>
+                Upcoming
+            </button>
+            <button id="pastquizzes" onClick={handlePast}>
+                Past Quizzes
+            </button>
+            <hr id="hrgroups"></hr>
+            {activeTab === "join" && <div className="scrollable-content"><Team /></div>}
+            {activeTab === "rsvp" && <div className="scrollable-content"><Rsvp /></div>}
+            {activeTab === "pastquizzes" && <div className="scrollable-content"><PastQuizzes /></div>}
+        </div>
+    </div>
+)
+    
 }
 
 export default GroupMain;
