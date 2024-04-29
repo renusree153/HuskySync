@@ -63,6 +63,7 @@ const CreateQuiz = ({ onClose }) => {
             console.error("Mutation failed:", responseData.errors);
         } else {
             console.log("Mutation successful:", responseData.data.createQuiz);
+        
         }
 
         onClose();
@@ -96,7 +97,11 @@ const CreateQuiz = ({ onClose }) => {
                     <input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
                     
                     <S3Uploader />
+                    <a href="/CustomizeQuiz">
                     <button type="submit" className="save-btn">Save</button>
+                    </a>
+                    
+                    
                 </form>
             </div>
         </div>
