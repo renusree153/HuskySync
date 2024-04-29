@@ -105,6 +105,9 @@
 
   .account {
     color: #4B2E83;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
   }
 
   .account:hover,
@@ -113,10 +116,23 @@
     color: white; /* White text color on hover/active */
   }
 
+  #settings-link {
+    background-color: #E5DDF4;
+  }
+
   .labels:hover,
   .labels:active {
     background-color: #E5DDF4; /* Purple background color on hover/active */
     color: white; /* White text color on hover/active */
+  }
+
+  .link-dropdown {
+    margin-top: 0;
+  }
+
+  #profile {
+    font-size: 19.2px;
+    font-weight: bold;
   }
 
 

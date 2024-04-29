@@ -26,12 +26,12 @@ function NavBar() {
             </Link>
           </li>
 
-          <li className="link dropdown" onClick={handleDropdownToggle}>
+          <li className="link-dropdown" onClick={handleDropdownToggle}>
             <p className="labels" id="profile"> Profile </p>
             {showDropdown && (
                 <ul className="dropdown-menu">
                 <li className="dropdown-item">
-                  <Link to="/Settings">
+                  <Link to="/Settings" id="settings-link">
                     <p className="account">Account</p>
                   </Link>
                 </li>
