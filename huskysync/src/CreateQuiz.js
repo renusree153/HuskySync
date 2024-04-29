@@ -6,6 +6,7 @@ import { createQuiz } from './graphql/mutations';
 import { useContext } from 'react';
 import S3Uploader from "./S3upload"; // Corrected the file name here to match your file system
 import CustomizeQuiz from './CustomizeQuiz';
+import CustomizeQuiz from './CustomizeQuiz';
 import { QuizNameContext } from './QuizNameContext';
 
 const CreateQuiz = () => {
