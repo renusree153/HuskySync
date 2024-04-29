@@ -7,37 +7,33 @@ import {Route, Routes} from "react-router-dom";
 import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import huskysync from './imgs/huskysync.png';
 
 function Home() {
   const [username, setUsername] = useState('');
   return (
-      <div className="Home">
-        <NavBar/>
-        <div className="scrollable">
-        <header className="Home-header">
-          <h1>
-            Welcome, user{username}!
-          </h1>
+    <div className="Home">
+      <NavBar />
+      <div className="body">
+        <div className="logo-container">
+          <img src={huskysync} id="logo" alt="Huskysync Logo" />
+        </div>
+        <div className="content">
+          <h1>Welcome, user{username}!</h1>
           <h3 className='subheader'>
             Start your customized learning experience here.
           </h3>
-          <br></br>
-          <Link to="/GroupMain">
-            <button>Get Started</button>
-          </Link>
-          <br></br>
-          <h3 className='demo-title'>
-            How to use:
-          </h3>
-          <p>Insert demo video</p>
-          <br></br>
-          <Link to="/FAQ">
-            <button>FAQ</button>
-          </Link>
-          <br></br>
-          </header>
+          <div className="button-container">
+            <Link to="/GroupMain">
+              <button>Get Started</button>
+            </Link>
+            <Link to="/FAQ">
+              <button>FAQ</button>
+            </Link>
+          </div>
         </div>
       </div>
+    </div>
   );
 }
 

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import awsconfig from './aws-exports'; // Ensure AWS config path is correct
 import folderIcon from './folder.svg'; // Ensure folder icon path is correct
+import { QuizNameContext } from './QuizNameContext';
+import { useContext } from 'react';
 const AWS = require('aws-sdk');
 
 const S3Uploader = () => {
     const [success, setSuccess] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
+    const {quizName} = useContext(QuizNameContext);
 
     // AWS SDK configuration
     AWS.config.update({
@@ -29,9 +32,14 @@ const S3Uploader = () => {
 
         const s3 = new AWS.S3();
         const params = {
-            Bucket: 'huskysyncbucketc500b-dev', // Replace with your actual bucket name
+            Bucket: 'huskysyncbucketc500b-dev',
             Key: file.name,
-            Body: file
+            Body: file,
+            Metadata: {
+                username: "renusree",
+                quizName: quizName,
+                documentname: file.name
+            }
         };
 
         try {

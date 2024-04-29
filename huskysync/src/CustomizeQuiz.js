@@ -19,14 +19,13 @@ function CustomizeQuiz() {
     };
 
     return (
-        <div className="Quiz">
-            <NavBar/>
+        <div className="custom-quiz-panel">
+            <div className='create-quiz-container'>
             <div className="header">
-                <h2 id="title">PHYS 121: Electromagnetism</h2>
-                <button id="end-quiz">Exit</button>
+                <h2 id="custom-quiz-title">PHYS 121: Electromagnetism</h2>
             </div>
             <div className='header'>
-                <h2 id="titlet"> 3. Questions</h2>
+                <h2 id="titlet"> Questions</h2>
             </div>
             <div className="settings-container">
             <div className="settings">
@@ -66,11 +65,9 @@ function CustomizeQuiz() {
 
             </div>
             </div>
-            <div className="next-container">
-                 <button id="next">I'm Ready!</button>
             </div>
-            <div className="chat">
-                <h2>Chat</h2>
+            <div className="next-container">
+                 <button id="next">Next</button>
             </div>
         </div>
 

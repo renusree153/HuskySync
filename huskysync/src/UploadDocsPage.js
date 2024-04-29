@@ -3,6 +3,7 @@ import S3Uploader from './S3upload';
 import NavBar from './components/Navbar';
 import './UploadDocsPage.css'; 
 import folderIcon from './folder.svg'; 
+import { useEffect } from 'react';
 
 const UploaderPage = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -10,6 +11,10 @@ const UploaderPage = () => {
     const handleUpload = (file) => {
         setUploadedFiles([...uploadedFiles, file]);
     };
+
+    useEffect(() => {
+        console.log(uploadedFiles);
+    }, [uploadedFiles]); 
 
     return (
         <div>

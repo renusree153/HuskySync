@@ -1,95 +1,86 @@
+.FAQ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the top of the container */
+  min-height: 100vh; /* Set a minimum height to fill the viewport */
+}
 
+body {
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+}
 
-  .FAQ {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Align items to the top of the container */
-    height: 100vh; /* Set the container height to the full viewport height */
-  }
-  
-  .FAQ-header {
-    margin-top: 50px; /* Adjust as needed */
-    text-align: center; /* Center-align text */
-    
-  }
-  
-  .subheader {
-    color: #E5DDF4;
-    font-style: italic;
-  }
-  
-  .demo-title {
-    justify-content: left;
-    margin-left: 20px;
-    text-align: left;
-  }
+.FAQ-header {
+  margin-top: 50px; /* Adjust as needed */
+  text-align: center; /* Center-align text */
+}
 
-  .demoo-title {
-    justify-content: left;
-    margin-left: 40px;
-    text-align: left;
-    margin-right: 60px;
-  }
+.demo-title {
+  justify-content: left;
+  margin-left: 20px;
+  text-align: left;
+}
 
-  .content {
-    margin-left: auto;
-  }
-  
-  button {
-    background-color: #4B2E83;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    font-weight: bold;
-    display: inline-block;
-    font-size: 20px;
-    border-radius: 12px;
-    cursor: pointer;
-  }
-  
-  
-  .FAQ-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .FAQ-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the left of the container */
-    margin-left: 20px; /* Adjust as needed */
-  }
-  
-  
+.demoo-title {
+  justify-content: left;
+  margin-left: 40px;
+  text-align: left;
+  margin-right: 60px;
+}
 
-  .bold-list {
-    font-weight: bold;
-    text-align: left;
-    color:#4B2E83;
-    
-  }
+.button-container {
+  display: flex;
+  justify-content: center; /* Align buttons horizontally in the center */
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+button {
+  background-color: #4B2E83;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.FAQ-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left of the container */
+  margin-left: 20px; /* Adjust as needed */
+}
+
+.bold-list {
+  font-weight: bold;
+  text-align: left;
+  color: #4B2E83;
+}
+
+.demo-title h2 {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4B2E83;
+  color: white;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.demo-title h2::before {
+  content: '';
+  position: absolute;
+  top: -4px; /* Adjust to fit the bubble */
+  left: -4px; /* Adjust to fit the bubble */
+  width: calc(100% + 8px); /* Adjust to fit the bubble */
+  height: calc(100% + 8px); /* Adjust to fit the bubble */
+  background-color: #4B2E83;
+  border-radius: 20px;
+  z-index: -1;
+}
   
   
-  .demo-title h2 {
-    position: relative; /* Position relative to contain the ::before pseudo-element */
-    display: inline-block; /* Make the title inline-block to wrap the bubble around it */
-    padding: 10px 20px; /* Adjust padding as needed */
-    border: 2px solid #4B2E83; /* Set border properties */
-    border-radius: 20px; /* Adjust border radius to control the roundness of the bubble */
-  }
-  
-  .demo-title h2::before {
-    content: ''; /* Required for pseudo-elements */
-    position: absolute; /* Position absolutely relative to the parent */
-    top: -6px; /* Adjust top position to match border width */
-    left: -6px; /* Adjust left position to match border width */
-    width: calc(100% + 12px); /* Adjust width to cover the title and border width */
-    height: calc(100% + 12px); /* Adjust height to cover the title and border width */
-    border: 2px solid #4B2E83; /* Set border properties */
-    border-radius: 30px; /* Adjust border radius to control the roundness of the bubble */
-    z-index: -1; /* Push the pseudo-element behind the title */
-  }
   
