@@ -10,11 +10,11 @@ function Quiz() {
             <NavBar/>
             <div className="header">
                 <h2 id="title">PHYS 121: Electromagnetism</h2>
-                <button id="end-quiz">End</button>
                 <div className="timer">
                     <i class="bi bi-stopwatch"></i>
                     <p>09:00 mins</p>
                 </div>
+                <button id="end-quiz">Exit</button>
             </div>
             <div class="quiz-progress">
                 <ul>

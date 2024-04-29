@@ -27,7 +27,7 @@ function NavBar() {
           </li>
 
           <li className="link dropdown" onClick={handleDropdownToggle}>
-            <p className="labels"> Profile </p>
+            <p className="labels" id="profile"> Profile </p>
             {showDropdown && (
                 <ul className="dropdown-menu">
                 <li className="dropdown-item">

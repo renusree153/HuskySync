@@ -108,9 +108,10 @@ const CreateQuiz = () => {
                     <label htmlFor="time">Time</label>
                     <input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
                     
+                    <label htmlFor="upload">Upload Study Files</label>
                     <S3Uploader key={uploaderKey} />  {/* Simply include the S3Uploader component without any props */}
                     
-                    <button type="submit" className="save-btn">Save</button>
+                    <button type="submit" className="save-btn">Next</button>
                 </form>
             </div>
         </div>

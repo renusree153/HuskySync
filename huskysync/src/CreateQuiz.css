@@ -3,9 +3,28 @@
     position: absolute; /* or fixed, depending on your needs */
     top: 100px; /* Adjust as necessary to clear the navbar */
     left: 0;
-    width: 25%; /* Adjust width as necessary */
     box-sizing: border-box;
-    padding: 20px; /* Add padding if needed */
+    overflow-y: auto; /* Add vertical scrollbar if content overflows */
+    max-height: calc(100vh - 100px); /* Adjust based on your layout */
+}
+
+.create-quiz-container {
+    background-color: white;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 45px;
+    width: 100%; /* Adjust width to fit inside the .create-quiz-panel if necessary */
+    position: relative; /* Keep as relative */
+}
+
+.create-quiz-title {
+    font-size: 1.5em;
+    color: black; /* Colour of your title */
+    padding-bottom: 10px; /* If you want space below the text */
+    position: sticky; /* Keep the title sticky */
+    top: 0; /* Stick the title to the top */
+    background-color: #C9BBE2; /* Match the container background color */
+    z-index: 1; /* Ensure it appears above other content */
 }
 
 .create-quiz-name {
@@ -14,41 +33,18 @@
     justify-content: center;
     width: 100%; /* Ensure the width spans the full container */
     margin: 0; /* Remove any default margin */
-    padding: 10px 0; /* Add some padding at the top and bottom, no left-right padding */
     /* Rest of your styles for font size, color, etc. */
     color: #4B2E83;
 }
-
-
-/* Other styles can remain unchanged */
 
 
 .label-create-quiz {
     display: block; /* Makes it a block element, taking the full width */
     color: white; /* White text color */
     text-align: center; /* Centers the text within the label */
-    padding: 10px 0; /* Padding on top and bottom */
-    border-radius: 12px; /* Rounded corners */
     margin-bottom: 20px; /* Space below the label */
     font-size: 20px; /* Larger font size */
     font-weight: bold; /* Makes the font bold */
-}
-
-
-.create-quiz-container {
-    background-color: #C9BBE2;
-    padding: 20px;
-    border-radius: 12px;
-    width: 90%; /* Adjust width to fit inside the .create-quiz-panel if necessary */
-    margin: 20px auto; /* Center the container within the panel */
-    position: relative; /* Keep as relative */
-}
-
-.create-quiz-title {
-    margin-bottom: 30px; /* Adds space below the title */
-    font-size: 1.5em;
-    color: #4B2E83; /* Colour of your title */
-    padding-bottom: 10px; /* If you want space below the text */
 }
 
 .close-btn {
@@ -70,7 +66,7 @@
 }
 
 .close-btn:hover {
-    color: #5a52d4; /* Darker purple on hover */
+    color: #4B2E83; /* Darker purple on hover */
 }
 
 .create-quiz-container form {
@@ -79,17 +75,17 @@
 }
 
 .create-quiz-container label {
-    color: #2c2640;
+    color: black;
     margin-bottom: 0.5rem;
 }
 
 .create-quiz-container input,
-.create-quiz-container select,
-.create-quiz-container button {
+.create-quiz-container select {
     padding: 10px;
     margin-bottom: 10px;
-    border: none;
+    border: 2px solid black; /* Black border */
     border-radius: 4px;
+    background-color: #E5DDF4; /* Light purple background */
 }
 
 .drop-zone {
@@ -138,13 +134,13 @@
 }
 
 .upload-btn:hover {
-    background-color: #352a5c;
+    background-color: #4B2E83;
 }
 
 /* Center the save button */
 .save-btn-container {
     display: flex;
-    justify-content: center; /* Centers the save button horizontally */
+    justify-content: end; /* Centers the save button horizontally */
 }
 
 .save-btn {
@@ -154,7 +150,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 1rem; /* Provides space above the save button */
+    margin: 1rem; /* Provides space above the save button */
     width: fit-content; /* Auto-adjust width to fit content */
 }
 
