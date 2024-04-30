@@ -135,6 +135,10 @@ div.buttonBlock button:active {
     color: white; 
 }
 
+.settings {
+    width: 300px;
+}
+
 
 .setting-item {
     margin-bottom: 20px;
