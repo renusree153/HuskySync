@@ -6,7 +6,9 @@
   min-height: 100vh; /* Set a minimum height to fill the viewport */
 }
 
+
 body {
+  height: 100%; 
   overflow-y: auto; /* Enable vertical scrolling when content overflows */
 }
 
@@ -82,5 +84,20 @@ button {
   z-index: -1;
 }
   
-  
+.FAQ-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling when content exceeds viewport height */
+}
+
+/* Your other CSS styles remain unchanged */
+
+.greybox {
+  width: 200px;
+  height: 100px;
+  background-color: #ccc;
+}
   
