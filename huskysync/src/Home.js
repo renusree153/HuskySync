@@ -28,7 +28,7 @@ function Home() {
               <button>Get Started</button>
             </Link>
             <Link to="/FAQ">
-              <button>FAQ</button>
+              <button>Learn More</button>
             </Link>
           </div>
         </div>
