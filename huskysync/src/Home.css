@@ -53,6 +53,11 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: #E5DDF4; /* Slightly darker purple on hover */
+  color:#4B2E83
+}
+
 .button-container {
   display: flex;
   justify-content: center; /* Align buttons horizontally in the center */

@@ -22,13 +22,6 @@ function Settings() {
             reader.readAsDataURL(e.target.files[0]);
         }
     };
-    const handleAddGroupCodeChange = (e) => setAddGroupCode(e.target.value);
-    const handleJoinGroup = () => {
-        if (addGroupCode && !groups.includes(addGroupCode)) {
-            setGroups([...groups, addGroupCode]);
-            setAddGroupCode('');
-        }
-    };
     const handleSaveChanges = () => {
         // Here you would typically send the data to your backend
         console.log('Saved data:', { firstName, lastName, bio, groups });
@@ -54,11 +47,6 @@ function Settings() {
                 <div className="setting-item">
                     <label>Profile Picture</label>
                     <input type="file" accept="image/*" onChange={handleProfilePicChange} />
-                </div>
-                <div className="setting-item">
-                    <label>Join Group with Code</label>
-                    <input type="text" value={addGroupCode} onChange={handleAddGroupCodeChange} />
-                    <button onClick={handleJoinGroup} className="small-button">Join Group</button>
                 </div>
                 <div className="setting-item">
                     <button onClick={handleSaveChanges} className="save-button">Save Changes</button>
