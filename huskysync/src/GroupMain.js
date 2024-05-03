@@ -113,8 +113,8 @@ function GroupMain() {
                 {/* Example: A list of classes or other navigation items */}
     
             </div>
-            <div class="line"></div>
             <div class="right-panel">
+                <div class="line"></div>
                 <h2>Quizzes</h2>
                 <div className="class-filter">
                     <h3>Filter by Class: </h3>

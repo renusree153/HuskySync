@@ -48,8 +48,8 @@
 }
 
 .close-btn {
-    background-color: white;
-    color: #6C63FF;
+    background-color:#4B2E83;
+    color:#C9BBE2;
     font-size: 24px;
     border: none;
     border-radius: 50%;
@@ -67,6 +67,7 @@
 
 .close-btn:hover {
     color: #4B2E83; /* Darker purple on hover */
+    background-color: #C9BBE2;
 }
 
 .create-quiz-container form {
@@ -124,23 +125,11 @@
 }
 
 .upload-btn {
-    background-color: #4B2E83;
-    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     white-space: nowrap; /* Prevents wrapping of text */
-}
-
-.upload-btn:hover {
-    background-color: #4B2E83;
-}
-
-/* Center the save button */
-.save-btn-container {
-    display: flex;
-    justify-content: end; /* Centers the save button horizontally */
 }
 
 .save-btn {
@@ -152,10 +141,12 @@
     cursor: pointer;
     margin: 1rem; /* Provides space above the save button */
     width: fit-content; /* Auto-adjust width to fit content */
+    transition: background-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
 }
 
 .save-btn:hover {
-    background-color: #352a5c; /* Slightly darker purple on hover */
+    background-color: #E5DDF4; /* Light purple on hover */
+    color: #4B2E83; /* Dark purple text on hover */
 }
 
 /* Success message style */
