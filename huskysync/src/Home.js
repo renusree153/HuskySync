@@ -8,9 +8,22 @@ import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import huskysync from './imgs/huskysync.png';
+import { Authenticator } from '@aws-amplify/ui-react';
+import { getCurrentUser } from '@aws-amplify/auth';
 
 function Home() {
   const [username, setUsername] = useState('');
+  const handleSignUp = async () => {
+    try {
+      const curUser = await getCurrentUser();
+      setUsername(curUser.username);
+    } catch (error) {
+      console.error("error getting username");
+    }
+  }
+
+  handleSignUp();
+
   return (
     <div className="Home">
       <NavBar />
@@ -19,7 +32,7 @@ function Home() {
           <img src={huskysync} id="logo" alt="Huskysync Logo" />
         </div>
         <div className="content">
-          <h1>Welcome, user{username}!</h1>
+          <h1>Welcome, {username}!</h1>
           <h3 className='subheader'>
             Start your customized learning experience here.
           </h3>

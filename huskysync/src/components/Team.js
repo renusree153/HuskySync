@@ -8,9 +8,13 @@ import {QuizBlock} from './QuizBlock';
 import { listClasses } from '../graphql/queries';
 import { listQuizzes } from '../graphql/queries';
 import {useNavigate} from 'react-router-dom';
-
+import { useContext } from 'react';
+import { QuizNameContext } from '../QuizNameContext';
 
 function Team (props) {
+
+    const {quizName, setQuizName} = useContext(QuizNameContext);
+    console.log(quizName);
     const navigate = useNavigate();
 
     const handleMove = () => {
@@ -66,11 +70,14 @@ function Team (props) {
         }
         pullData()
     }, []);
+
+    const handleQuizSelection = (quizName) => {
+        setQuizName(quizName);
+        navigate('../Upload');
+    }
     
     return (
         <div className="container">
-        
-
             <div className="horizontal-bar">
                 {listOfClasses.map((classObj) => (
                     <div key={classObj.id} className="bar">
@@ -97,24 +104,25 @@ function Team (props) {
                   
                         <div className="scrollable-container bottom">
                         {listOfQuizzes
-    .filter((item) => item.class === classObj.name)
-    .map((item) => (
-        <div key={item.id}>
-            <div className="quiz-container">
-                <h4 className="quiz-title">{item.quizname}</h4>
-                <div className="date-time-container">
-                    <h4 className="date-time">{item.date} {item.time}</h4>
-                    <a href="/Upload"> 
-                        <i className="bi bi-plus-circle plus-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <div className='tags'>
-                <i className="bi bi-tags"></i>
-                <p>{item.tags && item.tags.join(', ')}</p>
-            </div>
-        </div>
-))}
+                            .filter((item) => item.class === classObj.name)
+                            .map((item) => (
+                                <div key={item.id}>
+                                    <div className="quiz-container">
+                                        <h4 className="quiz-title">{item.quizname}</h4>
+                                        <div className="date-time-container">
+                                            <h4 className="date-time">{item.date} {item.time}</h4>
+                                            <a onClick={() => handleQuizSelection(item.quizname)}> 
+                                                <i className="bi bi-plus-circle plus-icon"></i>
+                                            </a>
+                                            
+                                        </div>
+                                    </div>
+                                    <div className='tags'>
+                                        <i className="bi bi-tags"></i>
+                                        <p>{item.tags && item.tags.join(', ')}</p>
+                                    </div>
+                                </div>
+                        ))}
 
                         </div>
                     </div>

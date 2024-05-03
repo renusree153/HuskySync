@@ -8,7 +8,9 @@ const AWS = require('aws-sdk');
 const S3Uploader = () => {
     const [success, setSuccess] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
-    const {quizName} = useContext(QuizNameContext);
+    const {quizName, setQuizName} = useContext(QuizNameContext);
+
+    console.log("hello quiz name ", {quizName});
 
     // AWS SDK configuration
     AWS.config.update({
@@ -37,7 +39,7 @@ const S3Uploader = () => {
             Body: file,
             Metadata: {
                 username: "renusree",
-                quizName: quizName,
+                quizname: quizName,
                 documentname: file.name
             }
         };
