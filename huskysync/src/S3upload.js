@@ -3,6 +3,7 @@ import awsconfig from './aws-exports'; // Ensure AWS config path is correct
 import folderIcon from './folder.svg'; // Ensure folder icon path is correct
 import { QuizNameContext } from './QuizNameContext';
 import { useContext } from 'react';
+import { getCurrentUser } from '@aws-amplify/auth';
 const AWS = require('aws-sdk');
 
 const S3Uploader = () => {
@@ -12,7 +13,18 @@ const S3Uploader = () => {
 
     console.log("hello quiz name ", {quizName});
 
-    // AWS SDK configuration
+    const [username, setUsername] = useState('');
+    const handleSignUp = async () => {
+        try {
+        const curUser = await getCurrentUser();
+        setUsername(curUser.username);
+        } catch (error) {
+        console.error("error getting username");
+        }
+    }
+
+    handleSignUp();
+
     AWS.config.update({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
@@ -22,8 +34,8 @@ const S3Uploader = () => {
     const handleFileSelect = (event) => {
         const file = event.target.files[0];
         setSelectedFile(file);
-        setSuccess(false); // Reset the success state upon selecting a new file
-        uploadFile(file); // Automatically upload the file once selected
+        setSuccess(false); 
+        uploadFile(file); 
     };
 
     const uploadFile = async (file) => {
@@ -38,7 +50,7 @@ const S3Uploader = () => {
             Key: file.name,
             Body: file,
             Metadata: {
-                username: "renusree",
+                username: username,
                 quizname: quizName,
                 documentname: file.name
             }
