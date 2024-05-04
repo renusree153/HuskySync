@@ -8,7 +8,6 @@ import {QuizBlock} from './QuizBlock';
 import {useNavigate} from 'react-router-dom';
 import { pastQuizzesForUser } from '../graphql/queries';
 
-
 function PastQuizzes (props) {
     const [classStates, setClassStates] = useState({});
 
@@ -60,24 +59,23 @@ function PastQuizzes (props) {
                   
                         <div className="scrollable-container bottom">
                         {listOfQuizzes
-    .map((item) => (
-        <div key={item.id}>
-            <div className="quiz-container">
-                <h4 className="quiz-title">{item.rsvpquizzes}</h4>
-                <div className="date-time-container">
-                    <h4 className="date-time">{item.date} {item.time}</h4>
-                    <a href="/Upload">
-                        <i className="bi bi-plus-circle plus-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <div className='tags'>
-                <i className="bi bi-tags"></i>
-                <p>{item.tags && item.tags.join(', ')}</p>
-            </div>
-        </div>
-))}
-
+                            .map((item) => (
+                                <div key={item.id}>
+                                    <div className="quiz-container">
+                                        <h4 className="quiz-title">{item.rsvpquizzes}</h4>
+                                        <div className="date-time-container">
+                                            <h4 className="date-time">{item.date} {item.time}</h4>
+                                            <a href="/Upload">
+                                                <i className="bi bi-plus-circle plus-icon"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className='tags'>
+                                        <i className="bi bi-tags"></i>
+                                        <p>{item.tags && item.tags.join(', ')}</p>
+                                    </div>
+                                </div>
+                        ))}
                         </div>
                     </div>
                 </div>

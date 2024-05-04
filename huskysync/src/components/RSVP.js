@@ -7,11 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import {QuizBlock} from './QuizBlock';
 import {useNavigate} from 'react-router-dom';
 import { rsvpQuizzesForUser } from '../graphql/queries';
-
+import { listClasses } from '../graphql/queries';
+import { getCurrentUser } from '@aws-amplify/auth';
 
 function Rsvp (props) {
+    console.log("in function call of rsvp");
     const [classStates, setClassStates] = useState({});
-
     const toggleExpand = (classId) => {
         setClassStates(prevState => ({
             ...prevState,
@@ -22,6 +23,7 @@ function Rsvp (props) {
     const [listOfClasses, setClasses] = useState([]);
 
     useEffect(() => {
+        console.log("in useeffect of rsvp ");
         const pullData = async () => {
           let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
             method: 'POST',

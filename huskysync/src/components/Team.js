@@ -8,18 +8,11 @@ import {QuizBlock} from './QuizBlock';
 import { listClasses } from '../graphql/queries';
 import { listQuizzes } from '../graphql/queries';
 import {useNavigate} from 'react-router-dom';
-import { useContext } from 'react';
-import { QuizNameContext } from '../QuizNameContext';
 
 function Team (props) {
-
-    const {quizName, setQuizName} = useContext(QuizNameContext);
-    console.log(quizName);
+    console.log("hello from team.js file ");
     const navigate = useNavigate();
 
-    const handleMove = () => {
-        navigate('../Upload');
-    }
     const [classStates, setClassStates] = useState({});
 
     const toggleExpand = (classId) => {
@@ -32,6 +25,7 @@ function Team (props) {
     const [listOfClasses, setClasses] = useState([]);
 
     useEffect(() => {
+        console.log("in team.js useffect");
         const pullData = async () => {
           let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
             method: 'POST',
@@ -70,11 +64,6 @@ function Team (props) {
         }
         pullData()
     }, []);
-
-    const handleQuizSelection = (quizName) => {
-        setQuizName(quizName);
-        navigate('../Upload');
-    }
     
     return (
         <div className="container">
@@ -103,7 +92,7 @@ function Team (props) {
                     <div className="h2-container">
                   
                         <div className="scrollable-container bottom">
-                        {listOfQuizzes
+                            {listOfQuizzes
                             .filter((item) => item.class === classObj.name)
                             .map((item) => (
                                 <div key={item.id}>
@@ -111,19 +100,17 @@ function Team (props) {
                                         <h4 className="quiz-title">{item.quizname}</h4>
                                         <div className="date-time-container">
                                             <h4 className="date-time">{item.date} {item.time}</h4>
-                                            <a onClick={() => handleQuizSelection(item.quizname)}> 
+                                            <a href="/Upload"> 
                                                 <i className="bi bi-plus-circle plus-icon"></i>
                                             </a>
-                                            
                                         </div>
                                     </div>
-                                    <div className='tags'>
-                                        <i className="bi bi-tags"></i>
-                                        <p>{item.tags && item.tags.join(', ')}</p>
-                                    </div>
+                                <div className='tags'>
+                                    <i className="bi bi-tags"></i>
+                                    <p>{item.tags && item.tags.join(', ')}</p>
                                 </div>
-                        ))}
-
+                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -131,6 +118,5 @@ function Team (props) {
             ))}
         </div>
     );
-    }    
-  
-  export default Team;
+}    
+export default Team;

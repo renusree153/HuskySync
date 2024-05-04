@@ -11,8 +11,6 @@ const S3Uploader = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const {quizName, setQuizName} = useContext(QuizNameContext);
 
-    console.log("hello quiz name ", {quizName});
-
     const [username, setUsername] = useState('');
     const handleSignUp = async () => {
         try {
