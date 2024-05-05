@@ -12,17 +12,6 @@ const S3Uploader = () => {
     const {quizName, setQuizName} = useContext(QuizNameContext);
     const { username, setUsername } = useContext(UserContext);
 
-    const handleSignUp = async () => {
-        try {
-        const curUser = await getCurrentUser();
-        setUsername(curUser.username);
-        } catch (error) {
-        console.error("error getting username");
-        }
-    }
-
-    handleSignUp();
-    
 
     AWS.config.update({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,

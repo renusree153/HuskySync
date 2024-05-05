@@ -4,6 +4,7 @@ import fetch from 'node-fetch';
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 export const handler = async (event, context) => {
+    console.log("received event ", event);
     const GRAPHQL_ENDPOINT = process.env.API_AMPLIFYAPI_GRAPHQLAPIENDPOINTOUTPUT;
     const GRAPHQL_API_KEY = process.env.API_AMPLIFYAPI_GRAPHQLAPIKEYOUTPUT;
     const query = /* GraphQL */ `
@@ -13,6 +14,7 @@ export const handler = async (event, context) => {
       createUsers(input: $input) {
         id
         email
+        username
       }
     }
   `;
@@ -27,6 +29,7 @@ export const handler = async (event, context) => {
         input: {
             id: generateUniqueId(),
             email: event.request.userAttributes.email,
+            username: event.userName
         },
     };
 
@@ -54,6 +57,7 @@ export const handler = async (event, context) => {
                 TableName: "Users-nto6fjkdwbgzfgepj7kapss24i-dev",
                 Item: {
                     email: variables.input.email,
+                    username: variables.input.username
                 },
             };
 

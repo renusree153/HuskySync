@@ -133,10 +133,9 @@ export const listUsers = /* GraphQL */ `
     }
   }
 `;
-
 export const rsvpQuizzesForUser = `
 query rsvpQuizzesForUser {
-  getUsers(id: "5") {
+  getUsers(id: "lvta0je0-bvtms") {
       id
     	rsvpquizzes
   }
@@ -145,15 +144,13 @@ query rsvpQuizzesForUser {
 ;
 export const pastQuizzesForUser = `
 query pastQuizzesForUser {
-  getUsers(id: "4") {
+  getUsers(id: $id) {
       id
     	pastquizzes
   }
 }
 `
 ;
-
-
 export const listQuizzesFilteredByClass = /* GraphQL */ `
   query ListQuizzesFilteredByClass($classType: String, $limit: Int, $nextToken: String) {
     listQuizzes(
@@ -177,3 +174,26 @@ export const listQuizzesFilteredByClass = /* GraphQL */ `
     }
   }
 `;
+export const AllUsersAndIds = `
+  query AllUsersAndIds($classType: String, $limit: Int, $nextToken: String) {
+    listQuizzes(
+      filter: {
+        class: { beginsWith: $classType }
+      }
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        class
+        date
+        description
+        quizname
+        tags
+        time
+      }
+      nextToken
+      __typename
+    }
+  }
+  `;

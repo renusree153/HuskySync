@@ -125,7 +125,7 @@ function GroupMain() {
                 </button>
                 <hr id="hrgroups"></hr>
                 {activeTab === "join" && <div className="scrollable-content"><Team /></div>}
-                {activeTab === "rsvp" && <div className="scrollable-content"><Team /></div>}
+                {activeTab === "rsvp" && <div className="scrollable-content"><Rsvp /></div>}
                 {activeTab === "pastquizzes" && <div className="scrollable-content"><PastQuizzes /></div>}
             </div>
         </div>

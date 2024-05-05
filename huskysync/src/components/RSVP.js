@@ -1,6 +1,6 @@
 import './Team.css';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import awsconfig from '../aws-exports';
 import {Route, Routes} from "react-router-dom";
 import { BrowserRouter } from 'react-router-dom';
@@ -8,41 +8,75 @@ import {QuizBlock} from './QuizBlock';
 import {useNavigate} from 'react-router-dom';
 import { rsvpQuizzesForUser } from '../graphql/queries';
 import { listClasses } from '../graphql/queries';
+import { listUsers } from '../graphql/queries';
 import { getCurrentUser } from '@aws-amplify/auth';
+import { UserContext } from './UserContext';
 
 function Rsvp (props) {
-    console.log("in function call of rsvp");
     const [classStates, setClassStates] = useState({});
-    const toggleExpand = (classId) => {
-        setClassStates(prevState => ({
-            ...prevState,
-            [classId]: !prevState[classId]
-        }));
-    };
-
+    const [userId, setUserId] = useState(null); 
     const [listOfClasses, setClasses] = useState([]);
+    const [listOfQuizzes, setQuizzes] = useState([]);
+    const [fetchData, setFetchData] = useState(null);
+    const { username } = useContext(UserContext); 
+
+    // Fetch user ID
+    useEffect(() => {
+        console.log("in useEffect of rsvp to fetch userId");
+        const pullData = async () => {
+            let response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                    'X-Api-Key': awsconfig.aws_appsync_apiKey
+                },
+                body: JSON.stringify({ query: listUsers })
+            });
+            let data = await response.json();
+            console.log(data);
+            if (data && data.data && data.data.listUsers) {
+                setFetchData(data.data.listUsers);
+            } else {
+                console.error('Invalid data structure:', data);
+            }
+        };
+        pullData();
+    }, [username]); 
 
     useEffect(() => {
-        console.log("in useeffect of rsvp ");
-        const pullData = async () => {
-          let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-              'X-Api-Key': awsconfig.aws_appsync_apiKey
-            },
-            body: JSON.stringify({
-              query: rsvpQuizzesForUser
-            })
-          })
-          data = await data.json();
-          setClasses(data.data.getUsers.rsvpquizzes);
+        if (fetchData && fetchData.items) {
+            for (let i = 0; i < fetchData.items.length; i++) {
+                if (fetchData.items[i].username === username) {
+                    setUserId(fetchData.items[i].id);
+                }
+            }
         }
-        pullData()
-    }, []);
+    }, [fetchData, username]);
 
-    const [listOfQuizzes, setQuizzes] = useState([]);
+    useEffect(() => {
+        if (userId) { 
+            console.log("in useEffect of rsvp to fetch quizzes for user", userId);
+            const pullData2 = async () => {
+                let response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                        'X-Api-Key': awsconfig.aws_appsync_apiKey
+                    },
+                    body: JSON.stringify({
+                        query: rsvpQuizzesForUser,
+                        variables: {id: userId}
+                    })
+                });
+                let data2 = await response.json();
+                console.log(data2);
+                setClasses(data2.data.getUsers.rsvpquizzes); 
+            };
+            pullData2();
+        }
+    }, [userId]); 
     
     return (
         <div className="container">
@@ -62,22 +96,22 @@ function Rsvp (props) {
                   
                         <div className="scrollable-container bottom">
                         {listOfQuizzes
-    .map((item) => (
-        <div key={item.id}>
-            <div className="quiz-container">
-                <h4 className="quiz-title">{item.rsvpquizzes}</h4>
-                <div className="date-time-container">
-                    <h4 className="date-time">{item.date} {item.time}</h4>
-                    <a href="/Upload">
-                        <i className="bi bi-plus-circle plus-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <div className='tags'>
-                <i className="bi bi-tags"></i>
-                <p>{item.tags && item.tags.join(', ')}</p>
-            </div>
-        </div>
+                        .map((item) => (
+                            <div key={item.id}>
+                                <div className="quiz-container">
+                                    <h4 className="quiz-title">{item.rsvpquizzes}</h4>
+                                    <div className="date-time-container">
+                                        <h4 className="date-time">{item.date} {item.time}</h4>
+                                        <a href="/Upload">
+                                            <i className="bi bi-plus-circle plus-icon"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className='tags'>
+                                    <i className="bi bi-tags"></i>
+                                    <p>{item.tags && item.tags.join(', ')}</p>
+                                </div>
+                            </div>
 ))}
 
                         </div>

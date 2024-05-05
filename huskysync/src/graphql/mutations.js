@@ -111,6 +111,7 @@ export const createUsers = /* GraphQL */ `
     createUsers(input: $input, condition: $condition) {
       id
       email
+      username
     }
   }
 `;
