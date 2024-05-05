@@ -13,6 +13,7 @@ import Quiz from './Quiz';
 import CustomizeQuiz from './CustomizeQuiz';
 import { QuizNameProvider } from './QuizNameContext';
 import { UserProvider } from './components/UserContext';
+import { QuizProvider } from './components/QuizContext';
 
 import './App.css';
 import huskyLogo from './imgs/huskysync.png'; // Adjust the path if necessary
@@ -65,6 +66,7 @@ function App() {
           /* Other components you wish to style with the light purple color */
         `}
       </style>
+      <QuizProvider>
       <QuizNameProvider>
       <UserProvider>
       <Authenticator components={components}>
@@ -85,6 +87,7 @@ function App() {
       </Authenticator>
       </UserProvider>
       </QuizNameProvider>
+      </QuizProvider>
     </>
   );
 }

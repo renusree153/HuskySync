@@ -9,6 +9,7 @@ import {useNavigate} from 'react-router-dom';
 import { rsvpQuizzesForUser } from '../graphql/queries';
 import { listClasses } from '../graphql/queries';
 import { listUsers } from '../graphql/queries';
+import { listQuizzes } from '../graphql/queries';
 import { getCurrentUser } from '@aws-amplify/auth';
 import { UserContext } from './UserContext';
 
@@ -34,15 +35,38 @@ function Rsvp (props) {
                 body: JSON.stringify({ query: listUsers })
             });
             let data = await response.json();
-            console.log(data);
             if (data && data.data && data.data.listUsers) {
+                console.log(data.data.listUsers);
                 setFetchData(data.data.listUsers);
+
             } else {
                 console.error('Invalid data structure:', data);
             }
         };
         pullData();
     }, [username]); 
+
+    useEffect (() => {
+        const pullData = async () => {
+            let response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                    'X-Api-Key': awsconfig.aws_appsync_apiKey
+                },
+                body: JSON.stringify({ query: listQuizzes })
+            });
+            let data = await response.json();
+            if (data && data.data && data.data.listQuizzes) {
+                console.log(data);
+                setQuizzes(data.data.listQuizzes.items);
+            } else {
+                console.error('Invalid data structure:', data);
+            }
+        };
+        pullData();
+    })
 
     useEffect(() => {
         if (fetchData && fetchData.items) {
@@ -71,13 +95,12 @@ function Rsvp (props) {
                     })
                 });
                 let data2 = await response.json();
-                console.log(data2);
                 setClasses(data2.data.getUsers.rsvpquizzes); 
             };
             pullData2();
         }
     }, [userId]); 
-    
+
     return (
         <div className="container">
             <div className="horizontal-bar">
@@ -85,42 +108,23 @@ function Rsvp (props) {
                 .map((classObj) => (
                     <div key={classObj.id} className="bar">
                         <h4>{classObj}</h4>
+                        {listOfQuizzes.filter(quiz => quiz.quizname === classObj).map(quiz => (
+                            <p key={quiz.id}>Quiz on: {quiz.date}  at {quiz.time}</p>
+                        ))}
                     </div>
                 ))}
             </div>
-            {listOfClasses.map((classObj) => (
-            classStates[classObj.id] && (
-                <div key={`expanded-${classObj.id}`} className="expanded-content">
-                  
-                    <div className="h2-container">
-                  
-                        <div className="scrollable-container bottom">
-                        {listOfQuizzes
-                        .map((item) => (
-                            <div key={item.id}>
-                                <div className="quiz-container">
-                                    <h4 className="quiz-title">{item.rsvpquizzes}</h4>
-                                    <div className="date-time-container">
-                                        <h4 className="date-time">{item.date} {item.time}</h4>
-                                        <a href="/Upload">
-                                            <i className="bi bi-plus-circle plus-icon"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className='tags'>
-                                    <i className="bi bi-tags"></i>
-                                    <p>{item.tags && item.tags.join(', ')}</p>
-                                </div>
-                            </div>
-))}
-
-                        </div>
-                    </div>
-                </div>
-            )
-            ))}
         </div>
     );
     }    
   
   export default Rsvp;
+
+  /*
+  Get list of quizzes:
+
+  query listQuizzes
+
+  loop thru all quizzes and check where quizname == classes.name 
+
+  */

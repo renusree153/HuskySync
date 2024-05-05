@@ -3,14 +3,17 @@ import React from 'react';
 import { useState } from 'react';
 import NavBar from './components/Navbar';
 import { Link } from 'react-router-dom';
+import { useQuiz } from './components/QuizContext';
+
 function CustomizeQuiz() {
-    const [numQuestions, setNumQuestions] = useState('5'); // Default to 5 questions
+    const [numQuestions, setNumQuestions] = useState('5'); 
+    const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
 
     const handleNumQuestionsChange = (event) => {
         setNumQuestions(event.target.value);
     };
 
-    const [quizLength, setQuizLength] = useState('10'); // Default to 10 minutes
+    const [quizLength, setQuizLength] = useState('10'); 
 
     const handleQuizLengthChange = (event) => {
         setQuizLength(event.target.value);
@@ -18,9 +21,8 @@ function CustomizeQuiz() {
 
     return (
         <div>
-            <div className="header">
-                <h2 id="custom-quiz-title">PHYS 121: Electromagnetism</h2>
-            </div>
+            <br></br>
+            <h2> {selectedClass}, {quizName}, {tags}, {date}</h2>
             <div className='header'>
                 <h2 id="titlet"> Customization:</h2>
             </div>
@@ -53,9 +55,7 @@ function CustomizeQuiz() {
                             <input
                                 type="checkbox"
                                 id="trueOrFalse"
-                                value="TrueOrFalse"
-                                // Add checked logic here if needed
-                            />
+                                value="TrueOrFalse"                            />
                             <label htmlFor="trueOrFalse">True or False</label>
                         </div>
                         <div className="align">

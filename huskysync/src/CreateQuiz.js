@@ -7,16 +7,11 @@ import { useContext } from 'react';
 import S3Uploader from "./S3upload"; // Corrected the file name here to match your file system
 import CustomizeQuiz from './CustomizeQuiz';
 import { QuizNameContext } from './QuizNameContext';
+import { useQuiz } from './components/QuizContext';
 
 const CreateQuiz = () => {
-    const {quizName, setQuizName} = useContext(QuizNameContext);
-    const [selectedClass, setSelectedClass] = useState('');
-    const [tags, setTags] = useState('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
+    const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, uploaderKey, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
     const [listOfClasses, setClasses] = useState([]);
-    const [uploaderKey, setUploaderKey] = useState(0);
-    const [showCustomizeQuiz, setShowCustomizeQuiz] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -101,10 +96,9 @@ const CreateQuiz = () => {
                             <select id="class-select" value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)} required>
                                 <option value="">Select a Class</option>
                                 {listOfClasses.map((item) => (
-                                    <option key={item.id} value={item.id}>{item.name}</option>
+                                    <option key={item.id} value={item.name}>{item.name}</option>
                                 ))}
                             </select>
-                            
                             <label htmlFor="quiz-name">Quiz Name</label>
                             <input id="quiz-name" type="text" value={quizName} onChange={(e) => setQuizName(e.target.value)} required />
                             
@@ -118,7 +112,7 @@ const CreateQuiz = () => {
                             <input id="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
                             
                             <label htmlFor="upload">Upload Study Files</label>
-                            <S3Uploader key={uploaderKey} />  {/* Simply include the S3Uploader component without any props */}
+                            <S3Uploader key={uploaderKey} /> 
                             
                             <button type="submit" className="save-btn">Next</button>
                         </form>
