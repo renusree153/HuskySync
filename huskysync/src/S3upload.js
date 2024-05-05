@@ -3,15 +3,15 @@ import awsconfig from './aws-exports'; // Ensure AWS config path is correct
 import folderIcon from './folder.svg'; // Ensure folder icon path is correct
 import { QuizNameContext } from './QuizNameContext';
 import { useContext } from 'react';
-import { getCurrentUser } from '@aws-amplify/auth';
+import { UserContext } from './components/UserContext';
 const AWS = require('aws-sdk');
 
 const S3Uploader = () => {
     const [success, setSuccess] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const {quizName, setQuizName} = useContext(QuizNameContext);
+    const { username, setUsername } = useContext(UserContext);
 
-    const [username, setUsername] = useState('');
     const handleSignUp = async () => {
         try {
         const curUser = await getCurrentUser();
@@ -22,6 +22,7 @@ const S3Uploader = () => {
     }
 
     handleSignUp();
+    
 
     AWS.config.update({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
