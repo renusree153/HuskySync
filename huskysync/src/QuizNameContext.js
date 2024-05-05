@@ -12,5 +12,4 @@ export const QuizNameProvider = ({ children }) => {
     );
 };
 
-
 export default QuizNameProvider;

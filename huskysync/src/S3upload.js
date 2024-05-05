@@ -3,12 +3,14 @@ import awsconfig from './aws-exports'; // Ensure AWS config path is correct
 import folderIcon from './folder.svg'; // Ensure folder icon path is correct
 import { QuizNameContext } from './QuizNameContext';
 import { useContext } from 'react';
+import { UserContext } from './components/UserContext';
 const AWS = require('aws-sdk');
 
 const S3Uploader = () => {
     const [success, setSuccess] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const {quizName, setQuizName} = useContext(QuizNameContext);
+    const { username, setUsername } = useContext(UserContext);
 
     console.log("hello quiz name ", {quizName});
 
@@ -38,7 +40,7 @@ const S3Uploader = () => {
             Key: file.name,
             Body: file,
             Metadata: {
-                username: "renusree",
+                username: username,
                 quizname: quizName,
                 documentname: file.name
             }

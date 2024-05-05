@@ -8,7 +8,6 @@ import GroupMain from "./GroupMain.js";
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import huskysync from './imgs/huskysync.png';
-import { Authenticator } from '@aws-amplify/ui-react';
 import { getCurrentUser } from '@aws-amplify/auth';
 
 function Home() {
