@@ -12,10 +12,13 @@ type Quiz @model {
   curnumbers: Int @default(value: "0")
   class: String!
   date: String!
-  description: String!
   quizname: String!
   tags: [String!]!
   time: String!
+  numQuestions: Int
+  quizLength: Int
+  questionTypes: [String]
+
 }
 
 type Users @model {

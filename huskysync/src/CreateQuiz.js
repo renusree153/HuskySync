@@ -54,33 +54,11 @@ const CreateQuiz = () => {
             tags: tags.split(",").map(tag => tag.trim()),
             time: time
         };
+        setShowCustomizeQuiz(true);
 
-        try {
-            const response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                    'X-Api-Key': awsconfig.aws_appsync_apiKey
-                },
-                body: JSON.stringify({
-                    query: createQuiz,
-                    variables: { input: inputParams }
-                })
-            });
-            const responseData = await response.json();
-
-            if (responseData.errors) {
-                console.error("Mutation failed:", responseData.errors);
-            } else if (responseData.data.createQuiz) {
-                console.log("Mutation successful:", responseData.data.createQuiz);
-                setShowCustomizeQuiz(true);
-            }
-        } catch (error) {
-            console.error("Error saving quiz:", error);
-        }
     };
 
+    
     return (
         <div>
             {showCustomizeQuiz ? (

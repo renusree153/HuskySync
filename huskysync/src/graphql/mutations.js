@@ -50,13 +50,15 @@ export const createQuiz = /* GraphQL */ `
   ) {
     createQuiz(input: $input, condition: $condition) {
       id
+      quizname
       curnumbers
       class
-      date
-      description
-      quizname
       tags
+      date
       time
+      numQuestions
+      quizLength
+      questionTypes
       createdAt
       updatedAt
       __typename
