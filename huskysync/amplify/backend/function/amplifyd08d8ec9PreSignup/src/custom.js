@@ -7,7 +7,7 @@ export const handler = async (event, context) => {
     console.log("received event ", event);
     const GRAPHQL_ENDPOINT = process.env.API_AMPLIFYAPI_GRAPHQLAPIENDPOINTOUTPUT;
     const GRAPHQL_API_KEY = process.env.API_AMPLIFYAPI_GRAPHQLAPIKEYOUTPUT;
-    const query = /* GraphQL */ `
+    const query = `
     mutation CreateUsers(
       $input: CreateUsersInput!
     ) {
@@ -20,8 +20,8 @@ export const handler = async (event, context) => {
   `;
 
     function generateUniqueId() {
-      const timestamp = Date.now().toString(36); // Convert timestamp to base-36 string
-      const randomString = Math.random().toString(36).substring(2, 7); // Generate random hex string
+      const timestamp = Date.now().toString(36); 
+      const randomString = Math.random().toString(36).substring(2, 7); 
       return `${timestamp}-${randomString}`;
     }
 
