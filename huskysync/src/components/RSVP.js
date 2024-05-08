@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import awsconfig from '../aws-exports';
 import { rsvpQuizzesForUser, listUsers, listQuizzes } from '../graphql/queries';
 import { UserContext } from './UserContext';
+import './RSVP.css';
+import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Rsvp() {
     const [userId, setUserId] = useState(null);
@@ -107,7 +110,12 @@ function Rsvp() {
         }
     }, [userId]);
 
-    console.log(listOfQuizzes);
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('../Upload');
+    };
+
 
     return (
         <div className="container">
@@ -121,7 +129,10 @@ function Rsvp() {
                                     .map(quiz => {
                                         console.log(quiz);
                                         return (
-                                            <p key={quiz.id}>Quiz on: {quiz.date} at {quiz.time}</p>
+                                            <div>
+                                                <button id = "startbtn" onClick={handleClick}> Start </button>
+                                                <p key={quiz.id}>Quiz on: {quiz.date} at {quiz.time}</p>
+                                            </div>
                                         );
                                     })}
                             </div>
