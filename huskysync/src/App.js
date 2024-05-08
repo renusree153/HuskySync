@@ -14,6 +14,7 @@ import CustomizeQuiz from './CustomizeQuiz';
 import { QuizNameProvider } from './QuizNameContext';
 import { UserProvider } from './components/UserContext';
 import { QuizProvider } from './components/QuizContext';
+import { S3Provider } from './components/S3Context';
 
 import './App.css';
 import huskyLogo from './imgs/huskysync.png'; // Adjust the path if necessary
@@ -66,6 +67,7 @@ function App() {
           /* Other components you wish to style with the light purple color */
         `}
       </style>
+      <S3Provider>
       <QuizProvider>
       <QuizNameProvider>
       <UserProvider>
@@ -88,6 +90,7 @@ function App() {
       </UserProvider>
       </QuizNameProvider>
       </QuizProvider>
+      </S3Provider>
     </>
   );
 }

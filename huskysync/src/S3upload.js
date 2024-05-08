@@ -4,6 +4,8 @@ import folderIcon from './folder.svg'; // Ensure folder icon path is correct
 import { QuizNameContext } from './QuizNameContext';
 import { useContext } from 'react';
 import { UserContext } from './components/UserContext';
+import S3Context from './components/S3Context';
+
 const AWS = require('aws-sdk');
 
 const S3Uploader = () => {
@@ -11,7 +13,7 @@ const S3Uploader = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const {quizName, setQuizName} = useContext(QuizNameContext);
     const { username, setUsername } = useContext(UserContext);
-
+    const { s3ObjectID, setS3ObjectID } = useContext(S3Context);
 
     AWS.config.update({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
@@ -45,8 +47,9 @@ const S3Uploader = () => {
         };
 
         try {
-            await s3.upload(params).promise();
+            const data = await s3.upload(params).promise();
             console.log('File uploaded successfully');
+            setS3ObjectID(data.Key);
             setSuccess(true);
         } catch (error) {
             console.error('Error uploading file, please try again:', error);

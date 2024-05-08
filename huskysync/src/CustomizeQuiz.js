@@ -10,6 +10,7 @@ import { get_user_quizzes, listUsers } from './graphql/queries';
 import { UserContext } from './components/UserContext';
 import { useContext } from 'react';
 import { updateUsers } from './graphql/mutations';
+import S3Context from './components/S3Context';
 
 function CustomizeQuiz() {
     const [numQuestions, setNumQuestions] = useState('5'); 
@@ -19,6 +20,7 @@ function CustomizeQuiz() {
     const { username } = useContext(UserContext); 
     const [userID, setUserId] = useState(null);
     const [userProps, setUserProps] = useState(null);
+    const {s3ObjectID, setS3ObjectID} = useContext(S3Context);
 
     const handleNumQuestionsChange = (event) => {
         setNumQuestions(event.target.value);
@@ -40,7 +42,8 @@ function CustomizeQuiz() {
             time: time, 
             numQuestions: parseInt(numQuestions, 10), 
             quizLength: parseInt(quizLength, 10), 
-            questionTypes: []
+            questionTypes: [],
+            s3objs: s3ObjectID
         };
         if (document.getElementById('trueOrFalse').checked) {
             quizDetails.questionTypes.push('TrueOrFalse');

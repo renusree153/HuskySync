@@ -8,10 +8,16 @@ import S3Uploader from "./S3upload";
 import CustomizeQuiz from './CustomizeQuiz';
 import { QuizNameContext } from './QuizNameContext';
 import { useQuiz } from './components/QuizContext';
+import S3Context from './components/S3Context';
+import {listQuizzes} from './graphql/queries';
 
 const CreateQuiz = () => {
     const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, uploaderKey, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
     const [listOfClasses, setClasses] = useState([]);
+    const {s3ObjectID, setS3ObjectID} = useContext(S3Context);
+    const [listOfQuizzes, setQuizzes] = useState([]);
+    const [quizId, setQuizId] = useState();
+    const [quizProps, setQuizProps] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -34,6 +40,38 @@ const CreateQuiz = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        async function fetchQuizId() {
+            try {
+                const response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                        'X-Api-Key': awsconfig.aws_appsync_apiKey
+                    },
+                    body: JSON.stringify({ query: listQuizzes })
+                });
+                const data = await response.json();
+                setQuizzes(data.data.listQuizzes);
+            } catch (error) {
+                console.error("Error fetching classes:", error);
+            }
+        }
+        fetchQuizId();
+        console.log("quizzes list ", listOfQuizzes);
+        console.log("quiz name is ", quizName);
+        for (let i = 0; i < listOfQuizzes.length; i++) {
+            if (listOfQuizzes.items[i].quizname === quizName) {
+                setQuizId(listOfQuizzes.items[i].id);
+                setQuizProps(listOfQuizzes.items[i]);
+                break;
+            }
+        }
+    }, [quizName]);
+
+    console.log("QUIZ PROPS IS ", quizProps);
+
     const resetForm = () => {
         setQuizName('');
         setSelectedClass('');
@@ -52,10 +90,11 @@ const CreateQuiz = () => {
             class: selectedClass,
             date: date,
             tags: tags.split(",").map(tag => tag.trim()),
-            time: time
+            time: time,
+            s3objs: s3ObjectID
         };
+        console.log("s3 obj id is ", s3ObjectID);
         setShowCustomizeQuiz(true);
-
     };
     
     return (
