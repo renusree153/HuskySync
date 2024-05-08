@@ -107,6 +107,8 @@ function Rsvp() {
         }
     }, [userId]);
 
+    console.log(listOfQuizzes);
+
     return (
         <div className="container">
             <div className="horizontal-bar">
@@ -117,6 +119,7 @@ function Rsvp() {
                                 <h4>{classObj}</h4>
                                 {listOfQuizzes.filter(quiz => quiz && quiz.quizname === classObj)
                                     .map(quiz => {
+                                        console.log(quiz);
                                         return (
                                             <p key={quiz.id}>Quiz on: {quiz.date} at {quiz.time}</p>
                                         );
