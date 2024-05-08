@@ -4,7 +4,7 @@ import awsconfig from './aws-exports';
 import { listClasses } from './graphql/queries';
 import { createQuiz } from './graphql/mutations';
 import { useContext } from 'react';
-import S3Uploader from "./S3upload"; // Corrected the file name here to match your file system
+import S3Uploader from "./S3upload";
 import CustomizeQuiz from './CustomizeQuiz';
 import { QuizNameContext } from './QuizNameContext';
 import { useQuiz } from './components/QuizContext';
@@ -57,7 +57,6 @@ const CreateQuiz = () => {
         setShowCustomizeQuiz(true);
 
     };
-
     
     return (
         <div>

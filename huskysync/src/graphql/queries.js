@@ -134,8 +134,8 @@ export const listUsers = /* GraphQL */ `
   }
 `;
 export const rsvpQuizzesForUser = `
-query rsvpQuizzesForUser {
-  getUsers(id: "lvta0je0-bvtms") {
+query rsvpQuizzesForUser ($id: ID!) {
+  getUsers(id: $id) {
       id
     	rsvpquizzes
   }
@@ -197,3 +197,12 @@ export const AllUsersAndIds = `
     }
   }
   `;
+
+export const get_user_quizzes = `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      rsvpquizzes
+    }
+  }
+`

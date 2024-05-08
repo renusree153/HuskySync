@@ -28,5 +28,4 @@ type Users @model {
   email: String!
   pastquizzes: [String!]
   rsvpquizzes: [String!]
-
 }
