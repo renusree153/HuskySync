@@ -8,11 +8,12 @@ import {QuizBlock} from './QuizBlock';
 import { listClasses } from '../graphql/queries';
 import { listQuizzes } from '../graphql/queries';
 import {useNavigate} from 'react-router-dom';
+import { useQuiz } from './QuizContext';
+import { Link } from 'react-router-dom';
 
-function Team (props) {
+function Team () {
     console.log("hello from team.js file ");
-    const navigate = useNavigate();
-
+    const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, uploaderKey, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
     const [classStates, setClassStates] = useState({});
 
     const toggleExpand = (classId) => {
@@ -45,6 +46,11 @@ function Team (props) {
     }, []);
 
     const [listOfQuizzes, setQuizzes] = useState([]);
+
+    const handlePlusClick = (quizname) => {
+        setQuizName(quizname);
+        console.log("new quiz name is ", quizName);
+    }
 
     useEffect(() => {
         const pullData = async () => {
@@ -88,9 +94,7 @@ function Team (props) {
             {listOfClasses.map((classObj) => (
             classStates[classObj.id] && (
                 <div key={`expanded-${classObj.id}`} className="expanded-content">
-                  
                     <div className="h2-container">
-                  
                         <div className="scrollable-container bottom">
                             {listOfQuizzes
                             .filter((item) => item.class === classObj.name)
@@ -100,9 +104,9 @@ function Team (props) {
                                         <h4 className="quiz-title">{item.quizname}</h4>
                                         <div className="date-time-container">
                                             <h4 className="date-time">{item.date} {item.time}</h4>
-                                            <a href="/Upload"> 
-                                                <i className="bi bi-plus-circle plus-icon"></i>
-                                            </a>
+                                            <Link to={`/upload?quizName=${encodeURIComponent(item.quizname)}`}>
+                                                <i className="bi bi-plus"></i>
+                                            </Link>
                                         </div>
                                     </div>
                                 <div className='tags'>

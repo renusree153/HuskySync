@@ -20,6 +20,7 @@ import S3Uploader from "./S3upload";
 import CreateQuiz from './CreateQuiz';
 import './CreateQuiz.css';
 import { listQuizzes } from "./graphql/queries";
+import { useQuiz } from "./components/QuizContext";
 
 Amplify.configure(awsconfig);
 const AWS = require('aws-sdk');
@@ -27,7 +28,6 @@ const AWS = require('aws-sdk');
 function GroupMain() {
 
     const [activeTab, setActiveTab] = useState("join");
-
     const [showQuizModal, setShowQuizModal] = useState(false);
     const [showCreateQuizButton, setShowCreateQuizButton] = useState(true);
 

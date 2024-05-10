@@ -59,8 +59,6 @@ const CreateQuiz = () => {
             }
         }
         fetchQuizId();
-        console.log("quizzes list ", listOfQuizzes);
-        console.log("quiz name is ", quizName);
         for (let i = 0; i < listOfQuizzes.length; i++) {
             if (listOfQuizzes.items[i].quizname === quizName) {
                 setQuizId(listOfQuizzes.items[i].id);
@@ -69,8 +67,6 @@ const CreateQuiz = () => {
             }
         }
     }, [quizName]);
-
-    console.log("QUIZ PROPS IS ", quizProps);
 
     const resetForm = () => {
         setQuizName('');

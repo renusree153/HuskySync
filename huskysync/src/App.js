@@ -67,8 +67,8 @@ function App() {
           /* Other components you wish to style with the light purple color */
         `}
       </style>
-      <S3Provider>
       <QuizProvider>
+      <S3Provider>
       <QuizNameProvider>
       <UserProvider>
       <Authenticator components={components}>
@@ -89,8 +89,8 @@ function App() {
       </Authenticator>
       </UserProvider>
       </QuizNameProvider>
-      </QuizProvider>
       </S3Provider>
+      </QuizProvider>
     </>
   );
 }
