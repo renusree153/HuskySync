@@ -44,24 +44,28 @@ const UploaderPage = () => {
             }
         }
         fetchQuizId();
-    }, []); // Empty dependency array to ensure the effect runs only once
+    }, []); 
     
     useEffect(() => {
         for (let i = 0; i < listOfQuizzes.length; i++) {
             const curQuiz = listOfQuizzes[i];
+            console.log("cur quiz is ", curQuiz);
             if (curQuiz && listOfQuizzes[i].quizname === quizNamee) {
                 setQuizId(listOfQuizzes[i].id);
                 setQuizProps(listOfQuizzes[i]);
                 break;
             }
         }
+    }, [listOfQuizzes]);    
+
+    useEffect (() => {
         getS3Objs();
-    }, []);    
+    }, [quizProps]);
     
     const getS3Objs = () => {
         if (quizProps) {
             setS3Objs(quizProps["s3objs"]);
-            console.log("the s3 objs ", quizProps["s3objs"]);
+            console.log("the quiz props are ", quizProps);
         }
     }
 
