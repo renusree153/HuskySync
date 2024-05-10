@@ -5,6 +5,11 @@
     position: absolute;
 }
 
+#newbtn {
+    background-color: white;
+    color: purple;
+}
+
 .h2-container {
     display: flex;
     position: fixed;

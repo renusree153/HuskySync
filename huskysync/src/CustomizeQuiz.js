@@ -136,19 +136,6 @@ function CustomizeQuiz() {
                 break;
             }
         }
-
-        const userResponse = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-                'X-Api-Key': awsconfig.aws_appsync_apiKey
-            },
-            body: JSON.stringify({
-                query: get_user_quizzes,
-                variables: { id: userID }
-            })
-        });
     };
 
     useEffect(() => {
