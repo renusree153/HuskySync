@@ -141,7 +141,6 @@ function CustomizeQuiz() {
     useEffect(() => {
         const fetchDataAndUpdate = async () => {
             if (userID && userProps) {
-                console.log("USER PROPS ARE ", userProps);
                 const existingQuizzes = userProps.rsvpquizzes || [];
                 const updatedQuizzes = [...existingQuizzes, quizName];
                 console.log("the updated quizzes are ", updatedQuizzes);

@@ -89,7 +89,10 @@ const CreateQuiz = () => {
             time: time,
             s3objs: s3ObjectID
         };
-        console.log("s3 obj id is ", s3ObjectID);
+        if (!selectedClass || !quizName || !tags || !date || !time || !s3ObjectID) {
+            console.log("s3 obj id is ", s3ObjectID);
+            return;
+        }
         setShowCustomizeQuiz(true);
     };
     
