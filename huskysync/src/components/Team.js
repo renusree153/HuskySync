@@ -86,38 +86,36 @@ function Team () {
                 console.log("USER PROPS ARE ", userProps);
                 const existingQuizzes = userProps.rsvpquizzes || [];
                 if (!existingQuizzes.includes(quizName)) {
-                const updatedQuizzes = [...existingQuizzes, quizName];
-                console.log("the updated quizzes are ", updatedQuizzes);
-                const variables = {
-                    input: {
-                        id: userID,
-                        rsvpquizzes: updatedQuizzes
+                    const updatedQuizzes = [...existingQuizzes, quizName];
+                    const variables = {
+                        input: {
+                            id: userID,
+                            rsvpquizzes: updatedQuizzes
+                        }
+                    };
+                    try {
+                        const updateResponse = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Accept: 'application/json',
+                                'X-Api-Key': awsconfig.aws_appsync_apiKey
+                            },
+                            body: JSON.stringify({
+                                query: updateUsers,
+                                variables: variables
+                            })
+                        });
+                        
+                        if (!updateResponse.ok) {
+                            throw new Error('Failed to update user quizzes');
+                        }
+            
+                        setPrevQuizName(quizName);
+                        console.log('User quizzes updated successfully');
+                    } catch (error) {
+                        console.error('Error updating user quizzes:', error);
                     }
-                };
-    
-                try {
-                    const updateResponse = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Accept: 'application/json',
-                            'X-Api-Key': awsconfig.aws_appsync_apiKey
-                        },
-                        body: JSON.stringify({
-                            query: updateUsers,
-                            variables: variables
-                        })
-                    });
-                    
-                    if (!updateResponse.ok) {
-                        throw new Error('Failed to update user quizzes');
-                    }
-        
-                    setPrevQuizName(quizName);
-                    console.log('User quizzes updated successfully');
-                } catch (error) {
-                    console.error('Error updating user quizzes:', error);
-                }
                 }
             }
         };
