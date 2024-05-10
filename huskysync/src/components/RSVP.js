@@ -5,6 +5,7 @@ import { UserContext } from './UserContext';
 import './RSVP.css';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Rsvp() {
     const [userId, setUserId] = useState(null);
@@ -130,7 +131,9 @@ function Rsvp() {
                                         console.log(quiz);
                                         return (
                                             <div>
-                                                <button id = "startbtn" onClick={handleClick}> Start </button>
+                                                <Link to={`/upload?quizName=${encodeURIComponent(quiz.quizname)}`}>
+                                                    <button id = "startbtn" onClick={handleClick}> Start </button>
+                                                </Link>
                                                 <p key={quiz.id}>Quiz on: {quiz.date} at {quiz.time}</p>
                                             </div>
                                         );

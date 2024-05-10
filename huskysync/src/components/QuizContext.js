@@ -5,7 +5,7 @@ const QuizContext = createContext();
 export const useQuiz = () => useContext(QuizContext);
 
 export const QuizProvider = ({ children }) => {
-    const [quizName, setQuizName] = useState('hiiiiiii');
+    const [quizName, setQuizName] = useState('');
     const [selectedClass, setSelectedClass] = useState('');
     const [tags, setTags] = useState('');
     const [date, setDate] = useState('');

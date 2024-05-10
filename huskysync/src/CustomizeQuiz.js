@@ -21,6 +21,7 @@ function CustomizeQuiz() {
     const [userID, setUserId] = useState(null);
     const [userProps, setUserProps] = useState(null);
     const {s3ObjectID, setS3ObjectID} = useContext(S3Context);
+    const [btnClicked, setBtnClicked] = useState(false);
 
     const handleNumQuestionsChange = (event) => {
         setNumQuestions(event.target.value);
@@ -33,6 +34,9 @@ function CustomizeQuiz() {
     };
 
     const handleSave = () => {
+        if(btnClicked) {
+            return;
+        }
         quizDetails = {
             quizname: quizName,
             class: selectedClass,
@@ -51,6 +55,7 @@ function CustomizeQuiz() {
         if (document.getElementById('multipleChoice').checked) {
             quizDetails.questionTypes.push('MultipleChoice');
         }
+        setBtnClicked(true);
         pushData();
     }
 
