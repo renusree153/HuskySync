@@ -131,7 +131,7 @@ function Team () {
     useEffect (() => {
         console.log("new quiz name from handle join ", quizName);
         updateUserRSVPQuizzes();
-    }, [quizName])
+    }, [])
 
 
     useEffect(() => {
