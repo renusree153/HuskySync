@@ -65,7 +65,7 @@ const UploaderPage = () => {
     const getS3Objs = () => {
         if (quizProps) {
             setS3Objs(quizProps["s3objs"]);
-            console.log("the quiz props are ", quizProps);
+            handleUpload(s3Objs);
         }
     }
 
@@ -83,10 +83,12 @@ const UploaderPage = () => {
                     <div className="uploaded-files">
                         <h2>Uploaded Files</h2>
                         <ul>
-                            {uploadedFiles.map((file, index) => (
-                                <li key={index}>{file.name}</li>
-                            ))}
-                        </ul>
+                        {s3Objs.map((s3Obj, index) => (
+                            <li key={index}>
+                                <p> {s3Obj}</p>
+                            </li>
+                        ))}
+                    </ul>
                     </div>
                 </div>
             </header>

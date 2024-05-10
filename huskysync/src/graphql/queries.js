@@ -57,6 +57,7 @@ export const listQuizzes = /* GraphQL */ `
         class
         date
         description
+        s3objs
         quizname
         tags
         time
