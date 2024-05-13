@@ -15,6 +15,7 @@ import { QuizNameProvider } from './QuizNameContext';
 import { UserProvider } from './components/UserContext';
 import { QuizProvider } from './components/QuizContext';
 import { S3Provider } from './components/S3Context';
+import QuizQuestions from './components/QuizQuestions';
 
 import './App.css';
 import huskyLogo from './imgs/huskysync.png'; // Adjust the path if necessary
@@ -83,6 +84,7 @@ function App() {
                 <Route path="/Upload" element={<UploaderPage />} />
                 <Route path="/Quiz" element={<Quiz />} />
                 <Route path="/CustomizeQuiz" element={<CustomizeQuiz />} />
+                <Route path="/QuizQs" element={<QuizQuestions/>} />
               </Routes>
             </div>
           </BrowserRouter>
