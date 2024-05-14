@@ -12,6 +12,10 @@
     margin-bottom: 400px;
 }
 
+.bold {
+    font-weight: bold; /* Or other desired bolding styles */
+  }
+
 .header {
     display: flex;
     justify-content: space-between; /* Aligns items to both ends */

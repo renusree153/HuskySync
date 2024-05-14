@@ -1,62 +1,63 @@
-import './Quiz.css';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import NavBar from './components/Navbar';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-function Quiz() {
+function Quiz({ quizName, questions }) {
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const quizNameParam = searchParams.get('quizName');
+    const currentQuestion = questions[currentQuestionIndex];
+    let answerIndex = -1; // Initialize answer index
+
+    const questionToAsk = currentQuestion.split('\n')[0];
+    console.log(questionToAsk);
+    const answerChoices = currentQuestion.split('\n').slice(1).reduce((acc, choice, index) => {
+        if (answerIndex === -1 && choice.startsWith('Answer:')) {
+            answerIndex = index; 
+        }
+        if (answerIndex === -1 && choice.trim() !== '') {
+            acc.push(choice); 
+        }
+        return acc;
+    }, []);
+
+    const handleNextQuestion = () => {
+        setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+    };
+
     return (
         <div className="Quiz">
-            <NavBar/>
+            <NavBar />
             <div className="header">
-                <h2 id="title">PHYS 121: Electromagnetism</h2>
+                <h2 id="title">{quizNameParam}</h2>
                 <div className="timer">
-                    <i class="bi bi-stopwatch"></i>
-                    <p>09:00 mins</p>
+                    <i className="bi bi-stopwatch"></i>
+                    <p>10:00 mins</p>
                 </div>
                 <button id="end-quiz">Exit</button>
             </div>
-            <div class="quiz-progress">
-                <ul>
-                    <li id="q1">1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                </ul>
-            </div>
             <div className="quiz-content">
                 <div className="question">
-                    <h3>1.  Which of the following is not a fundamental force in nature?</h3>
+                    <h3>{questionToAsk}</h3>
                 </div>
                 <div className="answers">
-                    <div class="buttonBlock">
-                        <button id="buttonOptionA">A. Gravitational force</button>
-                    </div>
-                    <div class="buttonBlock">
-                        <button id="buttonOptionB">B. Electromagnetic force</button>
-                    </div>
-                    <div class="buttonBlock">
-                        <button id="buttonOptionC">C. Strong nuclear force</button>
-                    </div>
-                    <div class="buttonBlock">
-                        <button id="buttonOptionD">D. Centrifugal force</button>
-                    </div>
+                    {answerChoices.map((choice, index) => (
+                        <div key={index} className="buttonBlock">
+                            <button>{choice}</button>
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="next-container">
-                 <button id="next">Next</button>
+                {currentQuestionIndex < questions.length - 1 && (
+                    <button id="next" onClick={handleNextQuestion}>Next</button>
+                )}
             </div>
             <div className="chat">
                 <h2>Chat</h2>
             </div>
         </div>
-
     );
 }
 

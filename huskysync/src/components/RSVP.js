@@ -131,7 +131,7 @@ function Rsvp() {
                                         console.log(quiz);
                                         return (
                                             <div>
-                                                <Link to={`/upload?quizName=${encodeURIComponent(quiz.quizname)}`}>
+                                                <Link to={`/quiz?quizName=${encodeURIComponent(quiz.quizname)}`}>
                                                     <button id = "startbtn" onClick={handleClick}> Start </button>
                                                 </Link>
                                                 <p key={quiz.id}>Quiz on: {quiz.date} at {quiz.time}</p>
