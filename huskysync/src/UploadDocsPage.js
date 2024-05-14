@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useQuiz } from './components/QuizContext';
 import {listQuizzes} from './graphql/queries';
 import { useLocation } from 'react-router-dom';
+import { useS3Objs } from './components/S3Objs';
 
 const UploaderPage = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -17,7 +18,7 @@ const UploaderPage = () => {
     const [quizId, setQuizId] = useState();
     const [quizProps, setQuizProps] = useState([]);
     const [listOfQuizzes, setQuizzes] = useState([]);
-    const [s3Objs, setS3Objs] = useState([]);
+    const { s3Objs, setS3Objs } = useS3Objs();
     const {selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
 
     const handleUpload = (file) => {

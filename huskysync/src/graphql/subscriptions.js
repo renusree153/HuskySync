@@ -89,14 +89,14 @@ export const onCreateUsers = /* GraphQL */ `
   subscription OnCreateUsers($filter: ModelSubscriptionUsersFilterInput) {
     onCreateUsers(filter: $filter) {
       id
-      username
+      bio
+      email
       firstname
       lastname
       groups
-      bio
-      email
       pastquizzes
       rsvpquizzes
+      username
       createdAt
       updatedAt
       __typename
@@ -107,14 +107,14 @@ export const onUpdateUsers = /* GraphQL */ `
   subscription OnUpdateUsers($filter: ModelSubscriptionUsersFilterInput) {
     onUpdateUsers(filter: $filter) {
       id
-      username
+      bio
+      email
       firstname
       lastname
       groups
-      bio
-      email
       pastquizzes
       rsvpquizzes
+      username
       createdAt
       updatedAt
       __typename
@@ -125,14 +125,107 @@ export const onDeleteUsers = /* GraphQL */ `
   subscription OnDeleteUsers($filter: ModelSubscriptionUsersFilterInput) {
     onDeleteUsers(filter: $filter) {
       id
-      username
+      bio
+      email
       firstname
       lastname
       groups
-      bio
-      email
       pastquizzes
       rsvpquizzes
+      username
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateMessage = /* GraphQL */ `
+  subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
+    onCreateMessage(filter: $filter) {
+      id
+      owner
+      message
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateMessage = /* GraphQL */ `
+  subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
+    onUpdateMessage(filter: $filter) {
+      id
+      owner
+      message
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteMessage = /* GraphQL */ `
+  subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
+    onDeleteMessage(filter: $filter) {
+      id
+      owner
+      message
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateExtractedTexts = /* GraphQL */ `
+  subscription OnCreateExtractedTexts(
+    $filter: ModelSubscriptionExtractedTextsFilterInput
+  ) {
+    onCreateExtractedTexts(filter: $filter) {
+      documentId
+      documentname
+      extractedText
+      quizname
+      s3_bucket
+      s3_key
+      username
+      id
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateExtractedTexts = /* GraphQL */ `
+  subscription OnUpdateExtractedTexts(
+    $filter: ModelSubscriptionExtractedTextsFilterInput
+  ) {
+    onUpdateExtractedTexts(filter: $filter) {
+      documentId
+      documentname
+      extractedText
+      quizname
+      s3_bucket
+      s3_key
+      username
+      id
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteExtractedTexts = /* GraphQL */ `
+  subscription OnDeleteExtractedTexts(
+    $filter: ModelSubscriptionExtractedTextsFilterInput
+  ) {
+    onDeleteExtractedTexts(filter: $filter) {
+      documentId
+      documentname
+      extractedText
+      quizname
+      s3_bucket
+      s3_key
+      username
+      id
       createdAt
       updatedAt
       __typename

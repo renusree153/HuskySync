@@ -39,3 +39,13 @@ type Message
   message: String!
 
 }
+
+type ExtractedTexts @model @auth(rules: [{allow: public}]) {
+  documentId: ID!
+  documentname: String!
+  extractedText: String!
+  quizname: String!
+  s3_bucket: String!
+  s3_key: String!
+  username: String!
+}

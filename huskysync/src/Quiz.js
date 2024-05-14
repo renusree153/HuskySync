@@ -8,8 +8,7 @@ function Quiz({ quizName, questions }) {
     const searchParams = new URLSearchParams(location.search);
     const quizNameParam = searchParams.get('quizName');
     const currentQuestion = questions[currentQuestionIndex];
-    let answerIndex = -1; // Initialize answer index
-
+    let answerIndex = -1;
     const questionToAsk = currentQuestion.split('\n')[0];
     console.log(questionToAsk);
     const answerChoices = currentQuestion.split('\n').slice(1).reduce((acc, choice, index) => {
