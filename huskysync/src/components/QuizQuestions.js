@@ -5,10 +5,6 @@ import {DynamoDB} from 'aws-sdk';
 import { useS3Objs } from './S3Objs';
 
 const dynamoDB = new DynamoDB.DocumentClient(); 
-const awsConfig = {
-  region: 'us-east-1'
-}
-DynamoDB.config.update(awsConfig);
 
 
 const client = new OpenAI({
