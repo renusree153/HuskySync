@@ -76,6 +76,7 @@ export const updateQuiz = /* GraphQL */ `
       description
       quizname
       tags
+      s3objs
       time
       createdAt
       updatedAt

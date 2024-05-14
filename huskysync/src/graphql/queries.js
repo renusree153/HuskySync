@@ -62,6 +62,7 @@ export const listQuizzes = /* GraphQL */ `
         date
         description
         quizname
+        s3objs
         tags
         time
         createdAt
@@ -201,6 +202,7 @@ export const AllUsersAndIds = `
         description
         quizname
         tags
+        s3objs
         time
       }
       nextToken

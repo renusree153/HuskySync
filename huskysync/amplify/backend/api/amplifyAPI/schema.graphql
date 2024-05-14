@@ -14,6 +14,7 @@ type Quiz @model @auth(rules: [{allow: public}]) {
   date: String!
   description: String!
   quizname: String!
+  s3objs: [String!]
   tags: [String!]!
   time: String!
 }
