@@ -7,6 +7,8 @@ function Quiz({ quizName, questions }) {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const quizNameParam = searchParams.get('quizName');
+    console.log(quizNameParam);
+    console.log("questions are ", questions);
     const currentQuestion = questions[currentQuestionIndex];
     let answerIndex = -1;
     const questionToAsk = currentQuestion.split('\n')[0];

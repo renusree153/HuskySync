@@ -71,7 +71,7 @@ const UploaderPage = () => {
         if (quizProps) {
             setS3Objs(quizProps["s3objs"]);
             updateS3ObjsForQuiz(quizId, s3Objs);
-;        }
+        }
     }
 
     const updateS3ObjsForQuiz = async (quizId, newS3Objs) => {
