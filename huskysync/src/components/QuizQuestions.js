@@ -43,12 +43,10 @@ const QuizComponent = () => {
     let fullText = "";
 
     useEffect (() => {
-      console.log("IN QUIZQUESTIONS PAGE");
     }, []);
 
     useEffect(() => {
       if (s3Objs !== null) {
-        console.log("s3 objs ", s3Objs);
       }
     }, [s3Objs]);
 
@@ -83,7 +81,6 @@ const QuizComponent = () => {
             } catch (error) {
                 console.error("Error fetching classes:", error);
             }
-            console.log("FULL TEXT IS ", fullText);
             setUserText({
                 text: fullText,
                 numQuestions: '5',
