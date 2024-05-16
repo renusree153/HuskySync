@@ -134,6 +134,9 @@ const UploaderPage = () => {
                     </ul>
                     </div>
                 </div>
+                <div>
+                    <a href="/GroupMain" className="save-btn">Done</a>
+                 </div>
             </header>
             <div className="start-quiz-button">
             <Link to={`/QuizQuestions`}>
