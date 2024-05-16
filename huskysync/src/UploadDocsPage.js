@@ -10,6 +10,7 @@ import {listQuizzes} from './graphql/queries';
 import { useLocation } from 'react-router-dom';
 import { useS3Objs } from './components/S3Objs';
 import { updateQuiz } from './graphql/mutations';
+import { Link } from 'react-router-dom';
 
 const UploaderPage = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -53,7 +54,7 @@ const UploaderPage = () => {
     useEffect(() => {
         for (let i = 0; i < listOfQuizzes.length; i++) {
             const curQuiz = listOfQuizzes[i];
-            console.log("cur quiz is ", curQuiz);
+            console.log("cur quiz is ", curQuiz.quizname);
             if (curQuiz && listOfQuizzes[i].quizname === quizNamee) {
                 setQuizId(listOfQuizzes[i].id);
                 console.log("PROPS ", listOfQuizzes[i]);
@@ -61,20 +62,22 @@ const UploaderPage = () => {
                 break;
             }
         }
-    }, [listOfQuizzes]);    
+    }, [listOfQuizzes, quizNamee]);    
 
     useEffect (() => {
         getS3Objs();
-    }, [quizProps, s3Objs]);
+    }, [quizProps, s3Objs, quizId]);
     
     const getS3Objs = () => {
         if (quizProps) {
             setS3Objs(quizProps["s3objs"]);
+            console.log("quiz props s3 obj ", quizProps);
             updateS3ObjsForQuiz(quizId, s3Objs);
         }
     }
 
     const updateS3ObjsForQuiz = async (quizId, newS3Objs) => {
+        console.log("quiz id from update func ", quizId);
         try {
             const response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
                 method: 'POST',
@@ -101,7 +104,7 @@ const UploaderPage = () => {
                 })
             });
             const data = await response.json();
-            console.log("S3Objs updated successfully:", data);
+            console.log("S3Objs updated successfully upload docs page :", data);
         } catch (error) {
             console.error("Error updating S3Objs:", error);
         }
@@ -132,6 +135,11 @@ const UploaderPage = () => {
                     </div>
                 </div>
             </header>
+            <div className="start-quiz-button">
+            <Link to={`/QuizQuestions`}>
+                <button id = "startbtn"> Start </button>
+            </Link>
+            </div>
         </div>
     );
 };

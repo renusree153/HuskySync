@@ -78,8 +78,13 @@ const S3Uploader = ({onUpload}) => {
         setSelectedFile(file);
         setSuccess(false); 
         uploadFile(file); 
-        setS3Objs([...s3Objs, file.name]);
-        updateS3ObjsForQuiz(quizId, [...s3Objs, file.name]);
+        if (!s3Objs) {
+            setS3Objs([file.name]);
+        }
+        else {
+            setS3Objs([...s3Objs, file.name]);
+            updateS3ObjsForQuiz(quizId, [...s3Objs, file.name]);
+        }
     };
 
     const uploadFile = async (file) => {

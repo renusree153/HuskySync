@@ -48,7 +48,6 @@ function App() {
   };
 
 
-  // Define your light purple color
   const lightPurple = '#E5DDF4'; // Light purple color hex code
 
   return (
@@ -81,6 +80,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/Home" element={<Home />} />
                 <Route path="/GroupMain" element={<GroupMain />} />
+                <Route path="/QuizQuestions" element={<QuizQuestions />}/>
                 <Route path="/Settings" element={<Settings />} />
                 <Route path="/FAQ" element={<FAQ />} />
                 <Route path="/Upload" element={<UploaderPage />} />

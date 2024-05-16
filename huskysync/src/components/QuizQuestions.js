@@ -16,13 +16,10 @@ import { useQuiz } from '../components/QuizContext';
 import {listQuizzes} from '../graphql/queries';
 import { updateQuiz } from '../graphql/mutations';
 
-const dynamoDB = new DynamoDB.DocumentClient(); 
-
 const client = new OpenAI({
     apiKey: '5aa36992a87ce596f53ea2d821839131cdf95814652fd55a0d5b93858ffa1df9',
     dangerouslyAllowBrowser: true,
     baseURL: 'https://api.together.xyz/v1',
-  
 });
 
 const userText = {
@@ -45,11 +42,11 @@ const QuizComponent = () => {
 
     useEffect (() => {
       console.log("IN QUIZQUESTIONS PAGE");
-    })
+    }, []);
 
     useEffect(() => {
-      if (Array.isArray(s3Objs) && s3Objs.length > 0) {
-        console.log(s3Objs);
+      if (s3Objs !== null) {
+        console.log("s3 objs ", s3Objs);
       }
     }, [s3Objs]);
 
@@ -72,12 +69,6 @@ const QuizComponent = () => {
                     s3Id: s3Id
                 }
             };
-
-            const data = await dynamoDB.get(params).promise();
-            if (data.Item && data.Item.text) {
-                setUserText({ ...userText, text: data.Item.text });
-                console.log(data.Item.text);
-            }
         } catch (error) {
             console.error('Error fetching user text:', error);
         }

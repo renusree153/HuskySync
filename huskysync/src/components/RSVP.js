@@ -7,6 +7,8 @@ import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import QuizComponent from './QuizQuestions';
+import { useS3Objs } from '../components/S3Objs';
+import { useQuiz } from './QuizContext';
 
 function Rsvp() {
     const [userId, setUserId] = useState(null);
@@ -15,6 +17,8 @@ function Rsvp() {
     const [fetchData, setFetchData] = useState(null);
     const { username } = useContext(UserContext);
     const [selectedQuiz, setSelectedQuiz] = useState(null);
+    const { s3Objs, setS3Objs } = useS3Objs();
+    const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, uploaderKey, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
 
 
     useEffect(() => {
@@ -72,6 +76,10 @@ function Rsvp() {
         fetchData();
     }, []);
 
+    const handleJoin = (quizname) => {
+        setQuizName(quizname);
+    }
+
     useEffect(() => {
         if (fetchData && fetchData.items) {
             for (let i = 0; i < fetchData.items.length; i++) {
@@ -114,15 +122,12 @@ function Rsvp() {
             };
             fetchData();
         }
+        console.log("s3 objs is from rsvp ", s3Objs);
     }, [userId]);
 
     console.log("rsvped quizzes ", listOfClasses);
 
     const navigate = useNavigate();
-
-    const handleClick = (quizName) => {
-        navigate(`/quizQuestions?quizName=${encodeURIComponent(quizName)}`);
-    };
 
     return (
         <div className="container">
@@ -136,8 +141,8 @@ function Rsvp() {
                                     .map(quiz => {
                                         return (
                                             <div>
-                                                <Link to={`/quiz?quizName=${encodeURIComponent(quiz.quizname)}`}>
-                                                    <button id = "startbtn" onClick={handleClick}> Start </button>
+                                                <Link to={`/upload?quizName=${encodeURIComponent(quiz.quizname)}`}>
+                                                    <button id = "startbtn" onClick={() => handleJoin(quiz.quizname)}> Start </button>
                                                 </Link>
                                                 <p key={quiz.id}>Quiz on: {quiz.date} at {quiz.time}</p>
                                             </div>
