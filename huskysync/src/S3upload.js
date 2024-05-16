@@ -62,7 +62,6 @@ const S3Uploader = ({onUpload}) => {
     useEffect(() => {
         for (let i = 0; i < listOfQuizzes.length; i++) {
             const curQuiz = listOfQuizzes[i];
-            console.log("cur quiz is ", curQuiz);
             if (curQuiz && listOfQuizzes[i].quizname === quizNamee) {
                 setQuizId(listOfQuizzes[i].id);
                 console.log("PROPS ", listOfQuizzes[i]);

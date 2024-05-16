@@ -276,14 +276,12 @@ export const listExtractedTexts = /* GraphQL */ `
   ) {
     listExtractedTexts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        documentId
         documentname
         extractedText
         quizname
         s3_bucket
         s3_key
         username
-        id
         createdAt
         updatedAt
         __typename
