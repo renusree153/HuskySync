@@ -13,6 +13,7 @@ function FAQ() {
   return (
     <div>
       <NavBar />
+      <div className='faq-container'>
       <div className="FAQ-content">
       <header className="FAQ-header">
           <h1>
@@ -44,11 +45,9 @@ function FAQ() {
         </div>
     </div>
     
-      <h2>
-        How to use HuskySync
-      </h2>
       <p className="greybox"> insert video here </p>
     
+    </div>
     </div>
   );
  } 

@@ -1,6 +1,12 @@
 .Home {
   text-align: center;
 }
+.faq-container {
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 100vh; /* Set maximum height to viewport height */
+  padding: 20px; /* Add padding for better aesthetics */
+}
+
 
 .body {
   display: flex; /* Use flexbox to create a horizontal layout */
