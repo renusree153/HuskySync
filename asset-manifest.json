@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.27814d62.css",
-    "main.js": "/static/js/main.e3aa8a47.js",
-    "static/media/huskysync.png": "/static/media/huskysync.882981888caaea3ed9dd.png",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "static/media/folder.svg": "/static/media/folder.da0327ee03f4437b8bbe4fffadc09dcd.svg",
-    "index.html": "/index.html",
-    "main.27814d62.css.map": "/static/css/main.27814d62.css.map",
-    "main.e3aa8a47.js.map": "/static/js/main.e3aa8a47.js.map"
+    "main.css": "/huskysync/static/css/main.27814d62.css",
+    "main.js": "/huskysync/static/js/main.9d9fe80e.js",
+    "static/media/huskysync.png": "/huskysync/static/media/huskysync.882981888caaea3ed9dd.png",
+    "static/media/logo.svg": "/huskysync/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/folder.svg": "/huskysync/static/media/folder.da0327ee03f4437b8bbe4fffadc09dcd.svg",
+    "index.html": "/huskysync/index.html",
+    "main.27814d62.css.map": "/huskysync/static/css/main.27814d62.css.map",
+    "main.9d9fe80e.js.map": "/huskysync/static/js/main.9d9fe80e.js.map"
   },
   "entrypoints": [
     "static/css/main.27814d62.css",
-    "static/js/main.e3aa8a47.js"
+    "static/js/main.9d9fe80e.js"
   ]
 }
