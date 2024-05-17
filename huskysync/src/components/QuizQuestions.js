@@ -111,9 +111,15 @@ const QuizComponent = () => {
                 const quizName = 'Chemistry Quiz'; 
                 const questions2 = response.choices.map(choice => ({ text: choice.message.content }));
 
+                console.log("questions2 are ", questions2);
                 const questions = questions2[0]['text'].split(/\n\d+\./).slice(1);
-                
-                setQuiz(<Quiz quizName={quizName} questions={questions} />);
+                console.log("questions are ",  questions);
+                const answers = questions.map(question => {
+                    const answer = question.split('\n')[1]; // Assuming answer is on the second line
+                    return answer; // Create an object with both question and answer
+                  });
+                console.log("answers are ", answers);
+                setQuiz(<Quiz quizName={quizName} questions={questions} answers ={answers}/>);
             } catch (error) {
                 console.error('Error:', error);
                 setQuiz(null);

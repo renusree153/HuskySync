@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import NavBar from './components/Navbar';
 import { useLocation } from 'react-router-dom';
 
-function Quiz({ quizName, questions }) {
+function Quiz({ quizName, questions, answers }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null); 
-  const location = useLocation();
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [selectedOptionText, setSelectedOptionText] = useState('');
+  const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const quizNameParam = searchParams.get('quizName');
   const currentQuestion = questions[currentQuestionIndex];
@@ -22,14 +23,28 @@ function Quiz({ quizName, questions }) {
     return acc;
   }, []);
 
+  console.log("answers AREEE ", answers);
+
   const handleNextQuestion = () => {
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
   };
 
   const handleAnswerSelection = (index) => {
-    setSelectedAnswerIndex(index); 
+    setSelectedAnswerIndex(index);
     const selectedOption = answerChoices[index];
-    setSelectedOptionText(selectedOption); 
+    setSelectedOptionText(selectedOption);
+
+    const newSelectedAnswers = [...selectedAnswers];
+    newSelectedAnswers.push(selectedOption);
+    setSelectedAnswers(newSelectedAnswers);
+  };
+
+  const isLastQuestion = currentQuestionIndex === questions.length - 1; // Check for last question
+
+  const handleSubmitQuiz = () => {
+    // Handle quiz submission logic here (e.g., send answers to server)
+    console.log("Submitted answers:", selectedAnswers);
+    // You can potentially reset the quiz state or navigate to a different page
   };
 
   return (
@@ -56,16 +71,19 @@ function Quiz({ quizName, questions }) {
         </div>
       </div>
       <div className="next-container">
-        {currentQuestionIndex < questions.length - 1 && (
+        {currentQuestionIndex < questions.length - 1 && ( // Only show "Next" for non-last questions
           <button id="next" onClick={handleNextQuestion}>Next</button>
+        )}
+        {isLastQuestion && ( // Only show "Done" for the last question
+          <button id="done" onClick={handleSubmitQuiz}>Done</button>
         )}
       </div>
       <div className="chat">
         <h2>Chat</h2>
       </div>
       <div className="selected-option">
-        {selectedOptionText && ( 
-            <h3>Currently selected option: {selectedOptionText}</h3>
+        {selectedOptionText && (
+          <h3>Currently selected option: {selectedOptionText}</h3>
         )}
       </div>
 
