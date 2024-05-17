@@ -11,6 +11,8 @@ import FAQ from './FAQ';
 import UploaderPage from './UploadDocsPage.js';
 import Quiz from './Quiz';
 import CustomizeQuiz from './CustomizeQuiz';
+import Chatbot from './chatbot.js';
+
 import { QuizNameProvider } from './QuizNameContext';
 import { UserProvider } from './components/UserContext';
 import { QuizProvider } from './components/QuizContext';
@@ -21,9 +23,9 @@ import { S3ObjsProvider } from './components/S3Objs';
 import './App.css';
 import huskyLogo from './imgs/huskysync.png'; // Adjust the path if necessary
 
-Amplify.configure(awsconfig);
+Amplify.configure({ ...awsconfig, ssr: true });
 
-function App() {
+function App({ Component, pageProps }) {
   const { tokens } = useTheme();
 
   const components = {
@@ -69,32 +71,34 @@ function App() {
         `}
       </style>
       <S3ObjsProvider>
-      <QuizProvider>
-      <S3Provider>
-      <QuizNameProvider>
-      <UserProvider>
-      <Authenticator components={components}>
-          <BrowserRouter>
-            <div className="App">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/Home" element={<Home />} />
-                <Route path="/GroupMain" element={<GroupMain />} />
-                <Route path="/QuizQuestions" element={<QuizQuestions />}/>
-                <Route path="/Settings" element={<Settings />} />
-                <Route path="/FAQ" element={<FAQ />} />
-                <Route path="/Upload" element={<UploaderPage />} />
-                <Route path="/Quiz" element={<Quiz />} />
-                <Route path="/CustomizeQuiz" element={<CustomizeQuiz />} />
-                <Route path="/QuizQs" element={<QuizQuestions/>} />
-              </Routes>
-            </div>
-          </BrowserRouter>
-      </Authenticator>
-      </UserProvider>
-      </QuizNameProvider>
-      </S3Provider>
-      </QuizProvider>
+        <QuizProvider>
+          <S3Provider>
+            <QuizNameProvider>
+              <UserProvider>
+                <Authenticator components={components}>
+                  <BrowserRouter>
+                    <div className="App">
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/Home" element={<Home />} />
+                        <Route path="/GroupMain" element={<GroupMain />} />
+                        <Route path="/QuizQuestions" element={<QuizQuestions />} />
+                        <Route path="/Settings" element={<Settings />} />
+                        <Route path="/FAQ" element={<FAQ />} />
+                        <Route path="/Upload" element={<UploaderPage />} />
+                        <Route path="/Quiz" element={<Quiz />} />
+                        <Route path="/CustomizeQuiz" element={<CustomizeQuiz />} />
+                        <Route path="/QuizQs" element={<QuizQuestions />} />
+                        <Route path="/Chat" element={<Chatbot/>} />
+
+                      </Routes>
+                    </div>
+                  </BrowserRouter>
+                </Authenticator>
+              </UserProvider>
+            </QuizNameProvider>
+          </S3Provider>
+        </QuizProvider>
       </S3ObjsProvider>
     </>
   );

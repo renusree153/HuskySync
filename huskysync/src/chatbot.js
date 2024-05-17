@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../src/Home.module.css";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { API, Auth, withSSRContext, graphqlOperation } from "aws-amplify";
-import { listMessages } from "../graphql/queries";
-import { createMessage } from "../graphql/mutations";
-import Message from "../components/message";
-import { onCreateMessage } from "../graphql/subscriptions";
+import { listMessages } from "../src/graphql/queries";
+import { createMessage } from "../src/graphql/mutations.js";
+import Message from "../src/message.js";
+import { onCreateMessage } from "../src/graphql/subscriptions";
 
 function Home({ messages }) {
   const [stateMessages, setStateMessages] = useState([...messages]);
