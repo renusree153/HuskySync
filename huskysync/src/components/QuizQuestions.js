@@ -12,9 +12,6 @@ import { useS3Objs } from '../components/S3Objs';
 import { useLocation } from 'react-router-dom';
 import NavBar from '../components/Navbar';
 import '../UploadDocsPage.css'; 
-import { useQuiz } from '../components/QuizContext';
-import {listQuizzes} from '../graphql/queries';
-import { updateQuiz } from '../graphql/mutations';
 import { listExtractedTexts } from '../graphql/queries';
 
 const client = new OpenAI({
