@@ -15,21 +15,19 @@
 
 .bold {
     font-weight: bold;
-    /* Or other desired bolding styles */
 }
 
 .header {
     display: flex;
     justify-content: space-between;
-    /* Aligns items to both ends */
     align-items: center;
 }
 
 .buttonBlock.selected,
 .buttonBlock button:hover,
 .buttonBlock button:active {
-  background-color: darkpurple; /* Adjust color as needed */
-  color: white;                 /* Adjust text color for contrast */
+  background-color: darkpurple; 
+  color: white;                
 }
 
 #title {
@@ -40,12 +38,10 @@
     display: flex;
     align-items: center;
     margin-right: 20px;
-    /* Adjust as needed */
 }
 
 .timer i {
     margin-right: 5px;
-    /* Adjust as needed */
 }
 
 #end-quiz {
@@ -78,15 +74,10 @@
 
 .quiz-progress li {
     width: 30px;
-    /* Adjust the width of each number as needed */
     height: 30px;
-    /* Adjust the height of each number as needed */
     background-color: #E5DDF4;
-    /* Background color of each number */
     color: white;
-    /* Text color of each number */
     border-radius: 50%;
-    /* Make each number circular */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,8 +100,8 @@ div.buttonBlock {
 }
 
   div.buttonBlock button:active{
-    background-color: #4B2E83;/* Adjust color as needed */
-    color: white; /* Adjust text color for contrast */
+    background-color: #4B2E83;
+    color: white;
   }
 
   div.buttonBlock button {
@@ -147,7 +138,6 @@ div.buttonBlock button:active {
 
 .question {
     flex: 1;
-    /* Take up remaining space */
     text-align: left;
     margin-left: 100px;
 }

@@ -23,7 +23,6 @@ function Settings() {
         }
     };
     const handleSaveChanges = () => {
-        // Here you would typically send the data to your backend
         console.log('Saved data:', { firstName, lastName, bio, groups });
     };
 

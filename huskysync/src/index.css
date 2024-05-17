@@ -58,7 +58,7 @@
 
 .form-actions button:hover,
 .form-actions a:hover {
-  background-color: #7A5D99; /* Using purple for hover state */
+  background-color: #7A5D99; 
 }
 
 .form-actions a {
@@ -68,6 +68,6 @@
 }
 
 .form-actions a:hover {
-  background-color: #7A5D99; /* Using purple for hover state */
+  background-color: #7A5D99; 
   text-decoration: underline;
 }

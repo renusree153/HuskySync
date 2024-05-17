@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
-import awsconfig from './aws-exports'; // Ensure AWS config path is correct
-import folderIcon from './folder.svg'; // Ensure folder icon path is correct
+import awsconfig from './aws-exports'; 
+import folderIcon from './folder.svg';
 import { QuizNameContext } from './QuizNameContext';
 import { useContext } from 'react';
 import { UserContext } from './components/UserContext';

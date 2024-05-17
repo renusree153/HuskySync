@@ -66,12 +66,12 @@ button:hover {
 
 .button-container {
   display: flex;
-  justify-content: center; /* Align buttons horizontally in the center */
-  margin-top: 20px; /* Adjust margin as needed */
+  justify-content: center; 
+  margin-top: 20px; 
 }
 
 .button-container button {
-  margin: 0 10px; /* Add space between buttons */
+  margin: 0 10px; 
   margin-bottom: 50px;
 }
 
