@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "../src/Home.module.css";
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import { API, Auth, withSSRContext, graphqlOperation } from "aws-amplify";
+import { API, Auth, withSSRContext } from "aws-amplify";
 import { listMessages } from "../src/graphql/queries";
 import { createMessage } from "../src/graphql/mutations.js";
 import Message from "../src/message.js";
 import { onCreateMessage } from "../src/graphql/subscriptions";
 import { getCurrentUser } from 'aws-amplify/auth';
-import { GraphQLQuery } from '@aws-amplify/api'
+import { graphqlOperation } from "@aws-amplify/api-graphql";
+import {runWithAmplifyServerContext} from 'aws-amplify/adapter-core';
 function Home({ messages }) {
   const [stateMessages, setStateMessages] = useState([...messages]);
   const [messageText, setMessageText] = useState("");
@@ -128,7 +129,7 @@ export default withAuthenticator(Home);
 
 export async function getServerSideProps({ req }) {
   // wrap the request in a withSSRContext to use Amplify functionality serverside.
-  const SSR = withSSRContext({ req });
+  const SSR = runWithAmplifyServerContext({ req });
 
   try {
     // currentAuthenticatedUser() will throw an error if the user is not signed in.
