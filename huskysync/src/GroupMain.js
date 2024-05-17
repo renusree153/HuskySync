@@ -106,9 +106,9 @@ function GroupMain() {
                     <h3>Filter by Class: </h3>
                     <select className="dropdown">
                         <option value="">Select a Class</option>
-                        {listOfClasses.map((item) => (
-                            <option key={item.id} value={item.id}>
-                                {item.name}
+                        {[...new Set(listOfClasses.map(item => item.name.split(" ")[0]))].map((name, index) => (
+                            <option key={index} value={name}>
+                                {name}
                             </option>
                         ))}
                     </select>
