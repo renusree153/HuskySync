@@ -1,26 +1,57 @@
 import React, { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
-import { withAuthenticator } from "@aws-amplify/ui-react";
-import { API, Auth, withSSRContext, graphqlOperation } from "aws-amplify";
-import { listMessages } from "../graphql/queries";
-import { createMessage } from "../graphql/mutations";
-import Message from "../components/message";
-import { onCreateMessage } from "../graphql/subscriptions";
+import styles from "../src/Home.module.css";
+import { withAuthenticator, AmplifyAuthenticator } from "@aws-amplify/ui-react";
+import { API, Auth, withSSRContext } from "aws-amplify";
+import { listMessages } from "../src/graphql/queries";
+import { createMessage } from "../src/graphql/mutations.js";
+import Message from "../src/message.js";
+import { onCreateMessage } from "../src/graphql/subscriptions";
+import { graphqlOperation } from "@aws-amplify/api-graphql";
+import { runWithAmplifyServerContext } from 'aws-amplify/adapter-core';
+import { generateClient } from 'aws-amplify/api';
+import { getCurrentUser } from 'aws-amplify/auth';
+// chatbot.js
+
+
+const client = generateClient();
 
 function Home({ messages }) {
-  const [stateMessages, setStateMessages] = useState([...messages]);
+  const [stateMessages, setStateMessages] = useState([]);
   const [messageText, setMessageText] = useState("");
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    async function fetchUserAndSubscribe() {
       try {
-        const amplifyUser = await Auth.currentAuthenticatedUser();
-        setUser(amplifyUser);
-      } catch (err) {
-        setUser(null);
+        const currentUser = await getCurrentUser();
+        console.log("Current User:", currentUser);
+        setUser(currentUser);
+
+       // Subscribe to the creation of messages
+// Subscribe to the creation of messages
+const subscription = client.graphql(
+    graphqlOperation(onCreateMessage)
+  ).subscribe({
+    next: ({ provider, value }) => {
+      setStateMessages((prevMessages) => [
+        ...prevMessages,
+        value.data.onCreateMessage,
+      ]);
+    },
+    error: (error) => {
+      console.warn("Subscription error:", error);
+      console.log("Subscription error stack:", error.stack);
+    },
+  });
+  
+
+        return () => {
+          subscription.unsubscribe();
+        };
+      } catch (error) {
+        console.error("Error fetching user or subscribing:", error);
       }
-    };
+    }
 
     fetchUser();
 
@@ -45,12 +76,16 @@ function Home({ messages }) {
           query: listMessages,
           authMode: "AMAZON_COGNITO_USER_POOLS",
         });
+        console.log("Fetched messages:", messagesReq.data.listMessages.items);
         setStateMessages([...messagesReq.data.listMessages.items]);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching messages:", error);
       }
     }
-    getMessages();
+    
+    if (user) {
+      getMessages();
+    }
   }, [user]);
 
   const handleSubmit = async (event) => {
@@ -75,8 +110,9 @@ function Home({ messages }) {
           input: input,
         },
       });
+      console.log("Message created successfully.");
     } catch (err) {
-      console.error(err);
+      console.error("Error creating message:", err);
     }
   };
 
@@ -124,35 +160,3 @@ function Home({ messages }) {
 }
 
 export default withAuthenticator(Home);
-
-export async function getServerSideProps({ req }) {
-  // wrap the request in a withSSRContext to use Amplify functionality serverside.
-  const SSR = withSSRContext({ req });
-
-  try {
-    // currentAuthenticatedUser() will throw an error if the user is not signed in.
-    const user = await SSR.Auth.currentAuthenticatedUser();
-
-    // If we make it passed the above line, that means the user is signed in.
-    const response = await SSR.API.graphql({
-      query: listMessages,
-      // use authMode: AMAZON_COGNITO_USER_POOLS to make a request on the current user's behalf
-      authMode: "AMAZON_COGNITO_USER_POOLS",
-    });
-
-    // return all the messages from the dynamoDB
-    return {
-      props: {
-        messages: response.data.listMessages.items,
-      },
-    };
-  } catch (error) {
-    // We will end up here if there is no user signed in.
-    // We'll just return a list of empty messages.
-    return {
-      props: {
-        messages: [],
-      },
-    };
-  }
-}
