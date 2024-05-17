@@ -12,6 +12,7 @@ export const QuizProvider = ({ children }) => {
     const [time, setTime] = useState('');
     const [uploaderKey, setUploaderKey] = useState(0);
     const [showCustomizeQuiz, setShowCustomizeQuiz] = useState(false);
+    const [showQuizCreated, setShowQuizCreated] = useState(false);
 
     return (
         <QuizContext.Provider value={{
@@ -21,7 +22,8 @@ export const QuizProvider = ({ children }) => {
             date, setDate,
             time, setTime,
             uploaderKey, setUploaderKey,
-            showCustomizeQuiz, setShowCustomizeQuiz
+            showCustomizeQuiz, setShowCustomizeQuiz,
+            showQuizCreated, setShowQuizCreated
         }}>
             {children}
         </QuizContext.Provider>

@@ -96,7 +96,6 @@ function GroupMain() {
         <div className="splitContainer">
             <NavBar/>
             <div class="left-panel">
-                {/* Directly embed CreateQuiz component */}
                 <CreateQuiz />
     
             </div>
