@@ -3,6 +3,8 @@ import NavBar from './components/Navbar';
 import { useLocation } from 'react-router-dom';
 
 function Quiz({ quizName, questions, answers }) {
+  console.log("questions are ", questions);
+  console.log("answers are ", answers);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -105,5 +107,4 @@ function Quiz({ quizName, questions, answers }) {
     </div>
   );
 }
-
 export default Quiz;
