@@ -1,7 +1,7 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getClass = /* GraphQL */ `
+export const getClass = `
   query GetClass($id: ID!) {
     getClass(id: $id) {
       id
@@ -12,7 +12,7 @@ export const getClass = /* GraphQL */ `
     }
   }
 `;
-export const listClasses = /* GraphQL */ `
+export const listClasses = `
   query ListClasses(
     $filter: ModelClassFilterInput
     $limit: Int
@@ -31,7 +31,7 @@ export const listClasses = /* GraphQL */ `
     }
   }
 `;
-export const getQuiz = /* GraphQL */ `
+export const getQuiz = `
   query GetQuiz($id: ID!) {
     getQuiz(id: $id) {
       id
@@ -48,7 +48,7 @@ export const getQuiz = /* GraphQL */ `
     }
   }
 `;
-export const listQuizzes = /* GraphQL */ `
+export const listQuizzes = `
   query ListQuizzes(
     $filter: ModelQuizFilterInput
     $limit: Int
@@ -76,7 +76,7 @@ export const listQuizzes = /* GraphQL */ `
 `;
 
 // This is a simple query to pull all quizes and stores them in an items. We will probably need to modify this later
-export const getTotalQuizzes = /* GraphQL */ `
+export const getTotalQuizzes =  `
   query GetTotalQuizzes {
     listQuizzes {
       items {
@@ -88,7 +88,7 @@ export const getTotalQuizzes = /* GraphQL */ `
 `;
 
 // This returns all classes from the class table that begin with bio- maybe helpful if we code this out to each of the hard classes for search 
-export const filterClassNameBIO = /* GraphQL */ `
+export const filterClassNameBIO = `
 query filterClassNameBIO {
   listClasses(filter: {name: {beginsWith: "BIO"}}) {
     items {
@@ -99,7 +99,7 @@ query filterClassNameBIO {
 }
 `;
 
-export const getUsers = /* GraphQL */ `
+export const getUsers = `
   query GetUsers($id: ID!) {
     getUsers(id: $id) {
       id
@@ -117,7 +117,7 @@ export const getUsers = /* GraphQL */ `
     }
   }
 `;
-export const listUsers = /* GraphQL */ `
+export const listUsers =  `
   query ListUsers(
     $filter: ModelUsersFilterInput
     $limit: Int
@@ -163,7 +163,7 @@ query pastQuizzesForUser {
 `
 ;
 
-export const listQuizzesFilteredByClass = /* GraphQL */ `
+export const listQuizzesFilteredByClass =  `
   query ListQuizzesFilteredByClass($classType: String, $limit: Int, $nextToken: String) {
     listQuizzes(
       filter: {
@@ -219,7 +219,7 @@ export const get_user_quizzes = `
     }
   }`;
 
-export const getMessage = /* GraphQL */ `
+export const getMessage = `
   query GetMessage($id: ID!) {
     getMessage(id: $id) {
       id
@@ -231,7 +231,7 @@ export const getMessage = /* GraphQL */ `
     }
   }
 `;
-export const listMessages = /* GraphQL */ `
+export const listMessages = `
   query ListMessages(
     $filter: ModelMessageFilterInput
     $limit: Int
@@ -251,7 +251,7 @@ export const listMessages = /* GraphQL */ `
     }
   }
 `;
-export const getExtractedTexts = /* GraphQL */ `
+export const getExtractedTexts =  `
   query GetExtractedTexts($id: ID!) {
     getExtractedTexts(id: $id) {
       documentId
@@ -268,7 +268,7 @@ export const getExtractedTexts = /* GraphQL */ `
     }
   }
 `;
-export const listExtractedTexts = /* GraphQL */ `
+export const listExtractedTexts = `
   query ListExtractedTexts(
     $filter: ModelExtractedTextsFilterInput
     $limit: Int

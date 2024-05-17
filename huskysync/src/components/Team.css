@@ -130,15 +130,15 @@ h4 {
 
 .quiz-container {
     display: flex;
-    align-items: center; /* Align items vertically */
+    align-items: center; 
 }
 
 .quiz-title {
-    margin-right: 10px; /* Adjust as needed */
+    margin-right: 10px; 
 }
 
 .plus-icon {
-    margin-left: 10px; /* Adjust as needed */
+    margin-left: 10px; 
 }
 
 
@@ -148,19 +148,16 @@ h4 {
 }
 
 .date-time {
-    margin-right: 10px; /* Adjust as needed */
+    margin-right: 10px; 
 }
 
 .plus-icon {
-    margin-left: 10px; /* Adjust as needed */
+    margin-left: 10px; 
 }
 
-/*new stuff*/
-/* Add this CSS to your existing stylesheet or create a new one */
 
-/* Dropdown styling */
 .dropdown {
-    margin-top: 10px; /* Adjust spacing as needed */
+    margin-top: 10px;
 }
 
 .dropdown select {
@@ -171,12 +168,10 @@ h4 {
     box-sizing: border-box;
     font-size: 16px;
     background-color: white;
-    /* Add any additional styling you need */
 }
 
-/* Optional: Style the dropdown arrow */
 .dropdown select::after {
-    content: "\25BC"; /* Unicode character for down arrow */
+    content: "\25BC"; 
     position: absolute;
     top: 50%;
     right: 10px;
@@ -184,13 +179,11 @@ h4 {
     pointer-events: none;
 }
 
-/* Optional: Hover/focus styles */
 .dropdown select:hover, .dropdown select:focus {
     border-color: #666;
 }
 
 
-/*new*/
 .dropbtn {
     background-color: #3498DB;
     color: white;

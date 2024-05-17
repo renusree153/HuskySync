@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Amplify } from "aws-amplify";
 import awsconfig from './aws-exports';
 import { Authenticator, View, Image, Text, useTheme } from '@aws-amplify/ui-react';
-import NavBar from './components/Navbar';  // Assuming this is your navbar component
+import NavBar from './components/Navbar';  
 import Home from './Home.js';
 import GroupMain from "./GroupMain.js";
 import Settings from './Settings';
@@ -22,7 +22,7 @@ import QuizQuestions from './components/QuizQuestions';
 import { S3ObjsProvider } from './components/S3Objs';
 
 import './App.css';
-import huskyLogo from './imgs/huskysync.png'; // Adjust the path if necessary
+import huskyLogo from './imgs/huskysync.png'; 
 
 Amplify.configure(awsconfig);
 
@@ -51,7 +51,7 @@ function App() {
   };
 
 
-  const lightPurple = '#E5DDF4'; // Light purple color hex code
+  const lightPurple = '#E5DDF4'; 
 
   return (
     <>

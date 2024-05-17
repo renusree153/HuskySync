@@ -1,12 +1,12 @@
 html, body {
-    height: 100%; /* Ensure the body and html elements span the full height of the viewport */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
 }
 
 .header {
     display: flex;
-    justify-content: space-between; /* Aligns items to both ends */
+    justify-content: space-between; 
     align-items: center;
 }
 
@@ -15,13 +15,12 @@ html, body {
 }
 
 .create-quiz-panel {
-    /* Align the panel to the left side of the screen */
-    position: absolute; /* or fixed, depending on your needs */
-    top: 100px; /* Adjust as necessary to clear the navbar */
+    position: absolute; 
+    top: 100px; 
     left: 0;
     box-sizing: border-box;
-    overflow-y: auto; /* Add vertical scrollbar if content overflows */
-    max-height: calc(100vh - 100px); /* Adjust based on your layout */
+    overflow-y: auto; 
+    max-height: calc(100vh - 100px); 
 }
 
 #titlet {
@@ -31,11 +30,11 @@ html, body {
 .timer {
     display: flex;
     align-items: center;
-    margin-right: 20px; /* Adjust as needed */
+    margin-right: 20px; 
 }
 
 .timer i {
-    margin-right: 5px; /* Adjust as needed */
+    margin-right: 5px; 
 }
 
 #end-quiz {
@@ -67,11 +66,11 @@ html, body {
   }
   
   .quiz-progress li {
-    width: 30px; /* Adjust the width of each number as needed */
-    height: 30px; /* Adjust the height of each number as needed */
-    background-color: #E5DDF4; /* Background color of each number */
-    color: white; /* Text color of each number */
-    border-radius: 50%; /* Make each number circular */
+    width: 30px; 
+    height: 30px; 
+    background-color: #E5DDF4; 
+    color: white; 
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,7 +125,7 @@ div.buttonBlock button:active {
 }
 
 .question {
-    flex: 1; /* Take up remaining space */
+    flex: 1; 
     text-align: left;
     margin-left: 100px;
 }
@@ -178,14 +177,14 @@ div.buttonBlock button:active {
 
 
 .custom-quiz-panel {
-    /* Align the panel to the left side of the screen */
-    position: absolute; /* or fixed, depending on your needs */
-    top: 100px; /* Adjust as necessary to clear the navbar */
+   
+    position: absolute; 
+    top: 100px; 
     left: 0;
     box-sizing: border-box;
-    overflow-y: auto; /* Add vertical scrollbar if content overflows */
-    max-height: calc(100vh - 100px); /* Adjust based on your layout */
-    height: 100%; /* Ensure the panel spans the full height */
+    overflow-y: auto; 
+    max-height: calc(100vh - 100px); 
+    height: 100%; 
 }
 
 .custom-quiz-container {
@@ -193,20 +192,19 @@ div.buttonBlock button:active {
         padding-left: 70px;
         padding-right: 70px;
         padding-top: 45px;
-        width: 100%; /* Adjust width to fit inside the .create-quiz-panel if necessary */
-        position: relative; /* Keep as relative */
-        height: 100%; /* Ensure the container spans the full height */
+        width: 100%; 
+        position: relative; 
+        height: 100%; 
     
 }
 
 .custom-quiz-title {
     font-size: 1.5em;
-    color: black; /* Colour of your title */
-    padding-bottom: 10px; /* If you want space below the text */
-    position: sticky; /* Keep the title sticky */
-    top: 0; /* Stick the title to the top */
-     /* Match the container background color */
-    z-index: 1; /* Ensure it appears above other content */
+    color: black; 
+    padding-bottom: 10px; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1; 
     width: 100%;
 }
 
@@ -214,47 +212,46 @@ div.buttonBlock button:active {
     text-align: center;
     align-items: center;
     justify-content: center;
-    width: 100%; /* Ensure the width spans the full container */
-    margin: 0; /* Remove any default margin */
-    /* Rest of your styles for font size, color, etc. */
+    width: 100%; 
+    margin: 0; 
     color: #4B2E83;
 }
 
 .save-btn-container {
     display: flex;
-    justify-content: end; /* Centers the save button horizontally */
+    justify-content: end; 
 }
 
 .save-btn {
-    background-color: #4B2E83; /* Primary theme color */
+    background-color: #4B2E83;
     color: white;
-    padding: 10px 30px; /* Padding for a wider button */
+    padding: 10px 30px; 
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin: 1rem; /* Provides space above the save button */
-    width: fit-content; /* Auto-adjust width to fit content */
+    margin: 1rem;
+    width: fit-content; 
 }
 
 .save-btn:hover {
-    background-color: #352a5c; /* Slightly darker purple on hover */
+    background-color: #352a5c; 
 }
 
 .create-quiz-container input,
 .create-quiz-container select {
     padding: 10px;
     margin-bottom: 10px;
-    border: 2px solid black; /* Black border */
+    border: 2px solid black; 
     border-radius: 4px;
-    background-color: #E5DDF4; /* Light purple background */
+    background-color: #E5DDF4; 
 }
 
 .setting-item select {
     padding: 10px;
     margin-bottom: 10px;
-    border: 2px solid black; /* Add black border */
+    border: 2px solid black; 
     border-radius: 4px;
-    background-color: #E5DDF4; /* Light purple background */
+    background-color: #E5DDF4; 
 }
 
 .align {

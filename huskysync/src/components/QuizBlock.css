@@ -1,8 +1,8 @@
 .quiz-block {
-    background-color: #007bff; /* Blue background */
-    color: #000000; /* Black text */
+    background-color: #007bff;
+    color: #000000;
     padding: 10px;
     border-radius: 5px;
-    width: 200px; /* Adjust width as needed */
-    margin-bottom: 20px; /* Add some margin for spacing */
+    width: 200px; 
+    margin-bottom: 20px; 
 }

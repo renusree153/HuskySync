@@ -1,7 +1,7 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createClass = /* GraphQL */ `
+export const createClass = `
   mutation CreateClass(
     $input: CreateClassInput!
     $condition: ModelClassConditionInput
@@ -15,7 +15,7 @@ export const createClass = /* GraphQL */ `
     }
   }
 `;
-export const updateClass = /* GraphQL */ `
+export const updateClass = `
   mutation UpdateClass(
     $input: UpdateClassInput!
     $condition: ModelClassConditionInput
@@ -29,7 +29,7 @@ export const updateClass = /* GraphQL */ `
     }
   }
 `;
-export const deleteClass = /* GraphQL */ `
+export const deleteClass = `
   mutation DeleteClass(
     $input: DeleteClassInput!
     $condition: ModelClassConditionInput
@@ -43,7 +43,7 @@ export const deleteClass = /* GraphQL */ `
     }
   }
 `;
-export const createQuiz = /* GraphQL */ `
+export const createQuiz =  `
   mutation CreateQuiz(
     $input: CreateQuizInput!
     $condition: ModelQuizConditionInput
@@ -64,7 +64,7 @@ export const createQuiz = /* GraphQL */ `
     }
   }
 `;
-export const updateQuiz = /* GraphQL */ `
+export const updateQuiz = `
   mutation UpdateQuiz(
     $input: UpdateQuizInput!
     $condition: ModelQuizConditionInput
@@ -85,7 +85,7 @@ export const updateQuiz = /* GraphQL */ `
     }
   }
 `;
-export const deleteQuiz = /* GraphQL */ `
+export const deleteQuiz =  `
   mutation DeleteQuiz(
     $input: DeleteQuizInput!
     $condition: ModelQuizConditionInput
@@ -105,7 +105,7 @@ export const deleteQuiz = /* GraphQL */ `
     }
   }
 `;
-export const createUsers = /* GraphQL */ `
+export const createUsers = `
   mutation CreateUsers(
     $input: CreateUsersInput!
     $condition: ModelUsersConditionInput
@@ -126,7 +126,7 @@ export const createUsers = /* GraphQL */ `
     }
   }
 `;
-export const updateUsers = /* GraphQL */ `
+export const updateUsers = `
   mutation UpdateUsers(
     $input: UpdateUsersInput!
     $condition: ModelUsersConditionInput
@@ -147,7 +147,7 @@ export const updateUsers = /* GraphQL */ `
     }
   }
 `;
-export const deleteUsers = /* GraphQL */ `
+export const deleteUsers = `
   mutation DeleteUsers(
     $input: DeleteUsersInput!
     $condition: ModelUsersConditionInput
@@ -168,7 +168,7 @@ export const deleteUsers = /* GraphQL */ `
     }
   }
 `;
-export const createMessage = /* GraphQL */ `
+export const createMessage =  `
   mutation CreateMessage(
     $input: CreateMessageInput!
     $condition: ModelMessageConditionInput
@@ -183,7 +183,7 @@ export const createMessage = /* GraphQL */ `
     }
   }
 `;
-export const updateMessage = /* GraphQL */ `
+export const updateMessage = `
   mutation UpdateMessage(
     $input: UpdateMessageInput!
     $condition: ModelMessageConditionInput
@@ -198,7 +198,7 @@ export const updateMessage = /* GraphQL */ `
     }
   }
 `;
-export const deleteMessage = /* GraphQL */ `
+export const deleteMessage =  `
   mutation DeleteMessage(
     $input: DeleteMessageInput!
     $condition: ModelMessageConditionInput
@@ -213,7 +213,7 @@ export const deleteMessage = /* GraphQL */ `
     }
   }
 `;
-export const createExtractedTexts = /* GraphQL */ `
+export const createExtractedTexts = `
   mutation CreateExtractedTexts(
     $input: CreateExtractedTextsInput!
     $condition: ModelExtractedTextsConditionInput
@@ -233,7 +233,7 @@ export const createExtractedTexts = /* GraphQL */ `
     }
   }
 `;
-export const updateExtractedTexts = /* GraphQL */ `
+export const updateExtractedTexts = `
   mutation UpdateExtractedTexts(
     $input: UpdateExtractedTextsInput!
     $condition: ModelExtractedTextsConditionInput
@@ -253,7 +253,7 @@ export const updateExtractedTexts = /* GraphQL */ `
     }
   }
 `;
-export const deleteExtractedTexts = /* GraphQL */ `
+export const deleteExtractedTexts = `
   mutation DeleteExtractedTexts(
     $input: DeleteExtractedTextsInput!
     $condition: ModelExtractedTextsConditionInput

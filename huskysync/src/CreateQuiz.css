@@ -1,11 +1,10 @@
 .create-quiz-panel {
-    /* Align the panel to the left side of the screen */
-    position: absolute; /* or fixed, depending on your needs */
-    top: 100px; /* Adjust as necessary to clear the navbar */
+    position: absolute; 
+    top: 100px; 
     left: 0;
     box-sizing: border-box;
-    overflow-y: auto; /* Add vertical scrollbar if content overflows */
-    max-height: calc(100vh - 100px); /* Adjust based on your layout */
+    overflow-y: auto; 
+    max-height: calc(100vh - 100px); 
 }
 
 .create-quiz-container {
@@ -13,38 +12,37 @@
     padding-left: 70px;
     padding-right: 70px;
     padding-top: 45px;
-    width: 100%; /* Adjust width to fit inside the .create-quiz-panel if necessary */
-    position: relative; /* Keep as relative */
+    width: 100%; 
+    position: relative; 
 }
 
 .create-quiz-title {
     font-size: 1.5em;
-    color: black; /* Colour of your title */
-    padding-bottom: 10px; /* If you want space below the text */
-    position: sticky; /* Keep the title sticky */
-    top: 0; /* Stick the title to the top */
-    background-color: #C9BBE2; /* Match the container background color */
-    z-index: 1; /* Ensure it appears above other content */
+    color: black; 
+    padding-bottom: 10px; 
+    position: sticky; 
+    top: 0; 
+    background-color: #C9BBE2;
+    z-index: 1; 
 }
 
 .create-quiz-name {
     text-align: center;
     align-items: center;
     justify-content: center;
-    width: 100%; /* Ensure the width spans the full container */
-    margin: 0; /* Remove any default margin */
-    /* Rest of your styles for font size, color, etc. */
+    width: 100%;
+    margin: 0; 
     color: #4B2E83;
 }
 
 
 .label-create-quiz {
-    display: block; /* Makes it a block element, taking the full width */
-    color: white; /* White text color */
-    text-align: center; /* Centers the text within the label */
-    margin-bottom: 20px; /* Space below the label */
-    font-size: 20px; /* Larger font size */
-    font-weight: bold; /* Makes the font bold */
+    display: block; 
+    color: white; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 20px; 
+    font-weight: bold; 
 }
 
 .close-btn {
@@ -60,13 +58,13 @@
     justify-content: center;
     cursor: pointer;
     position: absolute;
-    right: 15px; /* Adjust to align with the right edge of the modal */
-    top: 15px; /* Adjust to align with the top edge of the modal */
+    right: 15px; 
+    top: 15px; 
     z-index: 1050;
 }
 
 .close-btn:hover {
-    color: #4B2E83; /* Darker purple on hover */
+    color: #4B2E83; 
     background-color: #C9BBE2;
 }
 
@@ -84,9 +82,9 @@
 .create-quiz-container select {
     padding: 10px;
     margin-bottom: 10px;
-    border: 2px solid black; /* Black border */
+    border: 2px solid black; 
     border-radius: 4px;
-    background-color: #E5DDF4; /* Light purple background */
+    background-color: #E5DDF4; 
 }
 
 .drop-zone {
@@ -94,7 +92,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px; /* Adjusted padding */
+    padding: 20px; 
     border: 2px dashed #ccc;
     border-radius: 4px;
     margin-bottom: 1rem;
@@ -120,8 +118,7 @@
 .file-name {
     flex-grow: 1;
     text-align: center;
-    /* Optional: Hide the text if it's the default 'Choose a file...' */
-    visibility: visible; /* Change to 'hidden' if you want to hide the 'Choose a file...' text */
+    visibility: visible; 
 }
 
 .upload-btn {
@@ -129,36 +126,34 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    white-space: nowrap; /* Prevents wrapping of text */
+    white-space: nowrap; 
 }
 
 .save-btn {
-    background-color: #4B2E83; /* Primary theme color */
+    background-color: #4B2E83; 
     color: white;
-    padding: 10px 30px; /* Padding for a wider button */
+    padding: 10px 30px; 
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin: 1rem; /* Provides space above the save button */
-    width: fit-content; /* Auto-adjust width to fit content */
-    transition: background-color 0.3s, color 0.3s; /* Add transition for smooth hover effect */
+    margin: 1rem; 
+    width: fit-content; 
+    transition: background-color 0.3s, color 0.3s; 
 }
 
 .save-btn:hover {
-    background-color: #E5DDF4; /* Light purple on hover */
-    color: #4B2E83; /* Dark purple text on hover */
+    background-color: #E5DDF4; 
+    color: #4B2E83; 
 }
 
-/* Success message style */
 .success-message {
     color: green;
     text-align: center;
 }
 
-/* Responsive design adjustments */
 @media (max-width: 500px) {
     .create-quiz-container {
-        max-width: 95%; /* Takes full width on smaller screens */
+        max-width: 95%; 
     }
     
     .drop-zone {
@@ -167,9 +162,6 @@
     
     .upload-btn,
     .save-btn {
-        width: 100%; /* Full width buttons on smaller screens */
+        width: 100%; 
     }
 }
-
-
-

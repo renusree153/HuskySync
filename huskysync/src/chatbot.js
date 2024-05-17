@@ -20,11 +20,10 @@ function Home({ messages }) {
   useEffect(() => {
     const fetchUserAndSubscribe = async () => {
       try {
-        // Retrieve the current authenticated user
+
         const currentUser = await getCurrentUser();
         setUser(currentUser);
 
-        // Subscribe to the creation of messages
         const subscription = client.graphql(
           graphqlOperation(onCreateMessage)
         ).subscribe({
@@ -38,7 +37,7 @@ function Home({ messages }) {
         });
 
         return () => {
-          // Clean up the subscription on component unmount
+
           subscription.unsubscribe();
         };
       } catch (error) {
@@ -131,29 +130,22 @@ function Home({ messages }) {
 export default withAuthenticator(Home);
 
 export async function getServerSideProps({ req }) {
-  // wrap the request in a withSSRContext to use Amplify functionality serverside.
   const SSR = runWithAmplifyServerContext({ req });
 
   try {
-    // currentAuthenticatedUser() will throw an error if the user is not signed in.
     const user = await SSR.getCurrentUser();
 
-    // If we make it passed the above line, that means the user is signed in.
     const response = await SSR.client.graphql({
       query: listMessages,
-      // use authMode: AMAZON_COGNITO_USER_POOLS to make a request on the current user's behalf
       authMode: "AMAZON_COGNITO_USER_POOLS",
     });
 
-    // return all the messages from the dynamoDB
     return {
       props: {
         messages: response.data.listMessages.items,
       },
     };
   } catch (error) {
-    // We will end up here if there is no user signed in.
-    // We'll just return a list of empty messages.
     return {
       props: {
         messages: [],

@@ -2,27 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align items to the top of the container */
-  min-height: 100vh; /* Set a minimum height to fill the viewport */
+  justify-content: flex-start; 
+  min-height: 100vh; 
 }
 
 
 body { 
-  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  overflow-y: auto; 
 }
 
 .faq-container {
-  overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 100vh; /* Set maximum height to viewport height */
-  padding: 20px; /* Add padding for better aesthetics */
+  overflow-y: auto; 
+  max-height: 100vh; 
+  padding: 20px; 
 }
-
-/* Add more CSS styling for your other elements as needed */
 
 
 .FAQ-header {
-  margin-top: 50px; /* Adjust as needed */
-  text-align: center; /* Center-align text */
+  margin-top: 50px; 
+  text-align: center; 
 }
 
 .demo-title {
@@ -40,8 +38,8 @@ body {
 
 .button-container {
   display: flex;
-  justify-content: center; /* Align buttons horizontally in the center */
-  margin-top: 20px; /* Adjust margin as needed */
+  justify-content: center; 
+  margin-top: 20px; 
 }
 
 button {
@@ -60,8 +58,8 @@ button {
 .FAQ-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the left of the container */
-  margin-left: 20px; /* Adjust as needed */
+  align-items: flex-start; 
+  margin-left: 20px; 
 }
 
 .bold-list {
@@ -83,17 +81,14 @@ button {
 .demo-title h2::before {
   content: '';
   position: absolute;
-  top: -4px; /* Adjust to fit the bubble */
-  left: -4px; /* Adjust to fit the bubble */
-  width: calc(100% + 8px); /* Adjust to fit the bubble */
-  height: calc(100% + 8px); /* Adjust to fit the bubble */
+  top: -4px;
+  left: -4px; 
+  width: calc(100% + 8px); 
+  height: calc(100% + 8px); 
   background-color: #4B2E83;
   border-radius: 20px;
   z-index: -1;
 }
-  
-
-/* Your other CSS styles remain unchanged */
 
 .greybox {
   width: 200px;
