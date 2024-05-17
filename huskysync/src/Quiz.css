@@ -1,5 +1,6 @@
 .chat {
     width: 30%;
+    height: 90%;
     background-color: #4B2E83;
     padding: 20px;
     border-radius: 12px;
@@ -13,12 +14,14 @@
 }
 
 .bold {
-    font-weight: bold; /* Or other desired bolding styles */
-  }
+    font-weight: bold;
+    /* Or other desired bolding styles */
+}
 
 .header {
     display: flex;
-    justify-content: space-between; /* Aligns items to both ends */
+    justify-content: space-between;
+    /* Aligns items to both ends */
     align-items: center;
 }
 
@@ -32,18 +35,21 @@
 #title {
     margin-left: 20px;
 }
+
 .timer {
     display: flex;
     align-items: center;
-    margin-right: 20px; /* Adjust as needed */
+    margin-right: 20px;
+    /* Adjust as needed */
 }
 
 .timer i {
-    margin-right: 5px; /* Adjust as needed */
+    margin-right: 5px;
+    /* Adjust as needed */
 }
 
 #end-quiz {
-    margin-left: auto; 
+    margin-left: auto;
     padding: 10px 20px;
     cursor: pointer;
     color: black;
@@ -52,50 +58,55 @@
 
 #end-quiz:hover,
 #end-quiz:active {
-    background-color: #4B2E83; 
-    color: white; 
+    background-color: #4B2E83;
+    color: white;
 }
 
 .quiz-progress {
     display: flex;
     justify-content: center;
-    margin-top: 5px; 
+    margin-top: 5px;
     margin-bottom: 20px
-  }
-  
-  .quiz-progress ul {
+}
+
+.quiz-progress ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-  }
-  
-  .quiz-progress li {
-    width: 30px; /* Adjust the width of each number as needed */
-    height: 30px; /* Adjust the height of each number as needed */
-    background-color: #E5DDF4; /* Background color of each number */
-    color: white; /* Text color of each number */
-    border-radius: 50%; /* Make each number circular */
+}
+
+.quiz-progress li {
+    width: 30px;
+    /* Adjust the width of each number as needed */
+    height: 30px;
+    /* Adjust the height of each number as needed */
+    background-color: #E5DDF4;
+    /* Background color of each number */
+    color: white;
+    /* Text color of each number */
+    border-radius: 50%;
+    /* Make each number circular */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px; 
+    margin-right: 10px;
     font-weight: bold;
-  }
+}
 
-  #q1 {
+#q1 {
     background-color: #4B2E83;
-  }
+}
 
-  .question {
+.question {
     text-align: left;
     margin-left: 100px;
-  }
+}
 
-  div.buttonBlock {
+div.buttonBlock {
     text-align: left;
     margin-left: 150px;
-  }
+}
 
   div.buttonBlock button:active{
     background-color: #4B2E83;/* Adjust color as needed */
@@ -115,13 +126,13 @@
     vertical-align: middle;
     cursor: pointer;
     color: black;
-    background-color: #E5DDF4;    
+    background-color: #E5DDF4;
 }
 
 div.buttonBlock button:hover,
 div.buttonBlock button:active {
-    background-color: #4B2E83; 
-    color: white; 
+    background-color: #4B2E83;
+    color: white;
 }
 
 .quiz-content {
@@ -135,13 +146,14 @@ div.buttonBlock button:active {
 }
 
 .question {
-    flex: 1; /* Take up remaining space */
+    flex: 1;
+    /* Take up remaining space */
     text-align: left;
     margin-left: 100px;
 }
 
 #next {
-    margin-left: auto; 
+    margin-left: auto;
     padding: 10px 20px;
     cursor: pointer;
     color: black;
@@ -150,6 +162,6 @@ div.buttonBlock button:active {
 
 #next:hover,
 #next:active {
-    background-color: #4B2E83; 
-    color: white; 
+    background-color: #4B2E83;
+    color: white;
 }
