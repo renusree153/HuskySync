@@ -22,6 +22,13 @@
     align-items: center;
 }
 
+.buttonBlock.selected,
+.buttonBlock button:hover,
+.buttonBlock button:active {
+  background-color: darkpurple; /* Adjust color as needed */
+  color: white;                 /* Adjust text color for contrast */
+}
+
 #title {
     margin-left: 20px;
 }
@@ -88,6 +95,11 @@
   div.buttonBlock {
     text-align: left;
     margin-left: 150px;
+  }
+
+  div.buttonBlock button:active{
+    background-color: #4B2E83;/* Adjust color as needed */
+    color: white; /* Adjust text color for contrast */
   }
 
   div.buttonBlock button {
