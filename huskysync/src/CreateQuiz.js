@@ -12,7 +12,7 @@ import S3Context from './components/S3Context';
 import {listQuizzes} from './graphql/queries';
 
 const CreateQuiz = () => {
-    const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, uploaderKey, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
+    const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, uploaderKey, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz, showQuizCreated, setShowQuizCreated } = useQuiz();
     const [listOfClasses, setClasses] = useState([]);
     const {s3ObjectID, setS3ObjectID} = useContext(S3Context);
     const [listOfQuizzes, setQuizzes] = useState([]);

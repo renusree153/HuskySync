@@ -54,6 +54,7 @@ function CustomizeQuiz() {
         }
         setBtnClicked(true);
         pushData();
+        setShowQuizCreated(true);
     }
 
     const graphqlData = JSON.stringify({

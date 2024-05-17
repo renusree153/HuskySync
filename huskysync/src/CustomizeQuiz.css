@@ -14,6 +14,16 @@ html, body {
     margin-left: 5px;
 }
 
+.create-quiz-panel {
+    /* Align the panel to the left side of the screen */
+    position: absolute; /* or fixed, depending on your needs */
+    top: 100px; /* Adjust as necessary to clear the navbar */
+    left: 0;
+    box-sizing: border-box;
+    overflow-y: auto; /* Add vertical scrollbar if content overflows */
+    max-height: calc(100vh - 100px); /* Adjust based on your layout */
+}
+
 #titlet {
     margin-left: 110px;
 }
