@@ -70,6 +70,7 @@ function CustomizeQuiz() {
                 tags
                 date
                 time
+                rsvpquizzes
                 numQuestions
                 quizLength
                 questionTypes

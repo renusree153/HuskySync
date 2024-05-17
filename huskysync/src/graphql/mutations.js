@@ -59,6 +59,7 @@ export const createQuiz = /* GraphQL */ `
       time
       createdAt
       updatedAt
+      rsvpquizzes
       __typename
     }
   }
