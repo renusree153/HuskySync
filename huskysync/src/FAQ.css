@@ -7,10 +7,18 @@
 }
 
 
-body {
-  height: 100%; 
+body { 
   overflow-y: auto; /* Enable vertical scrolling when content overflows */
 }
+
+.faq-container {
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 100vh; /* Set maximum height to viewport height */
+  padding: 20px; /* Add padding for better aesthetics */
+}
+
+/* Add more CSS styling for your other elements as needed */
+
 
 .FAQ-header {
   margin-top: 50px; /* Adjust as needed */

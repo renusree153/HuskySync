@@ -28,7 +28,7 @@ function Home() {
       <NavBar />
       <div className="body">
         <div className="logo-container">
-          <img src={huskysync} id="logo" alt="Huskysync Logo" />
+          <img src={huskysync} id="logo" alt="Huskysync Logo"/>
         </div>
         <div className="content">
           <h1>Welcome, {username}!</h1>
