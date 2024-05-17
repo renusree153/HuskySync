@@ -6,7 +6,8 @@ import { listMessages } from "../src/graphql/queries";
 import { createMessage } from "../src/graphql/mutations.js";
 import Message from "../src/message.js";
 import { onCreateMessage } from "../src/graphql/subscriptions";
-
+import { getCurrentUser } from 'aws-amplify/auth';
+import { GraphQLQuery } from '@aws-amplify/api'
 function Home({ messages }) {
   const [stateMessages, setStateMessages] = useState([...messages]);
   const [messageText, setMessageText] = useState("");
@@ -15,7 +16,7 @@ function Home({ messages }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const amplifyUser = await Auth.currentAuthenticatedUser();
+        const amplifyUser = await getCurrentUser();
         setUser(amplifyUser);
       } catch (err) {
         setUser(null);
