@@ -11,6 +11,7 @@ import FAQ from './FAQ';
 import UploaderPage from './UploadDocsPage.js';
 import Quiz from './Quiz';
 import CustomizeQuiz from './CustomizeQuiz';
+import QuizCreated from './QuizCreated';
 import { QuizNameProvider } from './QuizNameContext';
 import { UserProvider } from './components/UserContext';
 import { QuizProvider } from './components/QuizContext';
@@ -86,6 +87,7 @@ function App() {
                 <Route path="/Upload" element={<UploaderPage />} />
                 <Route path="/Quiz" element={<Quiz />} />
                 <Route path="/CustomizeQuiz" element={<CustomizeQuiz />} />
+                <Route path="/QuizCreated" element={<QuizCreated />} />
                 <Route path="/QuizQs" element={<QuizQuestions/>} />
               </Routes>
             </div>
