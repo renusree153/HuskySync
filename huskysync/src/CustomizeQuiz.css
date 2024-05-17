@@ -261,3 +261,7 @@ div.buttonBlock button:active {
     
     margin-left: 22px;
 }
+
+.quiz-created {
+    z-index: 99999;
+}

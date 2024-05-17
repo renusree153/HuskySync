@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 
 function QuizCreated() {
     return (
-        <div className="settings-container create-quiz-container">
-            <h1>Quiz Created Successfully!</h1>
-            <Link to="/CreateQuiz">
-                <button type="button" className="back-btn">Back</button>
-            </Link>
+        <div className="custom-quiz-panel quiz-created">
+            <div className='header'>
+                <h2 id="titlet"> Quiz Created Successfully!</h2>
+            </div>
+            <div>
+                <Link to="/GroupMain">
+                    <button type="button" className="save-btn">Back</button>
+                </Link>
+            </div>
         </div>
     );
 }

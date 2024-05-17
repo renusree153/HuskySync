@@ -1,0 +1,263 @@
+html, body {
+    height: 100%; /* Ensure the body and html elements span the full height of the viewport */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Aligns items to both ends */
+    align-items: center;
+}
+
+#title {
+    margin-left: 5px;
+}
+
+.create-quiz-panel {
+    /* Align the panel to the left side of the screen */
+    position: absolute; /* or fixed, depending on your needs */
+    top: 100px; /* Adjust as necessary to clear the navbar */
+    left: 0;
+    box-sizing: border-box;
+    overflow-y: auto; /* Add vertical scrollbar if content overflows */
+    max-height: calc(100vh - 100px); /* Adjust based on your layout */
+}
+
+#titlet {
+    margin-left: 110px;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Adjust as needed */
+}
+
+.timer i {
+    margin-right: 5px; /* Adjust as needed */
+}
+
+#end-quiz {
+    margin-right: 40px; 
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    background-color: #E5DDF4;
+}
+
+#end-quiz:hover,
+#end-quiz:active {
+    background-color: #4B2E83; 
+    color: white; 
+}
+
+.quiz-progress {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px; 
+    margin-bottom: 20px
+  }
+  
+  .quiz-progress ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .quiz-progress li {
+    width: 30px; /* Adjust the width of each number as needed */
+    height: 30px; /* Adjust the height of each number as needed */
+    background-color: #E5DDF4; /* Background color of each number */
+    color: white; /* Text color of each number */
+    border-radius: 50%; /* Make each number circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px; 
+    font-weight: bold;
+  }
+
+  #q1 {
+    background-color: #4B2E83;
+  }
+
+  .question {
+    text-align: left;
+    margin-left: 100px;
+  }
+
+  div.buttonBlock {
+    text-align: left;
+    margin-left: 150px;
+  }
+
+  div.buttonBlock button {
+    width: 500px; 
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+    vertical-align: middle;
+    cursor: pointer;
+    color: black;
+    background-color: #E5DDF4;    
+}
+
+div.buttonBlock button:hover,
+div.buttonBlock button:active {
+    background-color: #4B2E83; 
+    color: white; 
+}
+
+.quiz-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+}
+
+.question {
+    flex: 1; /* Take up remaining space */
+    text-align: left;
+    margin-left: 100px;
+}
+
+#next {
+    margin-left: auto; 
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    background-color: #E5DDF4;
+}
+
+#next:hover,
+#next:active {
+    background-color: #4B2E83; 
+    color: white; 
+}
+
+.settings {
+    width: 300px;
+}
+
+
+.setting-item {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.setting-item label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.setting-item input[type="text"],
+.setting-item select,
+.setting-item textarea {
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+}
+
+
+.setting-item input[type="file"] {
+    margin-top: 10px;
+}
+
+
+.custom-quiz-panel {
+    /* Align the panel to the left side of the screen */
+    position: absolute; /* or fixed, depending on your needs */
+    top: 100px; /* Adjust as necessary to clear the navbar */
+    left: 0;
+    box-sizing: border-box;
+    overflow-y: auto; /* Add vertical scrollbar if content overflows */
+    max-height: calc(100vh - 100px); /* Adjust based on your layout */
+    height: 100%; /* Ensure the panel spans the full height */
+}
+
+.custom-quiz-container {
+        background-color: white;
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 45px;
+        width: 100%; /* Adjust width to fit inside the .create-quiz-panel if necessary */
+        position: relative; /* Keep as relative */
+        height: 100%; /* Ensure the container spans the full height */
+    
+}
+
+.custom-quiz-title {
+    font-size: 1.5em;
+    color: black; /* Colour of your title */
+    padding-bottom: 10px; /* If you want space below the text */
+    position: sticky; /* Keep the title sticky */
+    top: 0; /* Stick the title to the top */
+     /* Match the container background color */
+    z-index: 1; /* Ensure it appears above other content */
+    width: 100%;
+}
+
+.custom-quiz-name {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ensure the width spans the full container */
+    margin: 0; /* Remove any default margin */
+    /* Rest of your styles for font size, color, etc. */
+    color: #4B2E83;
+}
+
+.save-btn-container {
+    display: flex;
+    justify-content: end; /* Centers the save button horizontally */
+}
+
+.save-btn {
+    background-color: #4B2E83; /* Primary theme color */
+    color: white;
+    padding: 10px 30px; /* Padding for a wider button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 1rem; /* Provides space above the save button */
+    width: fit-content; /* Auto-adjust width to fit content */
+}
+
+.save-btn:hover {
+    background-color: #352a5c; /* Slightly darker purple on hover */
+}
+
+.create-quiz-container input,
+.create-quiz-container select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid black; /* Black border */
+    border-radius: 4px;
+    background-color: #E5DDF4; /* Light purple background */
+}
+
+.setting-item select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid black; /* Add black border */
+    border-radius: 4px;
+    background-color: #E5DDF4; /* Light purple background */
+}
+
+.align {
+    
+    margin-left: 22px;
+}

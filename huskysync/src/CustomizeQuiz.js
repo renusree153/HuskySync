@@ -7,6 +7,7 @@ import { listUsers } from './graphql/queries';
 import { UserContext } from './components/UserContext';
 import S3Context from './components/S3Context';
 import QuizCreated from './QuizCreated';
+import { useNavigate } from 'react-router-dom';
 
 function CustomizeQuiz() {
     const [numQuestions, setNumQuestions] = useState('5');
@@ -18,7 +19,8 @@ function CustomizeQuiz() {
     const [userProps, setUserProps] = useState(null);
     const { s3ObjectID } = useContext(S3Context);
     const [btnClicked, setBtnClicked] = useState(false);
-
+    const navigate = useNavigate();
+    
     const handleNumQuestionsChange = (event) => {
         setNumQuestions(event.target.value);
     };
@@ -55,6 +57,7 @@ function CustomizeQuiz() {
         setBtnClicked(true);
         pushData();
         setShowQuizCreated(true);
+        navigate('/QuizCreated');
     }
 
     const graphqlData = JSON.stringify({

@@ -7,7 +7,7 @@ import Team from "./components/Team";
 import Rsvp from "./components/RSVP";
 import PastQuizzes from "./components/PastQuizzes.js"
 import {BrowserRouter, Routes, Navigate} from "react-router-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { Amplify} from "aws-amplify";
 import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 import awsconfig from './aws-exports';
