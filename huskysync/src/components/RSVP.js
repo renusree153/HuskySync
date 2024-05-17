@@ -6,6 +6,9 @@ import './RSVP.css';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import QuizComponent from './QuizQuestions';
+import { useS3Objs } from '../components/S3Objs';
+import { useQuiz } from './QuizContext';
 
 function Rsvp() {
     const [userId, setUserId] = useState(null);
@@ -13,6 +16,10 @@ function Rsvp() {
     const [listOfQuizzes, setQuizzes] = useState([]);
     const [fetchData, setFetchData] = useState(null);
     const { username } = useContext(UserContext);
+    const [selectedQuiz, setSelectedQuiz] = useState(null);
+    const { s3Objs, setS3Objs } = useS3Objs();
+    const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, uploaderKey, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,6 +49,7 @@ function Rsvp() {
     }, [username]);
 
     useEffect(() => {
+        console.log("IN RSVPPPPPP ");
         const fetchData = async () => {
             try {
                 const response = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
@@ -54,6 +62,7 @@ function Rsvp() {
                     body: JSON.stringify({ query: listQuizzes })
                 });
                 const data = await response.json();
+                console.log("data is ", data);
                 if (data && data.data && data.data.listQuizzes) {
                     setQuizzes(data.data.listQuizzes.items);
                 } else {
@@ -67,12 +76,15 @@ function Rsvp() {
         fetchData();
     }, []);
 
+    const handleJoin = (quizname) => {
+        setQuizName(quizname);
+    }
+
     useEffect(() => {
         if (fetchData && fetchData.items) {
             for (let i = 0; i < fetchData.items.length; i++) {
                 console.log(fetchData.items[i]);
                 if (fetchData.items[i].username === username) {
-                    console.log(userId);
                     setUserId(fetchData.items[i].id);
                     break;
                 }
@@ -94,10 +106,12 @@ function Rsvp() {
                         body: JSON.stringify({
                             query: rsvpQuizzesForUser,
                             variables: { id: userId }
+
                         })
                     });
                     const data = await response.json();
                     if (data && data.data && data.data.getUsers && data.data.getUsers.rsvpquizzes) {
+                        console.log("data is ", data);
                         setClasses(data.data.getUsers.rsvpquizzes);
                     } else {
                         console.error('Invalid data structure:', data);
@@ -106,17 +120,14 @@ function Rsvp() {
                     console.error('Error fetching data:', error);
                 }
             };
-
             fetchData();
         }
+        console.log("s3 objs is from rsvp ", s3Objs);
     }, [userId]);
 
+    console.log("rsvped quizzes ", listOfClasses);
+
     const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('../Upload');
-    };
-
 
     return (
         <div className="container">
@@ -128,11 +139,10 @@ function Rsvp() {
                                 <h4>{classObj}</h4>
                                 {listOfQuizzes.filter(quiz => quiz && quiz.quizname === classObj)
                                     .map(quiz => {
-                                        console.log(quiz);
                                         return (
                                             <div>
                                                 <Link to={`/upload?quizName=${encodeURIComponent(quiz.quizname)}`}>
-                                                    <button id = "startbtn" onClick={handleClick}> Start </button>
+                                                    <button id = "startbtn" onClick={() => handleJoin(quiz.quizname)}> Start </button>
                                                 </Link>
                                                 <p key={quiz.id}>Quiz on: {quiz.date} at {quiz.time}</p>
                                             </div>

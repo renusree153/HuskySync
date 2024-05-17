@@ -156,7 +156,9 @@ function Team () {
     return (
         <div className="container">
             <div className="horizontal-bar">
-                {listOfClasses.map((classObj) => (
+                {listOfClasses
+                .filter(classObj => classObj.name !== null) 
+                .map((classObj) => (
                     <div key={classObj.id} className="bar">
                         <h4>{classObj.name}</h4>
                         <div className="text-right-bottom">

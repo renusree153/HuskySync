@@ -17,6 +17,7 @@ import { UserProvider } from './components/UserContext';
 import { QuizProvider } from './components/QuizContext';
 import { S3Provider } from './components/S3Context';
 import QuizQuestions from './components/QuizQuestions';
+import { S3ObjsProvider } from './components/S3Objs';
 
 import './App.css';
 import huskyLogo from './imgs/huskysync.png'; // Adjust the path if necessary
@@ -48,7 +49,6 @@ function App() {
   };
 
 
-  // Define your light purple color
   const lightPurple = '#E5DDF4'; // Light purple color hex code
 
   return (
@@ -69,6 +69,7 @@ function App() {
           /* Other components you wish to style with the light purple color */
         `}
       </style>
+      <S3ObjsProvider>
       <QuizProvider>
       <S3Provider>
       <QuizNameProvider>
@@ -80,6 +81,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/Home" element={<Home />} />
                 <Route path="/GroupMain" element={<GroupMain />} />
+                <Route path="/QuizQuestions" element={<QuizQuestions />}/>
                 <Route path="/Settings" element={<Settings />} />
                 <Route path="/FAQ" element={<FAQ />} />
                 <Route path="/Upload" element={<UploaderPage />} />
@@ -95,6 +97,7 @@ function App() {
       </QuizNameProvider>
       </S3Provider>
       </QuizProvider>
+      </S3ObjsProvider>
     </>
   );
 }

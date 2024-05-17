@@ -6,6 +6,8 @@
 
 export { default as ClassCreateForm } from "./ClassCreateForm";
 export { default as ClassUpdateForm } from "./ClassUpdateForm";
+export { default as ExtractedTextsCreateForm } from "./ExtractedTextsCreateForm";
+export { default as ExtractedTextsUpdateForm } from "./ExtractedTextsUpdateForm";
 export { default as MessageCreateForm } from "./MessageCreateForm";
 export { default as MessageUpdateForm } from "./MessageUpdateForm";
 export { default as QuizCreateForm } from "./QuizCreateForm";

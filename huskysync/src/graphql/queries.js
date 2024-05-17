@@ -22,6 +22,9 @@ export const listClasses = /* GraphQL */ `
       items {
         id
         name
+        createdAt
+        updatedAt
+        __typename
       }
       nextToken
       __typename
@@ -54,20 +57,23 @@ export const listQuizzes = /* GraphQL */ `
     listQuizzes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        curnumbers
         class
         date
         description
-        s3objs
         quizname
+        s3objs
         tags
         time
+        createdAt
+        updatedAt
+        __typename
       }
       nextToken
       __typename
     }
   }
 `;
-
 
 // This is a simple query to pull all quizes and stores them in an items. We will probably need to modify this later
 export const getTotalQuizzes = /* GraphQL */ `
@@ -92,18 +98,21 @@ query filterClassNameBIO {
   }
 }
 `;
+
 export const getUsers = /* GraphQL */ `
-  query GetUsers {
+  query GetUsers($id: ID!) {
     getUsers(id: $id) {
       id
-      username
+      bio
+      email
       firstname
       lastname
       groups
-      bio
-      email
       pastquizzes
       rsvpquizzes
+      username
+      createdAt
+      updatedAt
       __typename
     }
   }
@@ -117,14 +126,14 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        username
+        bio
+        email
         firstname
         lastname
         groups
-        bio
-        email
         pastquizzes
         rsvpquizzes
+        username
         createdAt
         updatedAt
         __typename
@@ -134,6 +143,7 @@ export const listUsers = /* GraphQL */ `
     }
   }
 `;
+
 export const rsvpQuizzesForUser = `
 query rsvpQuizzesForUser ($id: ID!) {
   getUsers(id: $id) {
@@ -152,6 +162,7 @@ query pastQuizzesForUser {
 }
 `
 ;
+
 export const listQuizzesFilteredByClass = /* GraphQL */ `
   query ListQuizzesFilteredByClass($classType: String, $limit: Int, $nextToken: String) {
     listQuizzes(
@@ -191,6 +202,7 @@ export const AllUsersAndIds = `
         description
         quizname
         tags
+        s3objs
         time
       }
       nextToken
@@ -205,5 +217,77 @@ export const get_user_quizzes = `
       id
       rsvpquizzes
     }
+  }`;
+
+export const getMessage = /* GraphQL */ `
+  query GetMessage($id: ID!) {
+    getMessage(id: $id) {
+      id
+      owner
+      message
+      createdAt
+      updatedAt
+      __typename
+    }
   }
-`
+`;
+export const listMessages = /* GraphQL */ `
+  query ListMessages(
+    $filter: ModelMessageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        owner
+        message
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getExtractedTexts = /* GraphQL */ `
+  query GetExtractedTexts($id: ID!) {
+    getExtractedTexts(id: $id) {
+      documentId
+      documentname
+      extractedText
+      quizname
+      s3_bucket
+      s3_key
+      username
+      id
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listExtractedTexts = /* GraphQL */ `
+  query ListExtractedTexts(
+    $filter: ModelExtractedTextsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listExtractedTexts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        documentname
+        extractedText
+        quizname
+        s3_bucket
+        s3_key
+        username
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;

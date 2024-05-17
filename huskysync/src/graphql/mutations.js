@@ -50,17 +50,16 @@ export const createQuiz = /* GraphQL */ `
   ) {
     createQuiz(input: $input, condition: $condition) {
       id
-      quizname
       curnumbers
       class
-      tags
       date
+      description
+      quizname
+      tags
       time
-      numQuestions
-      quizLength
-      questionTypes
       createdAt
       updatedAt
+      rsvpquizzes
       __typename
     }
   }
@@ -78,6 +77,7 @@ export const updateQuiz = /* GraphQL */ `
       description
       quizname
       tags
+      s3objs
       time
       createdAt
       updatedAt
@@ -112,8 +112,17 @@ export const createUsers = /* GraphQL */ `
   ) {
     createUsers(input: $input, condition: $condition) {
       id
+      bio
       email
+      firstname
+      lastname
+      groups
+      pastquizzes
+      rsvpquizzes
       username
+      createdAt
+      updatedAt
+      __typename
     }
   }
 `;
@@ -124,14 +133,14 @@ export const updateUsers = /* GraphQL */ `
   ) {
     updateUsers(input: $input, condition: $condition) {
       id
-      username
+      bio
+      email
       firstname
       lastname
       groups
-      bio
-      email
       pastquizzes
       rsvpquizzes
+      username
       createdAt
       updatedAt
       __typename
@@ -145,14 +154,119 @@ export const deleteUsers = /* GraphQL */ `
   ) {
     deleteUsers(input: $input, condition: $condition) {
       id
-      username
+      bio
+      email
       firstname
       lastname
       groups
-      bio
-      email
       pastquizzes
       rsvpquizzes
+      username
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createMessage = /* GraphQL */ `
+  mutation CreateMessage(
+    $input: CreateMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    createMessage(input: $input, condition: $condition) {
+      id
+      owner
+      message
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateMessage = /* GraphQL */ `
+  mutation UpdateMessage(
+    $input: UpdateMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    updateMessage(input: $input, condition: $condition) {
+      id
+      owner
+      message
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteMessage = /* GraphQL */ `
+  mutation DeleteMessage(
+    $input: DeleteMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    deleteMessage(input: $input, condition: $condition) {
+      id
+      owner
+      message
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createExtractedTexts = /* GraphQL */ `
+  mutation CreateExtractedTexts(
+    $input: CreateExtractedTextsInput!
+    $condition: ModelExtractedTextsConditionInput
+  ) {
+    createExtractedTexts(input: $input, condition: $condition) {
+      documentId
+      documentname
+      extractedText
+      quizname
+      s3_bucket
+      s3_key
+      username
+      id
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateExtractedTexts = /* GraphQL */ `
+  mutation UpdateExtractedTexts(
+    $input: UpdateExtractedTextsInput!
+    $condition: ModelExtractedTextsConditionInput
+  ) {
+    updateExtractedTexts(input: $input, condition: $condition) {
+      documentId
+      documentname
+      extractedText
+      quizname
+      s3_bucket
+      s3_key
+      username
+      id
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteExtractedTexts = /* GraphQL */ `
+  mutation DeleteExtractedTexts(
+    $input: DeleteExtractedTextsInput!
+    $condition: ModelExtractedTextsConditionInput
+  ) {
+    deleteExtractedTexts(input: $input, condition: $condition) {
+      documentId
+      documentname
+      extractedText
+      quizname
+      s3_bucket
+      s3_key
+      username
+      id
       createdAt
       updatedAt
       __typename

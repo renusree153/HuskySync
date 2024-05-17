@@ -14,6 +14,7 @@ type Quiz @model @auth(rules: [{allow: public}]) {
   date: String!
   description: String!
   quizname: String!
+  s3objs: [String!]
   tags: [String!]!
   time: String!
 }
@@ -38,4 +39,14 @@ type Message
   owner: String!
   message: String!
 
+}
+
+type ExtractedTexts @model @auth(rules: [{allow: public}]) {
+  documentId: ID!
+  documentname: String!
+  extractedText: String!
+  quizname: String!
+  s3_bucket: String!
+  s3_key: String!
+  username: String!
 }

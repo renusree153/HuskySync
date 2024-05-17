@@ -53,10 +53,34 @@ function CustomizeQuiz() {
             quizDetails.questionTypes.push('MultipleChoice');
         }
         setBtnClicked(true);
-        setShowQuizCreated(true);
-        await pushData();
+        pushData();
+    }
 
-    };
+    const graphqlData = JSON.stringify({
+        query: `
+            mutation CreateQuiz($input: CreateQuizInput!) {
+              createQuiz(input: $input) {
+                id
+                quizname
+                curnumbers
+                class
+                tags
+                date
+                time
+                rsvpquizzes
+                numQuestions
+                quizLength
+                questionTypes
+                createdAt
+                updatedAt
+                __typename
+              }
+            }
+        `,
+        variables: {
+            input: quizDetails
+        }
+    });
 
     const pushData = async () => {
         try {
