@@ -155,7 +155,7 @@ function Rsvp() {
             setLoading(false);
     
             return () => clearInterval(interval); 
-        }, 1000);
+        }, 1000 * 60);
     
         return () => clearInterval(interval); 
     }, [listOfClasses, listOfQuizzes]);    

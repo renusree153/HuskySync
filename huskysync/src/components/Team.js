@@ -23,6 +23,7 @@ function Team () {
     const [userProps, setUserProps] = useState(null);
     const [addedQuizzes, setAddedQuizzes] = useState([]);
     const [prevQuizName, setPrevQuizName] = useState(null);
+    let quizToClassMapping = {};
 
     const toggleExpand = (classId) => {
         setClassStates(prevState => ({
@@ -69,7 +70,6 @@ function Team () {
         });
         const response = await getUserId.json();
         const fetchData = response.data.listUsers;
-        console.log("fetched data ", fetchData);
         for (let i = 0; i < fetchData.items.length; i++) {
             if (fetchData.items[i].username === username) {
                 setUserProps(fetchData.items[i]);
@@ -133,7 +133,6 @@ function Team () {
         updateUserRSVPQuizzes();
     }, [])
 
-
     useEffect(() => {
         const pullData = async () => {
           let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
@@ -153,6 +152,39 @@ function Team () {
         pullData()
     }, []);
 
+    useEffect (() => {
+        const pullData = async () => {
+            let data = await fetch(awsconfig.aws_appsync_graphqlEndpoint, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                'X-Api-Key': awsconfig.aws_appsync_apiKey
+              },
+              body: JSON.stringify({
+                query: listQuizzes
+              })
+            })
+            data = await data.json();
+            console.log(data);
+            setQuizzes(data.data.listQuizzes.items);
+            if (data && data.data && data.data.listQuizzes && data.data.listQuizzes.items) {
+                for (let i = 0; i < data.data.listQuizzes.items.length; i++) {
+                    let dataItem = data.data.listQuizzes.items[i];
+                    const quizName = dataItem.quizname;
+                    const quizClass = dataItem.class;
+                    if (!(quizClass in quizToClassMapping)) {
+                        quizToClassMapping[quizClass] = [quizName];
+                    } else {
+                        quizToClassMapping[quizClass].push(quizName);
+                    }
+                }
+                console.log(quizToClassMapping);
+            }
+          }
+          pullData()
+    }, [listOfQuizzes])
+
     return (
         <div className="container">
             <div className="horizontal-bar">
@@ -162,7 +194,7 @@ function Team () {
                     <div key={classObj.id} className="bar">
                         <h4>{classObj.name}</h4>
                         <div className="text-right-bottom">
-                            <p className="small-text">2 Quizzes</p>
+                            <p className="small-text">{quizToClassMapping[classObj.name].length} quizzes</p>
                         </div>
                         <button onClick={() => toggleExpand(classObj.id)}>
                             {classStates[classObj.id] ? (

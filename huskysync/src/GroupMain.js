@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import './GroupMain.css';
 import NavBar from './components/Navbar';
-import {Multiselect} from 'multiselect-react-dropdown';
 import Team from "./components/Team";
 import Rsvp from "./components/RSVP";
 import PastQuizzes from "./components/PastQuizzes.js"
@@ -11,7 +10,6 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import { Amplify} from "aws-amplify";
 import { uploadData, getUrl, remove } from 'aws-amplify/storage';
 import awsconfig from './aws-exports';
-import { DataStore} from '@aws-amplify/datastore';
 import { listClasses } from './graphql/queries';
 import { createClass } from './graphql/mutations';
 import QuizBlock from "./components/QuizBlock";
@@ -33,6 +31,7 @@ function GroupMain() {
 
     const [data, setData] = useState([]);
     const [listOfClasses, setClasses] = useState([]);
+    const [selectedClass, setSelectedClass] = useState("");
 
     useEffect(() => {
         const pullData = async () => {
@@ -92,6 +91,10 @@ function GroupMain() {
         setActiveTab("pastquizzes")
     }
 
+    const handleClassChange = (event) => {
+        setSelectedClass(event.target.value);
+    }
+
     return (
         <div className="splitContainer">
             <NavBar/>
@@ -104,7 +107,7 @@ function GroupMain() {
                 <h2>Quizzes</h2>
                 <div className="class-filter">
                     <h3>Filter by Class: </h3>
-                    <select className="dropdown">
+                    <select className="dropdown" onChange={handleClassChange}>
                         <option value="">Select a Class</option>
                         {[...new Set(listOfClasses.map(item => item.name.split(" ")[0]))].map((name, index) => (
                             <option key={index} value={name}>
@@ -123,7 +126,7 @@ function GroupMain() {
                     Past Quizzes
                 </button>
                 <hr id="hrgroups"></hr>
-                {activeTab === "join" && <div className="scrollable-content"><Team /></div>}
+                {activeTab === "join" && <div className="scrollable-content"><Team selectedClasses = {selectedClass}/></div>}
                 {activeTab === "rsvp" && <div className="scrollable-content"><Rsvp /></div>}
                 {activeTab === "pastquizzes" && <div className="scrollable-content"><PastQuizzes /></div>}
             </div>
