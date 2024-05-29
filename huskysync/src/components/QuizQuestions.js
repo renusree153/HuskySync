@@ -49,8 +49,8 @@ const QuizComponent = () => {
 
     const [userText, setUserText] = useState({
         text: null,
-        numQuestions: '5',
-        typeOfQuestions: 'Multiple Choice'
+        numQuestions: numQuestions,
+        typeOfQuestions: questionType
       });
 
     useEffect(() => {
@@ -80,10 +80,12 @@ const QuizComponent = () => {
             }
             setUserText({
                 text: fullText,
-                numQuestions: '5',
-                typeOfQuestions: 'Multiple Choice'
+                numQuestions: numQuestions,
+                typeOfQuestions: questionType
             });
             console.log("full text is ", fullText);
+            console.log("number of questions ", numQuestions);
+            console.log("type of questions ", questionType);
         }
         fetchExtractedText();
     }, []); 
@@ -101,7 +103,7 @@ const QuizComponent = () => {
                         {
                             role: 'user',
                             content: JSON.stringify(userText)
-                        },
+                        }
                     ],
                     model: 'mistralai/Mixtral-8x7B-Instruct-v0.1',
                 });
@@ -110,12 +112,12 @@ const QuizComponent = () => {
                 const questions2 = response.choices.map(choice => ({ text: choice.message.content }));
 
                 console.log("questions2 are ", questions2);
-                const questions = questions2[0]['text'].split(/\n\d+. /).slice(1);
+                const questions = questions2[0]['text'].split(/\n\s*\n/).slice(1);
                 console.log("questions are ",  questions);
                 const answers = questions.map(question => {
                     const answer = question.split('\n')[1]; 
                     return answer; 
-                  });
+                });
                 console.log("answers are ", answers);
                 setQuiz(<Quiz quizName={quizName} questions={questions} answers ={answers}/>);
             } catch (error) {
@@ -140,7 +142,7 @@ const QuizComponent = () => {
     };
 
     return (
-        <div>
+        <div style={{ height: '100vh', overflowY: 'scroll' }}>
             {quiz}
         </div>
     );

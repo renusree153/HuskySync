@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from './components/Navbar';
 import { useLocation } from 'react-router-dom';
+import { useS3Objs } from './components/S3Objs';
 
 function Quiz({ quizName, questions, answers }) {
   console.log("questions are ", questions);
@@ -9,6 +10,7 @@ function Quiz({ quizName, questions, answers }) {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [selectedOptionText, setSelectedOptionText] = useState('');
+  const { s3Objs, setS3Objs, numQuestions, setNumQuestions, timeLimit, setTimeLimit, questionType, setQuestionType } = useS3Objs();
   const location = useLocation();
   const [finalScore, setFinalScore] = useState(null);
   const [done, setDone] = useState(false);
@@ -29,8 +31,6 @@ function Quiz({ quizName, questions, answers }) {
     return acc;
   }, []);
 
-  console.log("answers AREEE ", answers);
-
   const handleNextQuestion = () => {
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
   };
@@ -49,10 +49,13 @@ function Quiz({ quizName, questions, answers }) {
   const isLastQuestion = currentQuestionIndex === questions.length - 1; 
 
   const handleSubmitQuiz = () => {
+    console.log("Selected answers are ", selectedAnswers);
     for (let i = 0; i < selectedAnswers.length; i++) {
+      if (selectedAnswers[i] !== undefined && selectedAnswers[i] !== null) {
         if (selectedAnswers[i].trim() === answers[i].trim()) {
-            score += 1;
+          score += 1;
         }
+      }
     }
     setFinalScore(score);
     setQuizDone(true);
@@ -89,9 +92,6 @@ function Quiz({ quizName, questions, answers }) {
           <button id="done" onClick={() => {handleSubmitQuiz(); setDone(true);}}>Done</button>
         )}
       </div>
-      <div className="chat">
-        <h2>Chat</h2>
-      </div>
       <div className="selected-option">
         {selectedOptionText && (
           <h3>Currently selected option: {selectedOptionText}</h3>
@@ -100,7 +100,7 @@ function Quiz({ quizName, questions, answers }) {
       <div className="Quiz">
         {done && quizDone && (
         <div className="score">
-            <h3>Your Score: {finalScore} out of {questions.length}</h3>
+            <h3>Your Score: {finalScore} out of {numQuestions}</h3>
         </div>
         )}
       </div>
