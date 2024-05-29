@@ -141,7 +141,7 @@ function Rsvp() {
             console.log("list of quizzes is ", listOfQuizzes);
             const nonExpiredQuizzes = listOfQuizzes.filter(quiz => new Date(quiz.date + ' ' + quiz.time) < now);
             console.log('Non expired quizzes :', nonExpiredQuizzes);
-    
+
             const classesToRemove = [];
             nonExpiredQuizzes.forEach(quiz => {
                 console.log("list of classes are " + listOfClasses);
@@ -153,9 +153,10 @@ function Rsvp() {
     
             setClasses(prevClasses => prevClasses.filter(classObj => !classesToRemove.includes(classObj)));
             setLoading(false);
+            console.log("NEW CLASSES ", listOfClasses);
     
             return () => clearInterval(interval); 
-        }, 1000 * 60);
+        }, 1000);
     
         return () => clearInterval(interval); 
     }, [listOfClasses, listOfQuizzes]);    

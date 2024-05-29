@@ -194,7 +194,7 @@ function Team () {
                     <div key={classObj.id} className="bar">
                         <h4>{classObj.name}</h4>
                         <div className="text-right-bottom">
-                            <p className="small-text">{quizToClassMapping[classObj.name].length} quizzes</p>
+                            <p className="small-text">{quizToClassMapping[classObj.name]} quizzes</p>
                         </div>
                         <button onClick={() => toggleExpand(classObj.id)}>
                             {classStates[classObj.id] ? (
