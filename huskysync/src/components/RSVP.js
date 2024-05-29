@@ -144,7 +144,6 @@ function Rsvp() {
 
             const classesToRemove = [];
             nonExpiredQuizzes.forEach(quiz => {
-                console.log("list of classes are " + listOfClasses);
                 if (listOfClasses.some(classObj => classObj == quiz.quizname)) {
                     console.log("the matching quiz is ", quiz.quizname);
                     classesToRemove.push(quiz.quizname);
