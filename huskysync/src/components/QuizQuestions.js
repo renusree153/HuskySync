@@ -28,7 +28,7 @@ const userText = {
 
 const QuizComponent = () => {
     const [quiz, setQuiz] = useState(null);
-    const { s3Objs, setS3Objs } = useS3Objs();
+    const { s3Objs, setS3Objs, numQuestions, setNumQuestions, timeLimit, setTimeLimit, questionType, setQuestionType } = useS3Objs();
     const [success, setSuccess] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const {quizName, setQuizName} = useContext(QuizNameContext);

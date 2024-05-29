@@ -32,7 +32,6 @@ function CustomizeQuiz() {
     };
 
     const handleSave = async () => {
-        console.log("btn clicked at ", btnClicked);
         if (btnClicked) {
             return;
         }

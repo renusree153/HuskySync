@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import QuizComponent from './QuizQuestions';
 import { useS3Objs } from '../components/S3Objs';
 import { useQuiz } from './QuizContext';
+import { list } from 'aws-amplify/storage';
+import {useRef} from 'react';
 
 function Rsvp() {
     const [userId, setUserId] = useState(null);
@@ -18,8 +20,14 @@ function Rsvp() {
     const { username } = useContext(UserContext);
     const [selectedQuiz, setSelectedQuiz] = useState(null);
     const { s3Objs, setS3Objs } = useS3Objs();
+    const [notExpired, setNotExpired] = useState([]);
+    const [nonExpiredQuizzes, setNonExpiredQuizzes] = useState([]);
+    const [loading, setLoading] = useState(true);
     const { quizName, setQuizName, selectedClass, setSelectedClass, tags, setTags, date, setDate, time, setTime, uploaderKey, setUploaderKey, showCustomizeQuiz, setShowCustomizeQuiz } = useQuiz();
 
+    const addToNotExpired = (newValue) => {
+        setNotExpired(prevNotExpired => [...prevNotExpired, newValue]);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -72,7 +80,6 @@ function Rsvp() {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
     }, []);
 
@@ -127,8 +134,40 @@ function Rsvp() {
 
     console.log("rsvped quizzes ", listOfClasses);
 
+    useEffect(() => {
+        console.log("in new use effect");
+        const interval = setInterval(() => {
+            const now = new Date();
+            console.log("list of quizzes is ", listOfQuizzes);
+            const nonExpiredQuizzes = listOfQuizzes.filter(quiz => new Date(quiz.date + ' ' + quiz.time) < now);
+            console.log('Non expired quizzes :', nonExpiredQuizzes);
+    
+            const classesToRemove = [];
+            nonExpiredQuizzes.forEach(quiz => {
+                console.log("list of classes are " + listOfClasses);
+                if (listOfClasses.some(classObj => classObj == quiz.quizname)) {
+                    console.log("the matching quiz is ", quiz.quizname);
+                    classesToRemove.push(quiz.quizname);
+                }
+            });
+    
+            setClasses(prevClasses => prevClasses.filter(classObj => !classesToRemove.includes(classObj)));
+            setLoading(false);
+    
+            return () => clearInterval(interval); 
+        }, 1000);
+    
+        return () => clearInterval(interval); 
+    }, [listOfClasses, listOfQuizzes]);    
+
     const navigate = useNavigate();
 
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+    // listOfClasses are the plain quiz names, electromagnetism, waves, etc
+    // listOfQuizzes contains more info about them 
     return (
         <div className="container">
             <div className="horizontal-bar">
