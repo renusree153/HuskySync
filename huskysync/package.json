@@ -15,6 +15,7 @@
     "gapi-script": "^1.2.0",
     "graphql-request": "^6.1.0",
     "multiselect-react-dropdown": "^2.0.25",
+    "openai": "^4.47.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.1",
