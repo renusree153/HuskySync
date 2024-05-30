@@ -39,14 +39,11 @@ function FAQ() {
             <p className="demoo-title"> The notes you upload cannot be viewed by anyone else. However, our algorithm does access the information in your PDF to create and display 
             questions in the quiz. Make sure to only include information you are okay to have potentially displayed for your peers. All information you upload
             will not be sent or sold to a third party!</p> 
-        <h2>
-          How to use HuskySync:
-        </h2>
         </div>
     </div>
-    
-      <p className="greybox"> insert video here </p>
-    
+    <div>
+
+    </div>
     </div>
     </div>
   );
